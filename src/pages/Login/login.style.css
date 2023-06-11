@@ -1,0 +1,34 @@
+.login {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.movida {
+  display: none;
+  width: 60%;
+  height: 100%;
+  border: 1px solid red;
+}
+
+.quieta {
+  width: 100%;
+  height: 100%;
+  border: 1px solid blue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 430px) {
+  .movida {
+    display: block;
+  }
+
+  .quieta {
+    width: 40%;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+  }
+}

@@ -1,7 +1,13 @@
+import "./login.style.css";
+import { LoginForm } from "./loginForm";
+
 export const Login = () => {
   return (
-    <>
-      <h1>Login</h1>
-    </>
+    <div className="login">
+      <div className="movida"></div>
+      <div className="quieta">
+        <LoginForm />
+      </div>
+    </div>
   );
 };
