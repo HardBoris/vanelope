@@ -1,4 +1,4 @@
-import "./style.css";
+import "./password.style.css";
 import { InputHTMLAttributes, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
@@ -24,24 +24,24 @@ export const InputPassword = ({
     return isText;
   };
   return (
-    <div className="input__form">
-      <div className="input__label">
+    <div className="password-form">
+      {/* <div className="password-label">
         {label} {!!error && <span>: {error} </span>}
-      </div>
-      <div className="input__field">
+      </div> */}
+      <div className="password-field">
         <input
           {...register(name)}
           {...rest}
-          className="input__input"
+          className="password-input"
           type={isText ? "text" : "password"}
         />
-        <button
-          type="button"
-          className="input__eye"
+        <div
+          role="button"
+          className="password-eye"
           onClick={() => showPassword()}
         >
           {isText ? <FaEye /> : <FaEyeSlash />}
-        </button>
+        </div>
       </div>
     </div>
   );

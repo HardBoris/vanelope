@@ -35,11 +35,11 @@ ul {
   --attention: hsl(60, 100%, 50%);
   --attention-75: hsl(60, 100%, 75%);
   --attention-light: hsl(60, 100%, 90%);
-  --primary-complementary-dark: hsl(0, 100%, 5%);
-  --primary-complementary-25: hsl(0, 100%, 25%);
-  --primary-complementary: hsl(0, 100%, 50%);
-  --primary-complementary-75: hsl(0, 100%, 75%);
-  --primary-complementary-light: hsl(0, 100%, 95%);
+  --warning-dark: hsl(0, 100%, 5%);
+  --warning-25: hsl(0, 100%, 25%);
+  --warning: hsl(0, 100%, 50%);
+  --warning-75: hsl(0, 100%, 75%);
+  --warning-light: hsl(0, 100%, 95%);
   --success-dark: hsl(120, 100%, 10%);
   --success-25: hsl(120, 100%, 25%);
   --success: hsl(120, 100%, 50%);

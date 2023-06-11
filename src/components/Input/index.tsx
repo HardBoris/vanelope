@@ -1,4 +1,4 @@
-import "./style.css";
+import "./input.style.css";
 import { InputHTMLAttributes } from "react";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -10,7 +10,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 export const Input = ({
-  label,
+  placeholder,
   register,
   name,
   error,
@@ -18,11 +18,12 @@ export const Input = ({
 }: InputProps) => {
   return (
     <div className="input-form">
-      <div className="input-label">
-        {label} {!!error && <span>: {error} </span>}
-      </div>
-
-      <input {...register(name)} {...rest} className="input-input" />
+      <input
+        {...register(name)}
+        {...rest}
+        className={!!error ? "input-error" : "input-input"}
+        placeholder={!!error ? `${error}` : `${placeholder}`}
+      />
     </div>
   );
 };

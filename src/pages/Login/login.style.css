@@ -4,31 +4,27 @@
   display: flex;
 }
 
-.movida {
+.fitment {
   display: none;
   width: 60%;
   height: 100%;
-  border: 1px solid red;
+  background-color: var(--secondary-light);
 }
 
-.quieta {
+.still {
   width: 100%;
   height: 100%;
-  border: 1px solid blue;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 @media (min-width: 430px) {
-  .movida {
+  .fitment {
     display: block;
   }
 
-  .quieta {
+  .still {
     width: 40%;
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
   }
 }
