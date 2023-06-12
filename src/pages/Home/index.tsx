@@ -1,7 +1,5 @@
-// import "../../styles/layout.css";
-// import { Outlet } from "react-router-dom";
-// import { Navigator } from "../../components/Navigator";
 import "./home.style.css";
+
 export const Home = () => {
   return (
     <>

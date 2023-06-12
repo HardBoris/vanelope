@@ -1,17 +1,17 @@
-.login {
+.signup {
   width: 100%;
   height: 100%;
   display: flex;
 }
 
-.login-fitment {
+.signup-fitment {
   display: none;
   width: 60%;
   height: 100%;
   background-color: var(--secondary-light);
 }
 
-.login-still {
+.signup-still {
   width: 100%;
   height: 100%;
   display: flex;
@@ -20,11 +20,11 @@
 }
 
 @media (min-width: 430px) {
-  .login-fitment {
+  .signup-fitment {
     display: block;
   }
 
-  .login-still {
+  .signup-still {
     width: 40%;
   }
 }

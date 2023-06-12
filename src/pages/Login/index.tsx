@@ -1,11 +1,11 @@
 import "./login.style.css";
-import { LoginForm } from "./loginForm";
+import { LoginForm } from "./LoginForm";
 
 export const Login = () => {
   return (
     <div className="login">
-      <div className="fitment"></div>
-      <div className="still">
+      <div className="login-fitment"></div>
+      <div className="login-still">
         <LoginForm />
       </div>
     </div>

@@ -13,7 +13,12 @@ export const Navigator = () => {
       </div>
       <div className="navigator">
         <Link to="/login">
-          <span>Login</span>
+          <span>LogIn</span>
+        </Link>
+      </div>
+      <div className="navigator">
+        <Link to="/signup">
+          <span>SignUp</span>
         </Link>
       </div>
     </nav>

@@ -77,6 +77,7 @@ const UserProvider = ({ children }: UserProviderProps) => {
         localStorage.setItem("@Aventura:user", JSON.stringify(user));
         localStorage.setItem("@Aventura:company", company);
         setData({ user, token, company });
+        console.log(data);
         /* toast.update(aviso, {
           render: "Bem-Vindo a Oikos!",
           type: "success",
