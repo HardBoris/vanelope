@@ -11,6 +11,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 export const InputPassword = ({
+  placeholder,
   label,
   register,
   name,
@@ -28,11 +29,12 @@ export const InputPassword = ({
       {/* <div className="password-label">
         {label} {!!error && <span>: {error} </span>}
       </div> */}
-      <div className="password-field">
+      <div className={!!error ? "password-error" : "password-field"}>
         <input
           {...register(name)}
           {...rest}
           className="password-input"
+          placeholder={!!error ? `${error}` : `${placeholder}`}
           type={isText ? "text" : "password"}
         />
         <div
