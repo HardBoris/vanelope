@@ -25,11 +25,11 @@ ul {
   --primary: hsl(180, 100%, 50%);
   --primary-75: hsl(180, 100%, 75%);
   --primary-light: hsl(180, 100%, 95%);
-  --secondary-dark: hsl(240, 100%, 10%);
+  --secondary-dark: hsl(240, 100%, 5%);
   --secondary-25: hsl(240, 100%, 25%);
-  --secondary: hsl(270, 100%, 50%);
-  --secondary-75: hsl(240, 100%, 95%);
-  --secondary-light: hsl(240, 100%, 100%);
+  --secondary: hsl(240, 100%, 50%);
+  --secondary-75: hsl(240, 100%, 75%);
+  --secondary-light: hsl(240, 100%, 95%);
   --attention-dark: hsl(60, 100%, 10%);
   --attention-25: hsl(60, 100%, 25%);
   --attention: hsl(60, 100%, 50%);

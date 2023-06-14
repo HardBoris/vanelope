@@ -4,10 +4,10 @@ import { useAuth } from "../context/UserContext";
 import { PublicRoutes } from "./PublicRoutes";
 
 export const AppRouter = () => {
-  const { token } = useAuth();
+  const { token, company } = useAuth();
   return (
     <Routes>
-      {token ? (
+      {company && token ? (
         <Route path="/*" element={<PrivateRoutes />} />
       ) : (
         <Route path="/*" element={<PublicRoutes />} />

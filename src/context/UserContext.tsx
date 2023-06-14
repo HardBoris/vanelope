@@ -24,11 +24,13 @@ interface AuthState {
 interface SignInCredentials {
   userName: string;
   userPassword: string;
+  companyCode: string;
 }
 
 interface UserContextData {
   user: User;
   token: string;
+  company: string;
   signIn: (credentials: SignInCredentials) => Promise<void>;
   signOut: () => void;
   signUp: (info: SignInCredentials) => void;
@@ -67,17 +69,21 @@ const UserProvider = ({ children }: UserProviderProps) => {
     return {} as AuthState;
   });
 
-  const signIn = async ({ userName, userPassword }: SignInCredentials) => {
+  const signIn = async ({
+    userName,
+    userPassword,
+    companyCode,
+  }: SignInCredentials) => {
     // const aviso = toast.loading("Por Favor espere...");
     await api
-      .post("/aventura-api/login", { userName, userPassword })
+      .post("/login", { userName, userPassword, companyCode })
       .then((response) => {
         const { user, token, company } = response.data;
         localStorage.setItem("@Aventura:token", token);
         localStorage.setItem("@Aventura:user", JSON.stringify(user));
         localStorage.setItem("@Aventura:company", company);
         setData({ user, token, company });
-        console.log(data);
+        history(`/${company}`);
         /* toast.update(aviso, {
           render: "Bem-Vindo a Oikos!",
           type: "success",
@@ -99,7 +105,7 @@ const UserProvider = ({ children }: UserProviderProps) => {
   const signUp = async ({ userName, userPassword }: SignInCredentials) => {
     // const aviso = toast.loading("Por Favor espere...");
     await api
-      .post("/aventura-api/:companyId/users/register", {
+      .post("/:companyId/users/register", {
         userName,
         userPassword,
       })
@@ -138,6 +144,7 @@ const UserProvider = ({ children }: UserProviderProps) => {
       value={{
         token: data.token,
         user: data.user,
+        company: data.company,
         signIn,
         signOut,
         signUp,

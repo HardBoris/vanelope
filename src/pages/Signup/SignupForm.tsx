@@ -18,7 +18,7 @@ const signUpSchema = yup.object().shape({
 interface txtSignup {
   userName: string;
   userPassword: string;
-  company: string;
+  companyCode: string;
   confirmPassword: string;
 }
 
@@ -34,7 +34,6 @@ export const SignupForm = () => {
 
   const sender = (data: txtSignup) => {
     signUp(data);
-    history("/");
   };
 
   return (
@@ -42,8 +41,8 @@ export const SignupForm = () => {
       <h1>SignUp</h1>
       <Input
         register={register}
-        name="company"
-        error={errors.company?.message}
+        name="companyCode"
+        error={errors.companyCode?.message}
         placeholder="Código"
       />
       <Input
