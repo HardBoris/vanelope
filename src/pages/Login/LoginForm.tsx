@@ -4,10 +4,10 @@ import * as yup from "yup";
 import { Formulario } from "../../components/Form";
 import { useAuth } from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
-import { Input } from "../../components/Input";
+// import { Input } from "../../components/oldInput";
 import { Button } from "../../components/Button";
-import { InputPassword } from "../../components/InputPassword";
-import { NewInput } from "../../components/NewPassword";
+// import { InputPassword } from "../../components/oldInputPassword";
+import { Input } from "../../components/Input";
 
 const signInSchema = yup.object().shape({
   prueba: yup.string().required("Campo obrigatório"),
@@ -40,30 +40,34 @@ export const LoginForm = () => {
   return (
     <Formulario onSubmit={handleSubmit(sender)}>
       <h1>LogIn</h1>
-      <NewInput
+      <Input
+        label="hola"
         register={register}
         name="prueba"
         error={errors.prueba?.message}
         placeholder="Prueba"
-        isPassword={true}
+        isPassword={false}
       />
       <Input
         register={register}
         name="companyCode"
         error={errors.companyCode?.message}
         placeholder="Código"
+        isPassword={false}
       />
       <Input
         register={register}
         name="userName"
         error={errors.userName?.message}
         placeholder="Usuário"
+        isPassword={false}
       />
-      <InputPassword
+      <Input
         register={register}
         name="userPassword"
         error={errors.userPassword?.message}
         placeholder="Senha"
+        isPassword={true}
       />
       <Button>Entrar</Button>
     </Formulario>

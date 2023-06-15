@@ -6,7 +6,6 @@ import { useAuth } from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
 import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
-import { InputPassword } from "../../components/InputPassword";
 
 const signUpSchema = yup.object().shape({
   company: yup.string().required("Campo obrigatório"),
@@ -44,24 +43,28 @@ export const SignupForm = () => {
         name="companyCode"
         error={errors.companyCode?.message}
         placeholder="Código"
+        isPassword={false}
       />
       <Input
         register={register}
         name="userName"
         error={errors.userName?.message}
         placeholder="Usuário"
+        isPassword={false}
       />
-      <InputPassword
+      <Input
         register={register}
         name="userPassword"
         error={errors.userPassword?.message}
         placeholder="Senha"
+        isPassword={true}
       />
-      <InputPassword
+      <Input
         register={register}
         name="confirmPassword"
         error={errors.confirmPassword?.message}
         placeholder="Confirmar Senha"
+        isPassword={true}
       />
       <Button>Registrar</Button>
     </Formulario>
