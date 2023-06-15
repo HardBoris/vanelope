@@ -41,14 +41,6 @@ export const LoginForm = () => {
     <Formulario onSubmit={handleSubmit(sender)}>
       <h1>LogIn</h1>
       <Input
-        label="hola"
-        register={register}
-        name="prueba"
-        error={errors.prueba?.message}
-        placeholder="Prueba"
-        isPassword={false}
-      />
-      <Input
         register={register}
         name="companyCode"
         error={errors.companyCode?.message}

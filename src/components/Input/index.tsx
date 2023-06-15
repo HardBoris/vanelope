@@ -31,9 +31,8 @@ export const Input = ({
   return (
     <div className="input-form">
       {label && <div className="input-label">{label}</div>}
-      {/* <div className="input-wrapper"> */}
       {isPassword ? (
-        <div className="input-field">
+        <div className={!!error ? "input-field borded" : "input-field"}>
           <input
             {...register(name)}
             {...rest}
@@ -45,21 +44,29 @@ export const Input = ({
               setEntrada(e.target.value);
             }}
           />
-          <div
-            role="button"
-            className="iconbtn"
-            onClick={() => {
-              setEntrada("");
-            }}
-          >
-            <FaTimes />
-          </div>
-          <div role="button" className="iconbtn" onClick={() => showPassword()}>
-            {isText ? <FaEyeSlash /> : <FaEye />}
-          </div>
+          {entrada && (
+            <>
+              <div
+                role="button"
+                className={!!error ? "iconbtn error" : "iconbtn"}
+                onClick={() => {
+                  setEntrada("");
+                }}
+              >
+                <FaTimes />
+              </div>
+              <div
+                role="button"
+                className={!!error ? "iconbtn error" : "iconbtn"}
+                onClick={() => showPassword()}
+              >
+                {isText ? <FaEyeSlash /> : <FaEye />}
+              </div>
+            </>
+          )}
         </div>
       ) : (
-        <div className="input-field">
+        <div className={!!error ? "input-field borded" : "input-field"}>
           <input
             {...register(name)}
             {...rest}
@@ -71,18 +78,19 @@ export const Input = ({
               setEntrada(e.target.value);
             }}
           />
-          <div
-            role="button"
-            className="iconbtn"
-            onClick={() => {
-              setEntrada("");
-            }}
-          >
-            <FaTimes />
-          </div>
+          {entrada && (
+            <div
+              role="button"
+              className={!!error ? "iconbtn error" : "iconbtn"}
+              onClick={() => {
+                setEntrada("");
+              }}
+            >
+              <FaTimes />
+            </div>
+          )}
         </div>
       )}
-      {/* </div> */}
     </div>
   );
 };
