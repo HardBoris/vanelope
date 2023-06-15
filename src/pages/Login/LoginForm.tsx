@@ -3,14 +3,13 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { Formulario } from "../../components/Form";
 import { useAuth } from "../../context/UserContext";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 // import { Input } from "../../components/oldInput";
 import { Button } from "../../components/Button";
 // import { InputPassword } from "../../components/oldInputPassword";
 import { Input } from "../../components/Input";
 
 const signInSchema = yup.object().shape({
-  prueba: yup.string().required("Campo obrigatório"),
   companyCode: yup.string().required("Campo obrigatório"),
   userName: yup.string().required("Campo obrigatório"),
   userPassword: yup.string().required("Senha obrigatória"),
@@ -20,12 +19,11 @@ interface txtData {
   userName: string;
   userPassword: string;
   companyCode: string;
-  prueba: string;
 }
 
 export const LoginForm = () => {
-  const { signIn, company } = useAuth();
-  const history = useNavigate();
+  const { signIn } = useAuth();
+  // const history = useNavigate();
 
   const {
     formState: { errors },
@@ -61,7 +59,7 @@ export const LoginForm = () => {
         placeholder="Senha"
         isPassword={true}
       />
-      <Button>Entrar</Button>
+      <Button type="submit">Entrar</Button>
     </Formulario>
   );
 };

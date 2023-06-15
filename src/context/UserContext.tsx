@@ -135,6 +135,7 @@ const UserProvider = ({ children }: UserProviderProps) => {
   const signOut = () => {
     localStorage.removeItem("@Aventura:token");
     localStorage.removeItem("@Aventura:user");
+    localStorage.removeItem("@Aventura:company");
 
     setData({} as AuthState);
   };

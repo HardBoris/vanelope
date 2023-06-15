@@ -24,7 +24,6 @@ export const Input = ({
   const [isText, setIsText] = useState(true);
   const showPassword = () => {
     setIsText(!isText);
-    console.log(isText);
     return isText;
   };
 

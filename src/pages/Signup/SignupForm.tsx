@@ -23,7 +23,7 @@ interface txtSignup {
 
 export const SignupForm = () => {
   const { signUp } = useAuth();
-  const history = useNavigate();
+  // const history = useNavigate();
 
   const {
     formState: { errors },
@@ -32,6 +32,7 @@ export const SignupForm = () => {
   } = useForm<txtSignup>({ resolver: yupResolver(signUpSchema) });
 
   const sender = (data: txtSignup) => {
+    console.log(data);
     signUp(data);
   };
 
@@ -66,7 +67,7 @@ export const SignupForm = () => {
         placeholder="Confirmar Senha"
         isPassword={true}
       />
-      <Button>Registrar</Button>
+      <Button type="submit">Registrar</Button>
     </Formulario>
   );
 };
