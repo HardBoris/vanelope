@@ -1,3 +1,4 @@
+import { useParams } from "react-router-dom";
 import "./home.style.css";
 
 export const Home = () => {

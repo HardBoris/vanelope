@@ -1,0 +1,25 @@
+.dashboard {
+  width: 90%;
+  height: 100%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: auto;
+  /* gap: 10px; */
+  border: 2px solid red;
+}
+
+.segmentos {
+  width: 90%;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid blue;
+}
+
+@media (min-width: 769px) {
+  .dashboard {
+    grid-template-columns: auto auto;
+  }
+}
