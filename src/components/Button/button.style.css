@@ -15,6 +15,7 @@ button {
   font-size: 1.2rem;
   background-color: var(--primary-light);
   color: var(--primary-dark);
+  cursor: pointer;
 }
 
 button:hover {
