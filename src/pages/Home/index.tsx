@@ -1,9 +1,12 @@
-import { useParams } from "react-router-dom";
 import "./home.style.css";
+import { Helmet } from "react-helmet";
 
 export const Home = () => {
   return (
     <>
+      <Helmet>
+        <title>Aventura | Home</title>
+      </Helmet>
       <div className="welcome">
         <h1>Aventura</h1>
         <h2>Controle de Estoque</h2>
