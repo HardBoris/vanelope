@@ -1,11 +1,13 @@
 import { ReactNode } from "react";
-import { PurchaseProvider } from "./PurchaseContext";
 import { UserProvider } from "./UserContext";
+import { CompanyProvider } from "./CompanyContext";
 
 interface AppProviderProps {
   children: ReactNode;
 }
 
 export const AppProvider = ({ children }: AppProviderProps) => (
-  <UserProvider>{children}</UserProvider>
+  <CompanyProvider>
+    <UserProvider>{children}</UserProvider>
+  </CompanyProvider>
 );

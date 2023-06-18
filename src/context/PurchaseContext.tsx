@@ -1,4 +1,4 @@
-import {
+/* import {
   createContext,
   ReactNode,
   useContext,
@@ -45,7 +45,7 @@ interface PurchaseContextData {
   thisPurchase: Purchase;
   Shopping: () => void;
   shoppingList: (purchaseId: string) => void;
-  Compra: () => void;
+  Buy: () => void;
   itemCompra: (data: ingredientData, purchaseId: string) => Promise<void>;
   eliminaCompra: (id: string) => void;
 }
@@ -96,10 +96,10 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
     Shopping();
   }, []);
 
-  const Compra = () => {
+  const Buy = () => {
     api
       .post(
-        "/oikos-api/purchases",
+        "/purchases",
         {},
         {
           headers: {
@@ -149,7 +149,7 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
         thisPurchase,
         shoppingList,
         Shopping,
-        Compra,
+        Buy,
         itemCompra,
         eliminaCompra,
       }}
@@ -160,3 +160,6 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
 };
 
 export { usePurchase, PurchaseProvider };
+ */
+
+export {};
