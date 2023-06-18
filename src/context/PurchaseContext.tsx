@@ -1,14 +1,14 @@
-/* import {
+import {
   createContext,
   ReactNode,
   useContext,
   useEffect,
-  // useEffect,
   useState,
 } from "react";
 import { localApi as api } from "../services/api";
 import { useAuth } from "./UserContext";
 import { useNavigate } from "react-router-dom";
+import { useCompany } from "./CompanyContext";
 
 interface PurchaseProviderProps {
   children: ReactNode;
@@ -46,7 +46,7 @@ interface PurchaseContextData {
   Shopping: () => void;
   shoppingList: (purchaseId: string) => void;
   Buy: () => void;
-  itemCompra: (data: ingredientData, purchaseId: string) => Promise<void>;
+  itemBuy: (data: ingredientData, purchaseId: string) => Promise<void>;
   eliminaCompra: (id: string) => void;
 }
 
@@ -57,8 +57,9 @@ export const PurchaseContext = createContext<PurchaseContextData>(
 const usePurchase = () => useContext(PurchaseContext);
 
 const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
-  const history = useNavigate();
+  const navigate = useNavigate();
   const { token } = useAuth();
+  const { miCompania } = useCompany();
   const [purchases, setPurchases] = useState<Purchase[]>([]);
   const [thisPurchase, setThisPurchase] = useState<Purchase>({} as Purchase);
   const [purchaseDetails, setPurchaseDetails] = useState<PurchaseDetail[]>([]);
@@ -66,7 +67,7 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
 
   const Shopping = async () => {
     await api
-      .get("/oikos-api/purchases", {
+      .get(`/${miCompania.companyId}/purchases`, {
         headers: {
           authorization: `Bearer ${token}`,
         },
@@ -81,7 +82,7 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
 
   const shoppingList = async (purchaseId: string) => {
     await api
-      .get(`/oikos-api/purchases/${purchaseId}`, {
+      .get(`/${miCompania.companyId}/purchases/${purchaseId}`, {
         headers: {
           authorization: `Bearer ${token}`,
         },
@@ -92,14 +93,10 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
       .catch((error) => console.log(error));
   };
 
-  useEffect(() => {
-    Shopping();
-  }, []);
-
   const Buy = () => {
     api
       .post(
-        "/purchases",
+        `/${miCompania.companyId}/purchases`,
         {},
         {
           headers: {
@@ -108,15 +105,17 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
         }
       )
       .then((response) => {
-        history(`/purchases/${response.data.purchaseId}`);
+        navigate(
+          `/${miCompania.companyId}/purchases/${response.data.purchaseId}`
+        );
         // setCompraId(response.data.purchaseId);
       })
       .catch((error) => console.log(error));
   };
 
-  const itemCompra = async (data: ingredientData, purchaseId: string) => {
+  const itemBuy = async (data: ingredientData, purchaseId: string) => {
     await api
-      .post(`/oikos-api/purchases/${purchaseId}`, data, {
+      .post(`/${miCompania.companyId}/purchases/${purchaseId}`, data, {
         headers: {
           authorization: `Bearer ${token}`,
         },
@@ -150,7 +149,7 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
         shoppingList,
         Shopping,
         Buy,
-        itemCompra,
+        itemBuy,
         eliminaCompra,
       }}
     >
@@ -160,6 +159,3 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
 };
 
 export { usePurchase, PurchaseProvider };
- */
-
-export {};
