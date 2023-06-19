@@ -20,16 +20,24 @@ ul {
 }
 
 :root {
-  --primary-dark: hsl(180, 100%, 5%);
-  --primary-25: hsl(180, 100%, 25%);
-  --primary: hsl(180, 100%, 50%);
-  --primary-75: hsl(180, 100%, 75%);
-  --primary-light: hsl(180, 100%, 95%);
-  --secondary-dark: hsl(240, 100%, 5%);
-  --secondary-25: hsl(240, 100%, 25%);
-  --secondary: hsl(240, 100%, 50%);
-  --secondary-75: hsl(240, 100%, 75%);
-  --secondary-light: hsl(240, 100%, 95%);
+  --primary-dark: hsl(240, 5%, 5%);
+  --primary-darker-25: hsl(240, 25%, 10%);
+  --primary-darker: hsl(240, 50%, 15%);
+  --primary-25: hsl(240, 60%, 25%);
+  --primary: hsl(240, 60%, 50%);
+  --primary-75: hsl(240, 60%, 75%);
+  --primary-lighter: hsl(240, 50%, 85%);
+  --primary-lighter-25: hsl(240, 25%, 90%);
+  --primary-light: hsl(240, 5%, 95%);
+  --secondary-light: hsl(180, 5%, 95%);
+  --secondary-lighter-25: hsl(180, 25%, 90%);
+  --secondary-lighter: hsl(180, 50%, 85%);
+  --secondary-75: hsl(180, 60%, 75%);
+  --secondary: hsl(180, 60%, 50%);
+  --secondary-25: hsl(180, 60%, 25%);
+  --secondary-darker: hsl(180, 50%, 15%);
+  --secondary-darker-25: hsl(180, 25%, 10%);
+  --secondary-dark: hsl(180, 5%, 5%);
   --attention-dark: hsl(60, 100%, 10%);
   --attention-25: hsl(60, 100%, 25%);
   --attention: hsl(60, 100%, 50%);
@@ -46,12 +54,12 @@ ul {
   --success-75: hsl(120, 100%, 75%);
   --success-light: hsl(120, 100%, 90%);
   --modal-overlay: rgba(122, 122, 204, 0.3);
-  --primary-shadow: hsl(180, 100%, 50%, 0.5);
+  --primary-shadow: hsl(240, 100%, 50%, 0.5);
   --secondary-shadow: hsl(240, 100%, 50%, 0.5);
 }
 
 body {
-  color: var(--primary-dark);
+  color: var(--primary-light);
   background-color: var(--secondary);
   font-size: calc(10px + 2vmin);
 }
@@ -59,5 +67,5 @@ body {
 #root {
   width: 100vw;
   height: 100vh;
-  background: var(--primary-light);
+  background: var(--secondary-lighter-25);
 }

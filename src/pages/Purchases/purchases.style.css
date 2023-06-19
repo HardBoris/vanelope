@@ -1,0 +1,89 @@
+.compras {
+  width: 96vw;
+  min-height: 100%;
+  margin: auto;
+}
+
+.filacompra,
+.titulocompra {
+  width: 100%;
+  height: 4rem;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.titulocompra {
+  background-color: var(--secondary-75);
+  color: var(--primary-25);
+}
+
+.filacompra {
+  background-color: var(--secondary-light);
+}
+
+.detalle {
+  width: 88%;
+  height: 100%;
+}
+
+.detalle:hover {
+  background-color: var(--secondary-lighter);
+}
+
+.compranumero {
+  width: 10%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.comprafecha {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.compraproveedor {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.compravalor {
+  width: 18%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.plusbtn {
+  width: 12%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+.plusbtn:hover {
+  background-color: var(--primary-75);
+  color: var(--secondary-75);
+}
+
+.comprabtn {
+  width: 6%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.comprabtn:hover {
+  background-color: var(--secondary-lighter);
+}
