@@ -14,31 +14,35 @@ export const Movements = () => {
   return (
     <>
       <Helmet>
-        <title>Aventura | Compras</title>
+        <title>Aventura | Movimientos</title>
       </Helmet>
-      <div className="compras">
-        <div className="titulocompra">
-          <div className="compranumero">Nº</div>
-          <div className="comprafecha">Data</div>
-          <div className="compraproveedor">Fornecedor</div>
-          <div className="compravalor">Valor</div>
+      <div className="movimientos">
+        <div className="movimientos-encabezado">
+          <div className="movimientos-titulo">
+            <div className="movimiento-fecha">Data</div>
+            <div className="movimiento-referencia">Nº</div>
+            <div className="movimiento-tipo">Tipo</div>
+            <div className="movimiento-material">Material</div>
+            <div className="movimiento-cantidad">Quantidade</div>
+          </div>
           <div role="button" className="plusbtn" onClick={() => handleModal()}>
             +
           </div>
         </div>
-        <div className="filacompra">
-          <div className="detalle">
-            <div className="compranumero"></div>
-            <div className="comprafecha"></div>
-            <div className="compraproveedor"></div>
-            <div className="compravalor"></div>
+        <div className="movimientos-detalle">
+          <div className="movimiento">
+            <div className="movimiento-fecha"></div>
+            <div className="movimiento-referencia"></div>
+            <div className="movimiento-tipo"></div>
+            <div className="movimiento-material"></div>
+            <div className="movimiento-cantidad"></div>
           </div>
-          <div className="comprabtn">Editar</div>
-          <div className="comprabtn">Apagar</div>
+          <div className="movimientobtn">Editar</div>
+          <div className="movimientobtn">Apagar</div>
         </div>
       </div>
       <Modal isOpen={open} setIsOpen={handleModal}>
-        <div>Hola</div>
+        <div>Modal</div>
       </Modal>
     </>
   );

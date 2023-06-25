@@ -1,61 +1,80 @@
-.compras {
+.movimientos {
   width: 96vw;
   min-height: 100%;
   margin: auto;
 }
 
-.filacompra,
-.titulocompra {
+.movimientos-detalle,
+.movimientos-encabezado {
   width: 100%;
   height: 4rem;
   display: flex;
   justify-content: flex-start;
 }
 
-.titulocompra {
+.movimientos-encabezado {
   background-color: var(--secondary-75);
   color: var(--primary-25);
 }
 
-.filacompra {
+.movimientos-detalle {
   background-color: var(--secondary-light);
 }
 
-.detalle {
+.movimientos-titulo {
   width: 88%;
   height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
-.detalle:hover {
+.movimiento {
+  width: 88%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.movimiento:hover {
   background-color: var(--secondary-lighter);
 }
 
-.compranumero {
+.movimiento-fecha {
+  width: 15%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.movimiento-referencia {
+  width: 15%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.movimiento-tipo {
+  width: 15%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.movimiento-material {
+  width: 45%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.movimiento-cantidad {
   width: 10%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.comprafecha {
-  width: 20%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.compraproveedor {
-  width: 40%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.compravalor {
-  width: 18%;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -69,6 +88,7 @@
   justify-content: center;
   align-items: center;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .plusbtn:hover {
@@ -76,14 +96,15 @@
   color: var(--secondary-75);
 }
 
-.comprabtn {
+.movimientobtn {
   width: 6%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
-.comprabtn:hover {
+.movimientobtn:hover {
   background-color: var(--secondary-lighter);
 }
