@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./movements.style.css";
 import { Helmet } from "react-helmet";
 import Modal from "../../components/Modal";
+import { FaEdit, FaPlus, FaTrash } from "react-icons/fa";
 
 export const Movements = () => {
   const [open, setOpen] = useState(false);
@@ -23,26 +24,47 @@ export const Movements = () => {
             <div className="movimiento-referencia">Nº</div>
             <div className="movimiento-tipo">Tipo</div>
             <div className="movimiento-material">Material</div>
-            <div className="movimiento-cantidad">Quantidade</div>
+            <div className="movimiento-cantidad">Qtde</div>
           </div>
-          <div role="button" className="plusbtn" onClick={() => handleModal()}>
-            +
+          <div className="dropdown">
+            <FaPlus />
+            <div className="ddcontent">
+              <div className="mc">
+                <p onClick={() => handleModal()}>Nova Compra</p>
+              </div>
+              <div className="mc">
+                <p>Nova Ordem de Serviço</p>
+              </div>
+            </div>
           </div>
         </div>
         <div className="movimientos-detalle">
           <div className="movimiento">
-            <div className="movimiento-fecha"></div>
-            <div className="movimiento-referencia"></div>
-            <div className="movimiento-tipo"></div>
-            <div className="movimiento-material"></div>
-            <div className="movimiento-cantidad"></div>
+            <div className="movimiento-fecha">fecha</div>
+            <div className="movimiento-referencia">referencia</div>
+            <div className="movimiento-tipo">tipo</div>
+            <div className="movimiento-material">material</div>
+            <div className="movimiento-cantidad">cantidad</div>
           </div>
-          <div className="movimientobtn">Editar</div>
-          <div className="movimientobtn">Apagar</div>
+          <div className="movimiento-botonera">
+            <div className="movimientobtn">
+              <FaEdit />
+            </div>
+            <div className="movimientobtn">
+              <FaTrash />
+            </div>
+          </div>
         </div>
       </div>
       <Modal isOpen={open} setIsOpen={handleModal}>
-        <div>Modal</div>
+        <div>
+          <input type="text" placeholder="fecha" />
+          <input type="text" placeholder="numero" />
+          <input type="text" placeholder="tipo" />
+          <input type="text" placeholder="material" />
+          <input type="text" placeholder="cantidad" />
+          <input type="text" placeholder="unidad" />
+        </div>
       </Modal>
     </>
   );
