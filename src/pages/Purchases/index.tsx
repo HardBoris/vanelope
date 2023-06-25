@@ -22,7 +22,7 @@ export const Purchases = () => {
           <div className="comprafecha">Data</div>
           <div className="compraproveedor">Fornecedor</div>
           <div className="compravalor">Valor</div>
-          <div role="button" className="plusbtn" onClick={() => setOpen(true)}>
+          <div role="button" className="plusbtn" onClick={() => handleModal()}>
             +
           </div>
         </div>
