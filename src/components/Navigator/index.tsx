@@ -34,6 +34,11 @@ export const Navigator = () => {
               <span>Compras</span>
             </Link>
           </div>
+          <div className="navigator">
+            <Link to={`/${company}/movements`} onClick={() => {}}>
+              <span>Movimientos</span>
+            </Link>
+          </div>
         </>
       )}
       <div className="navigator">
