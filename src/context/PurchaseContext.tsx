@@ -31,6 +31,12 @@ export interface Purchase {
   purchaseTotal: number;
 }
 
+interface purchaseInfo {
+  purchaseReference: string;
+  deliveryDate: string;
+  supplierId: string;
+}
+
 interface ingredientData {
   ingredientName: string;
   ingredientQty: string;
@@ -45,7 +51,7 @@ interface PurchaseContextData {
   thisPurchase: Purchase;
   Shopping: () => void;
   shoppingList: (purchaseId: string) => void;
-  Buy: () => void;
+  Buy: (data: purchaseInfo) => void;
   itemBuy: (data: ingredientData, purchaseId: string) => Promise<void>;
   eliminaCompra: (id: string) => void;
 }
@@ -58,7 +64,7 @@ const usePurchase = () => useContext(PurchaseContext);
 
 const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
   const navigate = useNavigate();
-  const { token } = useAuth();
+  const { token, company } = useAuth();
   const { miCompania } = useCompany();
   const [purchases, setPurchases] = useState<Purchase[]>([]);
   const [thisPurchase, setThisPurchase] = useState<Purchase>({} as Purchase);
@@ -67,7 +73,7 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
 
   const Shopping = async () => {
     await api
-      .get(`/${miCompania.companyId}/purchases`, {
+      .get(`/${company}/purchases`, {
         headers: {
           authorization: `Bearer ${token}`,
         },
@@ -82,7 +88,7 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
 
   const shoppingList = async (purchaseId: string) => {
     await api
-      .get(`/${miCompania.companyId}/purchases/${purchaseId}`, {
+      .get(`/${company}/purchases/${purchaseId}`, {
         headers: {
           authorization: `Bearer ${token}`,
         },
@@ -93,11 +99,15 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
       .catch((error) => console.log(error));
   };
 
-  const Buy = () => {
+  const Buy = ({
+    purchaseReference,
+    deliveryDate,
+    supplierId,
+  }: purchaseInfo) => {
     api
       .post(
-        `/${miCompania.companyId}/purchases`,
-        {},
+        `/${company}/purchases/register`,
+        { purchaseReference, deliveryDate, supplierId },
         {
           headers: {
             authorization: `Bearer ${token}`,
@@ -105,17 +115,17 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
         }
       )
       .then((response) => {
-        navigate(
+        /* navigate(
           `/${miCompania.companyId}/purchases/${response.data.purchaseId}`
-        );
-        // setCompraId(response.data.purchaseId);
+        ); */
+        console.log(response.data);
       })
       .catch((error) => console.log(error));
   };
 
   const itemBuy = async (data: ingredientData, purchaseId: string) => {
     await api
-      .post(`/${miCompania.companyId}/purchases/${purchaseId}`, data, {
+      .post(`/${company}/purchases/${purchaseId}`, data, {
         headers: {
           authorization: `Bearer ${token}`,
         },
@@ -130,7 +140,7 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
 
   const eliminaCompra = async (id: string) => {
     await api
-      .delete(`/oikos-api/purchases/${id}`, {
+      .delete(`/${company}/purchases/${id}`, {
         headers: {
           authorization: `Bearer ${token}`,
         },

@@ -36,7 +36,7 @@ export const LoginForm = () => {
   };
 
   return (
-    <Formulario onSubmit={handleSubmit(sender)}>
+    <Formulario onSubmit={handleSubmit(sender)} isColumn={true}>
       <h1>LogIn</h1>
       <Input
         register={register}

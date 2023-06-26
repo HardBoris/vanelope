@@ -3,12 +3,13 @@ import "./movements.style.css";
 import { Helmet } from "react-helmet";
 import Modal from "../../components/Modal";
 import { FaEdit, FaPlus, FaTrash } from "react-icons/fa";
+// import { Purchases } from "../Purchases";
+import { PurchaseForm } from "../Purchases/PurchaseForm";
 
 export const Movements = () => {
   const [open, setOpen] = useState(false);
 
   const handleModal = () => {
-    console.log(open);
     setOpen(!open);
   };
 
@@ -25,6 +26,7 @@ export const Movements = () => {
             <div className="movimiento-tipo">Tipo</div>
             <div className="movimiento-material">Material</div>
             <div className="movimiento-cantidad">Qtde</div>
+            <div className="movimiento-unidad">Unidade</div>
           </div>
           <div className="dropdown">
             <FaPlus />
@@ -45,6 +47,7 @@ export const Movements = () => {
             <div className="movimiento-tipo">tipo</div>
             <div className="movimiento-material">material</div>
             <div className="movimiento-cantidad">cantidad</div>
+            <div className="movimiento-unidad">unidad</div>
           </div>
           <div className="movimiento-botonera">
             <div className="movimientobtn">
@@ -57,14 +60,7 @@ export const Movements = () => {
         </div>
       </div>
       <Modal isOpen={open} setIsOpen={handleModal}>
-        <div>
-          <input type="text" placeholder="fecha" />
-          <input type="text" placeholder="numero" />
-          <input type="text" placeholder="tipo" />
-          <input type="text" placeholder="material" />
-          <input type="text" placeholder="cantidad" />
-          <input type="text" placeholder="unidad" />
-        </div>
+        <PurchaseForm />
       </Modal>
     </>
   );

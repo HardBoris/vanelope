@@ -37,7 +37,7 @@ export const SignupForm = () => {
   };
 
   return (
-    <Formulario onSubmit={handleSubmit(sender)}>
+    <Formulario onSubmit={handleSubmit(sender)} isColumn={true}>
       <h1>SignUp</h1>
       <Input
         register={register}
