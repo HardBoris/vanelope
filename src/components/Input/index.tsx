@@ -1,4 +1,4 @@
-import "./password.style.css";
+import "./input.style.css";
 import { InputHTMLAttributes, useState } from "react";
 import { FaEye, FaEyeSlash, FaTimes } from "react-icons/fa";
 

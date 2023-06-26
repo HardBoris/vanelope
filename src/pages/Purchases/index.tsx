@@ -13,7 +13,7 @@ export const Purchases = () => {
       <div className="compras">
         <div className="compras-fitment"></div>
         <div className="compras-still">
-          <PurchaseForm />
+          <PurchaseForm setCommutador={() => {}} />
         </div>
       </div>
     </>

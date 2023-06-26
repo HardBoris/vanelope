@@ -8,6 +8,7 @@ import { PurchaseForm } from "../Purchases/PurchaseForm";
 
 export const Movements = () => {
   const [open, setOpen] = useState(false);
+  // const [commutador, setCommutador] = useState(true)
 
   const handleModal = () => {
     setOpen(!open);
@@ -60,7 +61,7 @@ export const Movements = () => {
         </div>
       </div>
       <Modal isOpen={open} setIsOpen={handleModal}>
-        <PurchaseForm />
+        <PurchaseForm setCommutador={handleModal} />
       </Modal>
     </>
   );

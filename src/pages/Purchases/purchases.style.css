@@ -3,3 +3,15 @@
   min-height: 100%;
   margin: auto;
 }
+
+.gaveta {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary-75);
+}
+
+.form-wrapper {
+  width: 60vw;
+}
