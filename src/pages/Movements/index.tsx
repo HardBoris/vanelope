@@ -3,15 +3,18 @@ import "./movements.style.css";
 import { Helmet } from "react-helmet";
 import Modal from "../../components/Modal";
 import { FaEdit, FaPlus, FaTrash } from "react-icons/fa";
-// import { Purchases } from "../Purchases";
 import { PurchaseForm } from "../Purchases/PurchaseForm";
 
 export const Movements = () => {
-  const [open, setOpen] = useState(false);
-  // const [commutador, setCommutador] = useState(true)
+  const [openPurchase, setOpenPurchase] = useState(false);
+  const [openDetails, setOpenDetails] = useState(false);
 
-  const handleModal = () => {
-    setOpen(!open);
+  const handlePurchaseModal = () => {
+    setOpenPurchase(!openPurchase);
+  };
+
+  const handleDetailsModal = () => {
+    setOpenDetails(!openDetails);
   };
 
   return (
@@ -33,7 +36,7 @@ export const Movements = () => {
             <FaPlus />
             <div className="ddcontent">
               <div className="mc">
-                <p onClick={() => handleModal()}>Nova Compra</p>
+                <p onClick={() => setOpenPurchase(true)}>Nova Compra</p>
               </div>
               <div className="mc">
                 <p>Nova Ordem de Serviço</p>
@@ -60,8 +63,16 @@ export const Movements = () => {
           </div>
         </div>
       </div>
-      <Modal isOpen={open} setIsOpen={handleModal}>
-        <PurchaseForm setCommutador={handleModal} />
+      <Modal isOpen={openPurchase} setIsOpen={handlePurchaseModal}>
+        <div className="wrapper">
+          <PurchaseForm
+            commutador={handlePurchaseModal}
+            detalles={() => setOpenDetails(true)}
+          />
+        </div>
+      </Modal>
+      <Modal isOpen={openDetails} setIsOpen={handleDetailsModal}>
+        <div className="wrapper">hola</div>
       </Modal>
     </>
   );

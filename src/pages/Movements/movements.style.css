@@ -189,4 +189,12 @@
     align-items: center;
     cursor: pointer;
   }
+
+  .wrapper {
+    width: 60vw;
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }

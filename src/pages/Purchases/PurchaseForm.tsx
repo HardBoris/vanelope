@@ -29,15 +29,11 @@ interface purchaseData {
 }
 
 interface purchaseFormProps {
-  setCommutador: () => void;
+  commutador: () => void;
+  detalles: () => void;
 }
 
-enum logisticMode {
-  ENTREGA = "entrega",
-  RETIRADA = "retirada",
-}
-
-export const PurchaseForm = ({ setCommutador }: purchaseFormProps) => {
+export const PurchaseForm = ({ commutador, detalles }: purchaseFormProps) => {
   const { Buy } = usePurchase();
 
   const lista = [
@@ -55,18 +51,18 @@ export const PurchaseForm = ({ setCommutador }: purchaseFormProps) => {
 
   const sender = (data: purchaseData) => {
     Buy(data);
-    setCommutador();
+    commutador();
   };
 
   return (
-    <div className="form-wrapper">
-      <Formulario onSubmit={handleSubmit(sender)} isColumn={true}>
+    <Formulario onSubmit={handleSubmit(sender)} isColumn={true}>
+      <div className="gavetero">
         <div className="gaveta">
           <Input
             register={register}
             name="purchaseReference"
             error={errors.purchaseReference?.message}
-            placeholder="Referência"
+            placeholder="Nota Fiscal"
             isPassword={false}
           />
           <Input
@@ -112,10 +108,13 @@ export const PurchaseForm = ({ setCommutador }: purchaseFormProps) => {
             error={errors.supplierId?.message}
             options={lista}
           />
+          <div role="button" onClick={() => detalles()}>
+            Elementos
+          </div>
         </div>
+      </div>
 
-        <Button type="submit">Enviar</Button>
-      </Formulario>
-    </div>
+      <Button type="submit">Enviar</Button>
+    </Formulario>
   );
 };
