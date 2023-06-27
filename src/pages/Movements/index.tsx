@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet";
 import Modal from "../../components/Modal";
 import { FaEdit, FaPlus, FaTrash } from "react-icons/fa";
 import { PurchaseForm } from "../Purchases/PurchaseForm";
+import { PurchaseDetailsForm } from "../PurchaseDetails/PurchaseDetailsForm";
 
 export const Movements = () => {
   const [openPurchase, setOpenPurchase] = useState(false);
@@ -72,7 +73,9 @@ export const Movements = () => {
         </div>
       </Modal>
       <Modal isOpen={openDetails} setIsOpen={handleDetailsModal}>
-        <div className="wrapper">hola</div>
+        <div className="wrapper">
+          <PurchaseDetailsForm />
+        </div>
       </Modal>
     </>
   );

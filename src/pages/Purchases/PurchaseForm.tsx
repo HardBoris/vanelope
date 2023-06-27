@@ -6,7 +6,6 @@ import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
 import { usePurchase } from "../../context/PurchaseContext";
 import { Select } from "../../components/Select";
-import { useState } from "react";
 
 const purchaseSchema = yup.object().shape({
   purchaseReference: yup.string().required("Campo obrigatório"),

@@ -1,0 +1,25 @@
+.compras {
+  width: 96vw;
+  min-height: 100%;
+  margin: auto;
+}
+
+.gaveta {
+  width: 96%;
+  height: 96%;
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: var(--primary-75);
+}
+
+.gavetero {
+  width: 96%;
+  height: 96%;
+  /* border: 1px solid blue; */
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}

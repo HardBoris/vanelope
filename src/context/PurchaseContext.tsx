@@ -41,7 +41,7 @@ interface purchaseInfo {
   purchaseStatus: string;
 }
 
-interface ingredientData {
+interface elementData {
   ingredientName: string;
   ingredientQty: string;
   measurementUnit: string;
@@ -56,7 +56,7 @@ interface PurchaseContextData {
   Shopping: () => void;
   shoppingList: (purchaseId: string) => void;
   Buy: (data: purchaseInfo) => void;
-  itemBuy: (data: ingredientData, purchaseId: string) => Promise<void>;
+  itemBuy: (data: elementData, purchaseId: string) => Promise<void>;
   eliminaCompra: (id: string) => void;
 }
 
@@ -139,7 +139,7 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
       .catch((error) => console.log(error));
   };
 
-  const itemBuy = async (data: ingredientData, purchaseId: string) => {
+  const itemBuy = async (data: elementData, purchaseId: string) => {
     await api
       .post(`/${company}/purchases/${purchaseId}`, data, {
         headers: {
