@@ -35,6 +35,10 @@ interface purchaseInfo {
   purchaseReference: string;
   deliveryDate: string;
   supplierId: string;
+  logisticMode: string;
+  paymentForm: string;
+  paymentInstallments: string;
+  purchaseStatus: string;
 }
 
 interface ingredientData {
@@ -103,11 +107,23 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
     purchaseReference,
     deliveryDate,
     supplierId,
+    logisticMode,
+    paymentForm,
+    paymentInstallments,
+    purchaseStatus,
   }: purchaseInfo) => {
     api
       .post(
         `/${company}/purchases/register`,
-        { purchaseReference, deliveryDate, supplierId },
+        {
+          purchaseReference,
+          deliveryDate,
+          supplierId,
+          logisticMode,
+          paymentForm,
+          paymentInstallments,
+          purchaseStatus,
+        },
         {
           headers: {
             authorization: `Bearer ${token}`,

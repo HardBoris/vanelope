@@ -13,7 +13,7 @@ const purchaseSchema = yup.object().shape({
   deliveryDate: yup.string().required("Campo obrigatório"),
   logisticMode: yup.string().notRequired(),
   paymentForm: yup.string().notRequired(),
-  paymentInstallment: yup.string().notRequired(),
+  paymentInstallments: yup.string().notRequired(),
   purchaseStatus: yup.string().notRequired(),
   supplierId: yup.string().required("Senha obrigatória"),
 });
@@ -23,7 +23,7 @@ interface purchaseData {
   deliveryDate: string;
   logisticMode: string;
   paymentForm: string;
-  paymentInstallment: string;
+  paymentInstallments: string;
   purchaseStatus: string;
   supplierId: string;
 }
@@ -94,8 +94,8 @@ export const PurchaseForm = ({ setCommutador }: purchaseFormProps) => {
         <div className="gaveta">
           <Input
             register={register}
-            name="paymentInstallment"
-            error={errors.paymentInstallment?.message}
+            name="paymentInstallments"
+            error={errors.paymentInstallments?.message}
             placeholder="Parcelas"
             isPassword={false}
           />
