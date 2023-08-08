@@ -1,0 +1,15 @@
+.separador {
+  width: 96%;
+  height: 25%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.individual {
+  width: 50%;
+  height: 96%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

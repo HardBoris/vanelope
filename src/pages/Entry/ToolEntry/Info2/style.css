@@ -1,0 +1,25 @@
+.wrapper {
+  width: 100%;
+}
+
+.botonera {
+  width: 50%;
+  height: 100px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.delete-item {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+}
+
+.delete-item:hover {
+  background-color: var(--primary-25);
+  color: var(--primary-light);
+}
