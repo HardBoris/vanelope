@@ -8,6 +8,7 @@ import {
 import { localApi as api } from "../services/api";
 import { Requisicion } from "./RequisitionContext";
 import { Entry } from "./EntryContext";
+import { useAuth } from "./UserContext";
 
 interface MoveProviderProps {
   children: ReactNode;
@@ -42,13 +43,14 @@ export const MoveContext = createContext<MoveContextData>(
 const useMove = () => useContext(MoveContext);
 
 const MoveProvider = ({ children }: MoveProviderProps) => {
+  const { company } = useAuth();
   const [movimientos, setMovimientos] = useState<Movement[]>([]);
   const [movida, setMovida] = useState<Movement>({} as Movement);
   const [request, setRequest] = useState<Movement[]>([]);
 
   const MovementsList = async () => {
     await api
-      .get("/movements")
+      .get(`/${company}/movements`)
       .then((response) => {
         setMovimientos(response.data);
       })
@@ -63,33 +65,33 @@ const MoveProvider = ({ children }: MoveProviderProps) => {
 
   const NewMovement = async (data: Movement) => {
     await api
-      .post("/movements/register", data)
+      .post(`/${company}/movements/register`, data)
       .then((response) => console.log(response.data))
       .catch((error) => console.log(error));
   };
 
   const ReqMove = async (id: string) => {
     await api
-      .get(`/movements/${id}`)
+      .get(`/${company}/movements/${id}`)
       .then((response) => console.log(response.data));
   };
 
   const moveByReq = async (requestId: string) => {
     await api
-      .get(`/movements/req/${requestId}`)
+      .get(`/${company}/movements/req/${requestId}`)
       .then((response) => setRequest(response.data));
   };
 
   const moveEditor = async (data: Movement) => {
     await api
-      .patch(`/movements/${data.moveId}`, data)
+      .patch(`/${company}/movements/${data.moveId}`, data)
       .then((response) => console.log(response.data))
       .catch((error) => console.log(error));
   };
 
   const moveDeletor = async (id: string) => {
     await api
-      .delete(`/movements/${id}`)
+      .delete(`/${company}/movements/${id}`)
       .then((response) => console.log(response.data))
       .catch((error) => console.log(error));
   };
