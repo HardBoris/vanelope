@@ -4,14 +4,13 @@ import * as yup from "yup";
 import { Formulario } from "../../../../components/Form";
 import { Modificado } from "../../../../components/Modificado";
 import { Button } from "../../../../components/Button";
-// import { Requisicion } from "../../../../context/RequisitionContext";
 import "./style.css";
 import { Entry } from "../../../../context/EntryContext";
 
 const materialEntrySchema = yup.object().shape({
   entryDate: yup.string().required(),
-  invoice: yup.string().required(),
-  seller: yup.string().required(),
+  purchase: yup.string().required(),
+  responsivel: yup.string().required(),
 });
 
 interface InfoEntry1Props {
@@ -51,8 +50,8 @@ export const InfoEntry1 = ({ setMaterialEntry, setShow }: InfoEntry1Props) => {
           <div className="input-individual">
             <Modificado
               register={register}
-              name="invoice"
-              error={errors.invoice?.message}
+              name="purchase"
+              error={errors.purchase?.message}
               label="Documento"
               placeholder="Número do documento"
             />
@@ -61,8 +60,8 @@ export const InfoEntry1 = ({ setMaterialEntry, setShow }: InfoEntry1Props) => {
         <div className="input-individual">
           <Modificado
             register={register}
-            name="seller"
-            error={errors.seller?.message}
+            name="responsivel"
+            error={errors.responsivel?.message}
             label="Responsável"
             placeholder="Nome do responsável"
           />
