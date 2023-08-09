@@ -24,7 +24,7 @@ export interface Requisicion {
   requestId?: string;
   requestDate: string;
   requestor: string;
-  requestTarget: string;
+  service: string;
   isDelivered?: boolean;
   movements?: Movement[];
 }

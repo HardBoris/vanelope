@@ -15,8 +15,8 @@ interface EntryProviderProps {
 export interface Entry {
   entryId?: string;
   entryDate: string;
-  seller: string;
-  invoice: string;
+  responsivel: string;
+  purchase: string;
   isReceived?: boolean;
   movements?: Movement[];
 }
