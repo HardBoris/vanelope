@@ -22,8 +22,8 @@ interface AuthState {
 }
 
 interface SignInCredentials {
-  userName: string;
-  userPassword: string;
+  name: string;
+  password: string;
   companyCode: string;
 }
 
@@ -69,14 +69,10 @@ const UserProvider = ({ children }: UserProviderProps) => {
     return {} as AuthState;
   });
 
-  const signIn = async ({
-    userName,
-    userPassword,
-    companyCode,
-  }: SignInCredentials) => {
+  const signIn = async ({ name, password, companyCode }: SignInCredentials) => {
     // const aviso = toast.loading("Por Favor espere...");
     await api
-      .post("/login", { userName, userPassword, companyCode })
+      .post("/login", { name, password, companyCode })
       .then((response) => {
         const { user, token, company } = response.data;
         localStorage.setItem("@Aventura:token", token);
@@ -102,12 +98,12 @@ const UserProvider = ({ children }: UserProviderProps) => {
       });
   };
 
-  const signUp = async ({ userName, userPassword }: SignInCredentials) => {
+  const signUp = async ({ name, password }: SignInCredentials) => {
     // const aviso = toast.loading("Por Favor espere...");
     await api
       .post("/:companyId/users/register", {
-        userName,
-        userPassword,
+        name,
+        password,
       })
       .then((response) => {
         console.log(response.data);

@@ -103,7 +103,7 @@ export const ReqPrinter = ({
             isPrintable ? "individual-noprint" : "individual-noprint oculto"
           }
         >
-          <Button type="button" onClick={() => print()}>
+          <Button type="button" onClick={() => window.print()}>
             Imprimir
           </Button>
         </div>

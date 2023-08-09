@@ -9,14 +9,14 @@ import { Button } from "../../components/Button";
 
 const signUpSchema = yup.object().shape({
   company: yup.string().required("Campo obrigatório"),
-  userName: yup.string().required("Campo obrigatório"),
-  userPassword: yup.string().required("Senha obrigatória"),
+  name: yup.string().required("Campo obrigatório"),
+  password: yup.string().required("Senha obrigatória"),
   confirmPassword: yup.string().required("Campo obrigatório"),
 });
 
 interface txtSignup {
-  userName: string;
-  userPassword: string;
+  name: string;
+  password: string;
   companyCode: string;
   confirmPassword: string;
 }
@@ -48,15 +48,15 @@ export const SignupForm = () => {
       />
       <Input
         register={register}
-        name="userName"
-        error={errors.userName?.message}
+        name="name"
+        error={errors.name?.message}
         placeholder="Usuário"
         isPassword={false}
       />
       <Input
         register={register}
-        name="userPassword"
-        error={errors.userPassword?.message}
+        name="password"
+        error={errors.password?.message}
         placeholder="Senha"
         isPassword={true}
       />

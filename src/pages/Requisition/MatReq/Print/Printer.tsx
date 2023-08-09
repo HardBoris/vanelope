@@ -89,7 +89,7 @@ export const MaterialReqPrinter = ({ requested }: PrinterProps) => {
         <Button type="button" onClick={() => navigate(-1)}>
           Voltar
         </Button>
-        <Button type="button" onClick={() => print()}>
+        <Button type="button" onClick={() => window.print()}>
           Imprimir
         </Button>
       </div>

@@ -11,13 +11,13 @@ import { Input } from "../../components/Input";
 
 const signInSchema = yup.object().shape({
   companyCode: yup.string().required("Campo obrigatório"),
-  userName: yup.string().required("Campo obrigatório"),
-  userPassword: yup.string().required("Senha obrigatória"),
+  name: yup.string().required("Campo obrigatório"),
+  password: yup.string().required("Senha obrigatória"),
 });
 
 interface txtData {
-  userName: string;
-  userPassword: string;
+  name: string;
+  password: string;
   companyCode: string;
 }
 
@@ -47,15 +47,15 @@ export const LoginForm = () => {
       />
       <Input
         register={register}
-        name="userName"
-        error={errors.userName?.message}
+        name="name"
+        error={errors.name?.message}
         placeholder="Usuário"
         isPassword={false}
       />
       <Input
         register={register}
-        name="userPassword"
-        error={errors.userPassword?.message}
+        name="password"
+        error={errors.password?.message}
         placeholder="Senha"
         isPassword={true}
       />

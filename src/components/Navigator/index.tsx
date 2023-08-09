@@ -5,11 +5,14 @@ import {
   FaArrowAltCircleDown,
   FaArrowAltCircleLeft,
   FaArrowAltCircleRight,
-  FaDashcube,
   FaHome,
-  FaShekelSign,
   FaShoppingCart,
+  FaSignOutAlt,
 } from "react-icons/fa";
+import { AiFillDashboard } from "react-icons/ai";
+import { MdRequestPage, MdViewList } from "react-icons/md";
+import { GiOpenTreasureChest } from "react-icons/gi";
+import { BiLogIn } from "react-icons/bi";
 
 export const Navigator = () => {
   const { signOut, company } = useAuth();
@@ -25,7 +28,7 @@ export const Navigator = () => {
       <div className="navigator">
         <Link to="/login">
           {/* <span>LogIn</span> */}
-          <FaArrowAltCircleLeft />
+          <BiLogIn />
         </Link>
       </div>
       <div className="navigator">
@@ -39,7 +42,7 @@ export const Navigator = () => {
           <div className="navigator">
             <Link to={`/${company}`} onClick={() => {}}>
               {/* <span>Dashboard</span> */}
-              <FaDashcube />
+              <AiFillDashboard />
             </Link>
           </div>
           <div className="navigator">
@@ -49,9 +52,21 @@ export const Navigator = () => {
             </Link>
           </div>
           <div className="navigator">
+            <Link to={`/${company}/entries`} onClick={() => {}}>
+              {/* <span>Compras</span> */}
+              <GiOpenTreasureChest />
+            </Link>
+          </div>
+          <div className="navigator">
             <Link to={`/${company}/movements`} onClick={() => {}}>
               {/* <span>Movimientos</span> */}
-              <FaShekelSign />
+              <MdViewList />
+            </Link>
+          </div>
+          <div className="navigator">
+            <Link to={`/${company}/requisitions`} onClick={() => {}}>
+              {/* <span>Compras</span> */}
+              <MdRequestPage />
             </Link>
           </div>
         </>
@@ -59,7 +74,7 @@ export const Navigator = () => {
       <div className="navigator">
         <Link to="/" onClick={() => signOut()}>
           {/* <span>Salir</span> */}
-          <FaArrowAltCircleRight />
+          <FaSignOutAlt />
         </Link>
       </div>
     </nav>

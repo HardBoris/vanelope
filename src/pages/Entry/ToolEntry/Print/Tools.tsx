@@ -83,7 +83,7 @@ export const ToolReqPrint = ({ request, movida }: ToolReqProps) => {
         <Button type="button" onClick={() => navigate(-1)}>
           Voltar
         </Button>
-        <Button type="button" onClick={() => print()}>
+        <Button type="button" onClick={() => window.print()}>
           Imprimir
         </Button>
       </div>

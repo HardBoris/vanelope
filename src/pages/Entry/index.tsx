@@ -1,23 +1,29 @@
 import { Link, Outlet } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import "./Requisition.style.css";
+import { useAuth } from "../../context/UserContext";
 
 export const Entry = () => {
   const location = useLocation();
+  const { company } = useAuth();
 
   return (
     <div className="entries">
       <div className="entries-header">
         <Link
-          to="/entries"
-          className={location.pathname === "/entries" ? "tab activated" : "tab"}
+          to={`/${company}/entries`}
+          className={
+            location.pathname === `/${company}/entries`
+              ? "tab activated"
+              : "tab"
+          }
         >
           Entradas
         </Link>
         <Link
-          to="/entries/materialentry"
+          to={`/${company}/entries/materialentry`}
           className={
-            location.pathname === "/entries/materialentry"
+            location.pathname === `/${company}/entries/materialentry`
               ? "tab activated"
               : "tab"
           }
@@ -25,9 +31,11 @@ export const Entry = () => {
           Entrada de Materiais
         </Link>
         <Link
-          to="/entries/toolentry"
+          to={`/${company}/entries/toolentry`}
           className={
-            location.pathname === "/entries/toolentry" ? "tab activated" : "tab"
+            location.pathname === `/${company}/entries/toolentry`
+              ? "tab activated"
+              : "tab"
           }
         >
           Entrada de Ferramentas
