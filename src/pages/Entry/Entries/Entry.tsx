@@ -86,8 +86,8 @@ export const Entries = () => {
               >
                 <div className="entry-id">{item.entryId}</div>
                 <div className="entry-date">{item.entryDate}</div>
-                <div className="entry-source">{item.invoice}</div>
-                <div className="entry-shopper">{item.seller}</div>
+                <div className="entry-source">{item.purchase}</div>
+                <div className="entry-shopper">{item.responsivel}</div>
               </div>
               <div className="entry-action">
                 {item.isReceived ? (

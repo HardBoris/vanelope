@@ -13,7 +13,6 @@ import {
 } from "react-icons/fa";
 import Modal from "../../../components/Modal";
 import { EditForm } from "../EditForm";
-import { ReqPrinter } from "../Print/Printer";
 import { AddForm } from "../AddForm";
 import { ReqDelModal } from "../DeleteModal";
 import { BGLogo } from "../../../components/Logo";
@@ -97,7 +96,7 @@ export const Requisa = () => {
               >
                 <div className="requested-id">{item.requestId}</div>
                 <div className="requested-date">{item.requestDate}</div>
-                <div className="requested-target">{item.requestTarget}</div>
+                <div className="requested-target">{item.service}</div>
                 <div className="requested-requestor">{item.requestor}</div>
               </div>
               <div className="requested-action">
@@ -151,14 +150,14 @@ export const Requisa = () => {
           <EditForm requisicion={requested} handleEditor={handleEditor} />
         </div>
       </Modal>
-      <Modal isOpen={isPrint} setIsOpen={handlePrint}>
+      {/* <Modal isOpen={isPrint} setIsOpen={handlePrint}>
         <ReqPrinter
           requested={requested}
           movements={requested.movements}
           handlePrint={handlePrint}
           isPrintable={true}
         />
-      </Modal>
+      </Modal> */}
       <Modal isOpen={isAdd} setIsOpen={handleAdd}>
         <div className="wrapper">
           <AddForm

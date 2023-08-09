@@ -51,8 +51,8 @@ export const InfoToolEntry1 = ({
           <div className="input-individual">
             <Modificado
               register={register}
-              name="invoice"
-              error={errors.invoice?.message}
+              name="purchase"
+              error={errors.purchase?.message}
               label="Documento"
               placeholder="Número do Documento"
             />
@@ -61,8 +61,8 @@ export const InfoToolEntry1 = ({
         <div className="input-individual">
           <Modificado
             register={register}
-            name="seller"
-            error={errors.seller?.message}
+            name="responsivel"
+            error={errors.responsivel?.message}
             label="Responsável"
             placeholder="Nome do responsável"
           />

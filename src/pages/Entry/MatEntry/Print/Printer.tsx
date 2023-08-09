@@ -50,7 +50,7 @@ export const MaterialReqPrinter = ({ requested }: PrinterProps) => {
             <div className="info-item">
               <div className="data">
                 <div className="titulo_data">O. S.:</div>
-                <div className="respuesta_data">{requested.requestTarget}</div>
+                <div className="respuesta_data">{requested.service}</div>
               </div>
             </div>
             <div className="info-item">
@@ -89,7 +89,7 @@ export const MaterialReqPrinter = ({ requested }: PrinterProps) => {
         <Button type="button" onClick={() => navigate(-1)}>
           Voltar
         </Button>
-        <Button type="button" onClick={() => print()}>
+        <Button type="button" onClick={() => window.print()}>
           Imprimir
         </Button>
       </div>

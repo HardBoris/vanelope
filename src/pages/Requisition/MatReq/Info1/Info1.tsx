@@ -51,7 +51,7 @@ export const Info1 = ({ setMaterialRequest, setShow }: Info1Props) => {
             <Modificado
               register={register}
               name="requestTarget"
-              error={errors.requestTarget?.message}
+              error={errors.service?.message}
               label="Ordem de Serviço"
               placeholder="Número da ordem"
             />

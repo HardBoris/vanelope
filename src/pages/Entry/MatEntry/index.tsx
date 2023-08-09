@@ -49,8 +49,8 @@ export const MaterialEntry = () => {
             role="button"
             onClick={
               materialEntry.entryDate &&
-              materialEntry.invoice &&
-              materialEntry.seller
+              materialEntry.purchase &&
+              materialEntry.responsivel
                 ? () => activate(1)
                 : undefined
             }

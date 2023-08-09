@@ -48,8 +48,8 @@ export const Info1 = ({ setToolRequest, setShow }: Info1Props) => {
           <div className="input-individual">
             <Modificado
               register={register}
-              name="requestTarget"
-              error={errors.requestTarget?.message}
+              name="service"
+              error={errors.service?.message}
               label="Ordem de Serviço"
               placeholder="Número da ordem"
             />

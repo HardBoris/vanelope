@@ -20,8 +20,8 @@ export interface ToolEntryMovement {
 export interface ToolEntry {
   entryId?: string;
   entryDate: string;
-  seller: string;
-  invoice: string;
+  responsivel: string;
+  purchase: string;
   movements?: ToolEntryMovement[];
 }
 
@@ -66,7 +66,7 @@ export const ToolEntry = () => {
             className={"sider"}
             role="button"
             onClick={
-              toolEntry.entryDate && toolEntry.invoice && toolEntry.seller
+              toolEntry.entryDate && toolEntry.purchase && toolEntry.responsivel
                 ? () => activate(1)
                 : undefined
             }

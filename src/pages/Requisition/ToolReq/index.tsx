@@ -23,7 +23,7 @@ export interface ToolRequest {
   requestId?: string;
   requestDate: string;
   requestor: string;
-  requestTarget: string;
+  service: string;
   movements?: ToolMovement[];
 }
 
@@ -70,7 +70,7 @@ export const ToolReq = () => {
             role="button"
             onClick={
               toolRequest.requestDate &&
-              toolRequest.requestTarget &&
+              toolRequest.service &&
               toolRequest.requestor
                 ? () => activate(1)
                 : undefined

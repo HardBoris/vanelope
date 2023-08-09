@@ -56,7 +56,7 @@ export const MaterialReq = () => {
             role="button"
             onClick={
               materialRequest.requestDate &&
-              materialRequest.requestTarget &&
+              materialRequest.service &&
               materialRequest.requestor
                 ? () => activate(1)
                 : undefined
