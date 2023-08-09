@@ -19,5 +19,17 @@ button {
 
 button:hover {
   background-color: var(--primary);
-  color: var(--success-dark);
+  color: var(--primary-light);
+}
+
+.yes:hover {
+  background-color: green;
+}
+
+.not:hover {
+  background-color: red;
+}
+
+.warning:hover {
+  background-color: yellow;
 }

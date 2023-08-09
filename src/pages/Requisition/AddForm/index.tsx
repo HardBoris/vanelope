@@ -9,7 +9,7 @@ import "./Add.style.css";
 
 const resolver: Resolver<Movement> = async (values) => {
   return {
-    values: values.requisitionId ? values : {},
+    values: values.requisition ? values : {},
     errors: {},
   };
 };

@@ -46,7 +46,7 @@ export const PurchaseDetailsForm = () => {
   };
 
   return (
-    <Formulario onSubmit={handleSubmit(sender)} isColumn={false}>
+    <Formulario onSubmit={handleSubmit(sender)}>
       <div className="datos">
         <Input
           register={register}

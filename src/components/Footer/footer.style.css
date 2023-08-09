@@ -1,0 +1,22 @@
+.pie {
+  width: 100%;
+  height: 2px;
+  background-color: #33338d;
+}
+
+.pie_de_pagina {
+  width: 100%;
+  height: 15mm;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.pie_de_pagina p {
+  font-size: 0.6rem;
+}
+
+.email {
+  font-weight: bold;
+}

@@ -7,11 +7,11 @@ import {
 import HeaderBG from "../../../../components/Header";
 import FooterBG from "../../../../components/Footer";
 import { Button } from "../../../../components/Button";
-import { ToolMovement } from "..";
+import { ToolEntryMovement } from "..";
 
 interface ToolReqProps {
   request: Requisicion;
-  movida: ToolMovement[];
+  movida: ToolEntryMovement[];
 }
 
 export const ToolReqPrint = ({ request, movida }: ToolReqProps) => {

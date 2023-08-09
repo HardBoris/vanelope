@@ -1,0 +1,24 @@
+.logo__frame {
+  width: 2rem;
+  height: 2rem;
+}
+
+.fondo {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  border-radius: 50%;
+  background-color: var(--primary-font);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.literal {
+  line-height: 100%;
+  margin: auto;
+  color: var(--secondary-font);
+  font-size: 1em;
+  font-weight: bold;
+  font-family: "Waree", Tahoma, Geneva, Verdana, sans-serif;
+}

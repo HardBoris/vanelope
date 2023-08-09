@@ -74,7 +74,7 @@ export const MoveEditForm = ({ handleEditor, move }: MoveEditFormProps) => {
         <div className="individual-field">
           <Modificado
             name="requisitionId"
-            value={move.requisition.requestId}
+            value={move.requisition?.requestId}
             register={register}
           />
         </div>

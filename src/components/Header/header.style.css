@@ -1,0 +1,54 @@
+.encabezado {
+  width: 100%;
+  height: 20mm;
+  display: flex;
+}
+
+.h_derecha {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.logo {
+  width: 68mm;
+  height: 18mm;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.logo-img {
+  height: 100%;
+}
+
+.h_izquierda {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.rotulo {
+  font-size: 0.8rem;
+  color: var(--primary-75);
+  width: 68mm;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.nominal {
+  font-weight: bold;
+}
+
+.cabeza {
+  width: 100%;
+  height: 4px;
+  background-color: var(--primary-75);
+}

@@ -54,7 +54,7 @@ export const PurchaseForm = ({ commutador, detalles }: purchaseFormProps) => {
   };
 
   return (
-    <Formulario onSubmit={handleSubmit(sender)} isColumn={true}>
+    <Formulario onSubmit={handleSubmit(sender)}>
       <div className="gavetero">
         <div className="gaveta">
           <Input
