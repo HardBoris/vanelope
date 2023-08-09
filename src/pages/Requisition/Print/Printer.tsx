@@ -63,7 +63,7 @@ export const ReqPrinter = ({
             <div className="info-item">
               <div className="data">
                 <div className="titulo_data">Solicitante:</div>
-                <div className="respuesta_data">{requested.requestor}</div>
+                <div className="respuesta_data">{requested.requestor.name}</div>
               </div>
             </div>
           </div>

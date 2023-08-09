@@ -7,6 +7,7 @@ import { Button } from "../../../components/Button";
 import { useNavigate } from "react-router-dom";
 import Modal from "../../../components/Modal";
 import { ToolReqPrint } from "./Print/Tools";
+import { User } from "../../../context/UserContext";
 
 export interface ToolMovement {
   moveId?: string;
@@ -27,7 +28,7 @@ interface Order {
 export interface ToolRequest {
   requestId?: string;
   requestDate: string;
-  requestor: string;
+  requestor: User;
   service: Order;
   movements?: ToolMovement[];
 }

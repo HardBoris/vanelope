@@ -9,10 +9,10 @@ interface UserProviderProps {
   children: ReactNode;
 }
 
-interface User {
+export interface User {
   userId: string;
-  userName: string;
-  email: string;
+  name: string;
+  userCategory: string;
 }
 
 interface AuthState {

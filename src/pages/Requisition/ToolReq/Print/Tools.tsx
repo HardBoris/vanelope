@@ -52,7 +52,7 @@ export const ToolReqPrint = ({ request, movida }: ToolReqProps) => {
             <div className="info-item">
               <div className="data">
                 <div className="titulo_data">Solicitante:</div>
-                <div className="respuesta_data">{request.requestor}</div>
+                <div className="respuesta_data">{request.requestor.name}</div>
               </div>
             </div>
           </div>

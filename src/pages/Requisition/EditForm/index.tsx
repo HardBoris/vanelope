@@ -59,7 +59,7 @@ export const EditForm = ({
         <div className="individual-field">
           <Modificado
             name="requestor"
-            defaultValue={requisicion.requestor}
+            defaultValue={requisicion.requestor.name}
             register={register}
           />
         </div>

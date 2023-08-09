@@ -97,7 +97,7 @@ export const Requisa = () => {
                 <div className="requested-id">{item.requestId}</div>
                 <div className="requested-date">{item.requestDate}</div>
                 <div className="requested-target">{item.service.order}</div>
-                <div className="requested-requestor">{item.requestor}</div>
+                <div className="requested-requestor">{item.requestor.name}</div>
               </div>
               <div className="requested-action">
                 {item.isDelivered ? (

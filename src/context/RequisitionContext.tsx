@@ -7,7 +7,7 @@ import {
 } from "react";
 import { localApi as api } from "../services/api";
 import { Movement } from "./MoveContext";
-import { useAuth } from "./UserContext";
+import { User, useAuth } from "./UserContext";
 
 interface RequisitionProviderProps {
   children: ReactNode;
@@ -21,7 +21,7 @@ export interface Order {
 export interface Requisicion {
   requestId?: string;
   requestDate: string;
-  requestor: string;
+  requestor: User;
   service: Order;
   isDelivered?: boolean;
   movements?: Movement[];
