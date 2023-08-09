@@ -50,7 +50,7 @@ export const MaterialReqPrinter = ({ requested }: PrinterProps) => {
             <div className="info-item">
               <div className="data">
                 <div className="titulo_data">O. S.:</div>
-                <div className="respuesta_data">{requested.service}</div>
+                <div className="respuesta_data">{requested.service.order}</div>
               </div>
             </div>
             <div className="info-item">

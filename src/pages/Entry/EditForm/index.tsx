@@ -52,7 +52,7 @@ export const EditForm = ({
         <div className="individual-field">
           <Modificado
             name="requestTarget"
-            defaultValue={requisicion.service}
+            defaultValue={requisicion.service.order}
             register={register}
           />
         </div>

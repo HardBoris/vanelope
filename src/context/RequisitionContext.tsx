@@ -7,24 +7,22 @@ import {
 } from "react";
 import { localApi as api } from "../services/api";
 import { Movement } from "./MoveContext";
+import { useAuth } from "./UserContext";
 
 interface RequisitionProviderProps {
   children: ReactNode;
 }
 
-/* export interface Movimiento {
-  moveType?: string;
-  moveElement: string;
-  elementType: string;
-  moveQuantity: number;
-  moveUnit: string;
-} */
+export interface Order {
+  serviceOrderId?: string;
+  order: string;
+}
 
 export interface Requisicion {
   requestId?: string;
   requestDate: string;
   requestor: string;
-  service: string;
+  service: Order;
   isDelivered?: boolean;
   movements?: Movement[];
 }
@@ -48,12 +46,13 @@ export const RequisitionContext = createContext<RequisitionContextData>(
 const useRequisition = () => useContext(RequisitionContext);
 
 const RequisitionProvider = ({ children }: RequisitionProviderProps) => {
+  const { company } = useAuth();
   const [solicitudes, setSolicitudes] = useState<Requisicion[]>([]);
   const [solicitud, setSolicitud] = useState<Requisicion>({} as Requisicion);
 
   const Solicitudes = async () => {
     await api
-      .get("/requisitions")
+      .get(`/${company}/requisitions`)
       .then((response) => {
         setSolicitudes(response.data);
         // console.log(response.data);
@@ -67,28 +66,28 @@ const RequisitionProvider = ({ children }: RequisitionProviderProps) => {
 
   const Peticion = async (data: Requisicion) => {
     await api
-      .post("/requisitions/register", data)
+      .post(`/${company}/requisitions/register`, data)
       .then((response) => setSolicitud(response.data))
       .catch((error) => console.log(error));
   };
 
   const Pedido = async (id: string) => {
     await api
-      .get(`/requisitions/${id}`)
+      .get(`/${company}/requisitions/${id}`)
       .then((response) => setSolicitud(response.data))
       .catch((error) => console.log(error));
   };
 
   const RequestEditor = async (data: Requisicion) => {
     await api
-      .patch(`/requisitions/${data.requestId}`, data)
+      .patch(`/${company}/requisitions/${data.requestId}`, data)
       .then((response) => setSolicitud(response.data))
       .catch((error) => console.log(error));
   };
 
   const requestEliminator = async (id: string) => {
     await api
-      .delete(`/requisitions/${id}`)
+      .delete(`/${company}/requisitions/${id}`)
       .then((response) => console.log(response.data))
       .catch((error) => console.log(error));
   };

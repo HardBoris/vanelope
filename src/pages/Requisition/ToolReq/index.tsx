@@ -19,11 +19,16 @@ export interface ToolMovement {
   requisition?: ToolRequest;
 }
 
+interface Order {
+  serviceOrderId: string;
+  order: string;
+}
+
 export interface ToolRequest {
   requestId?: string;
   requestDate: string;
   requestor: string;
-  service: string;
+  service: Order;
   movements?: ToolMovement[];
 }
 

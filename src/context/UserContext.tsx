@@ -101,10 +101,14 @@ const UserProvider = ({ children }: UserProviderProps) => {
   const signUp = async ({ name, password }: SignInCredentials) => {
     // const aviso = toast.loading("Por Favor espere...");
     await api
-      .post("/:companyId/users/register", {
-        name,
-        password,
-      })
+      .post(
+        `/${data.company}/users/register`,
+        {
+          name,
+          password,
+        },
+        { headers: { authorization: `Bearer ${data.token}` } }
+      )
       .then((response) => {
         console.log(response.data);
         const { usuario } = response.data;

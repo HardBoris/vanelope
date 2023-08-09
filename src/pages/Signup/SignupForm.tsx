@@ -8,7 +8,7 @@ import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
 
 const signUpSchema = yup.object().shape({
-  company: yup.string().required("Campo obrigatório"),
+  companyCode: yup.string().required("Campo obrigatório"),
   name: yup.string().required("Campo obrigatório"),
   password: yup.string().required("Senha obrigatória"),
   confirmPassword: yup.string().required("Campo obrigatório"),

@@ -9,7 +9,7 @@ import "./style.css";
 
 const materialRequestSchema = yup.object().shape({
   requestDate: yup.string().required(),
-  requestTarget: yup.string().required(),
+  service: yup.string().required(),
   requestor: yup.string().required(),
 });
 
@@ -50,7 +50,7 @@ export const Info1 = ({ setMaterialRequest, setShow }: Info1Props) => {
           <div className="input-individual">
             <Modificado
               register={register}
-              name="requestTarget"
+              name="service"
               error={errors.service?.message}
               label="Ordem de Serviço"
               placeholder="Número da ordem"
