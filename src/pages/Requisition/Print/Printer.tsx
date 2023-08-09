@@ -57,7 +57,7 @@ export const ReqPrinter = ({
             <div className="info-item">
               <div className="data">
                 <div className="titulo_data">O. S.:</div>
-                <div className="respuesta_data">{requested.requestTarget}</div>
+                <div className="respuesta_data">{requested.service}</div>
               </div>
             </div>
             <div className="info-item">
