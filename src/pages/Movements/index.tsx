@@ -90,13 +90,13 @@ export const Movements = () => {
                 )}
                 <div className="move_action">
                   <div
-                    className="action-btn"
+                    className="move-btn"
                     onClick={() => Trigger(item.moveId, setIsEdit)}
                   >
                     <FaEdit />
                   </div>
                   <div
-                    className="action-btn"
+                    className="move-btn"
                     onClick={() => Trigger(item.moveId, setIsDelete)}
                   >
                     <FaTrash />

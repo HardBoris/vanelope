@@ -67,5 +67,6 @@ body {
 #root {
   width: 100vw;
   height: 100vh;
+  border: none;
   background: var(--secondary-lighter-25);
 }
