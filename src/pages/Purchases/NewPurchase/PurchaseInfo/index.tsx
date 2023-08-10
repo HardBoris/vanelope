@@ -9,9 +9,11 @@ import { Purchase } from "../../../../context/PurchaseContext";
 
 const PurchaseInfoSchema = yup.object().shape({
   purchaseDate: yup.string().required(),
-  supplier: yup.string().required(),
+  supplierName: yup.string().required(),
+  supplierCNPJ: yup.string().required(),
   paymentForm: yup.string().required(),
   paymentInstallments: yup.string().required(),
+  logisticMode: yup.string().required(),
   deliveryDate: yup.string().required(),
 });
 
@@ -43,16 +45,25 @@ export const PurchaseInfo = ({
     <div className="form-wrapper">
       <Formulario onSubmit={handleSubmit(sender)}>
         <div className="input-horizontal-wrapper">
-          <div className="input-individual">
+          <div className="input-supplier">
             <BGInput
               register={register}
-              name="supplier"
+              name="supplierName"
               error={errors.supplier?.message}
               label="Fornecedor"
               placeholder="Nome Fantasia"
             />
           </div>
-          <div className="input-individual">
+          <div className="input-cnpj">
+            <BGInput
+              register={register}
+              name="supplierCNPJ"
+              error={errors.supplier?.message}
+              label="CNPJ"
+              placeholder="CNPJ só números"
+            />
+          </div>
+          <div className="input-date">
             <BGInput
               register={register}
               name="purchaseDate"
@@ -63,7 +74,7 @@ export const PurchaseInfo = ({
           </div>
         </div>
         <div className="input-horizontal-wrapper">
-          <div className="input-individual">
+          <div className="input-paymentform">
             <BGInput
               register={register}
               name="paymentForm"
@@ -72,7 +83,7 @@ export const PurchaseInfo = ({
               placeholder="Faturado, Cartão ou Dinheiro"
             />
           </div>
-          <div className="input-individual">
+          <div className="input-installment">
             <BGInput
               register={register}
               name="paymentInstallments"
@@ -81,9 +92,9 @@ export const PurchaseInfo = ({
               placeholder="Numero de parcelas e prazos"
             />
           </div>
-        </div>
-        <div className="input-horizontal-wrapper">
-          <div className="input-individual">
+          {/* </div>
+        <div className="input-horizontal-wrapper"> */}
+          <div className="input-logistic">
             <BGInput
               register={register}
               name="logisticMode"
@@ -92,12 +103,12 @@ export const PurchaseInfo = ({
               placeholder="Entrega ou Retirada"
             />
           </div>
-          <div className="input-individual">
+          <div className="input-date">
             <BGInput
               register={register}
               name="deliveryDate"
               error={errors.deliveryDate?.message}
-              label="Previsão de entrega"
+              label="Previsão de Entrega"
               defaultValue={new Date(ahora).toLocaleDateString()}
             />
           </div>

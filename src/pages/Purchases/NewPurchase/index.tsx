@@ -8,12 +8,33 @@ export const NewPurchase = () => {
 
   console.log(thisPurchase, show);
 
+  const activate = (n: number) => {
+    setShow(n);
+  };
+
   return (
-    <div>
-      <PurchaseInfo
-        setThisPurchase={setThisPurchase}
-        setShow={setShow}
-      ></PurchaseInfo>
-    </div>
+    <>
+      <aside>
+        <h3>Nova Compra</h3>
+        <div className={show === 0 ? "lateral-tab active" : "lateral-tab"}>
+          <div className="sider" role="button" onClick={() => activate(0)}>
+            Informações Gerais
+          </div>
+        </div>
+        <div className={show === 1 ? "lateral-tab active" : "lateral-tab"}>
+          <div className={"sider"} role="button">
+            Lista de Materiais
+          </div>
+        </div>
+      </aside>
+      <section>
+        <div className={show !== 0 ? "invisible" : ""}>
+          <PurchaseInfo
+            setThisPurchase={setThisPurchase}
+            setShow={setShow}
+          ></PurchaseInfo>
+        </div>
+      </section>
+    </>
   );
 };

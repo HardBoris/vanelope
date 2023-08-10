@@ -40,11 +40,12 @@ export interface Purchase {
 
 interface PurchaseInfo {
   purchaseDate: string;
-  supplier: string;
+  supplierCNPJ: string;
   logisticMode: string;
   paymentForm: string;
   paymentInstallments: string;
   deliveryDate?: string;
+  purchaseDetails?: PurchaseDetail[];
 }
 
 interface elementData {
@@ -111,7 +112,7 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
 
   const Buy = ({
     purchaseDate,
-    supplier,
+    supplierCNPJ,
     logisticMode,
     paymentForm,
     paymentInstallments,
@@ -122,7 +123,7 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
         `/${company}/purchases/register`,
         {
           purchaseDate,
-          supplier,
+          supplierCNPJ,
           logisticMode,
           paymentForm,
           paymentInstallments,
