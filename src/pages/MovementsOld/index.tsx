@@ -64,14 +64,14 @@ export const MovementsOld = () => {
           </div>
         </div>
       </div>
-      <Modal isOpen={openPurchase} setIsOpen={handlePurchaseModal}>
+      {/* <Modal isOpen={openPurchase} setIsOpen={handlePurchaseModal}>
         <div className="wrapper">
           <PurchaseForm
             commutador={handlePurchaseModal}
             detalles={() => setOpenDetails(true)}
           />
         </div>
-      </Modal>
+      </Modal> */}
       <Modal isOpen={openDetails} setIsOpen={handleDetailsModal}>
         <div className="wrapper">
           <PurchaseDetailsForm />

@@ -13,9 +13,6 @@ function App() {
       <main>
         <AppRouter />
       </main>
-      <footer>
-        <div className="prueba">Powered by BG</div>
-      </footer>
     </div>
   );
 }

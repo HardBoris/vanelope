@@ -32,88 +32,86 @@ interface purchaseFormProps {
   detalles: () => void;
 }
 
-export const PurchaseForm = ({ commutador, detalles }: purchaseFormProps) => {
-  const { Buy } = usePurchase();
+export const PurchaseForm =
+  (/* { commutador, detalles }: purchaseFormProps */) => {
+    const { Buy } = usePurchase();
 
-  const lista = [
-    "primera",
-    "segunda",
-    "tercera",
-    "e9b60f59-1b78-4efd-8322-94f0bc7d6f84",
-  ];
+    const lista = [
+      "primera",
+      "segunda",
+      "tercera",
+      "e9b60f59-1b78-4efd-8322-94f0bc7d6f84",
+    ];
 
-  const {
-    formState: { errors },
-    register,
-    handleSubmit,
-  } = useForm<purchaseData>({ resolver: yupResolver(purchaseSchema) });
+    const {
+      formState: { errors },
+      register,
+      handleSubmit,
+    } = useForm<purchaseData>({ resolver: yupResolver(purchaseSchema) });
 
-  const sender = (data: purchaseData) => {
-    Buy(data);
-    commutador();
-  };
+    const sender = (data: purchaseData) => {
+      Buy(data);
+    };
 
-  return (
-    <Formulario onSubmit={handleSubmit(sender)}>
-      <div className="gavetero">
-        <div className="gaveta">
-          <Input
-            register={register}
-            name="purchaseReference"
-            error={errors.purchaseReference?.message}
-            placeholder="Nota Fiscal"
-            isPassword={false}
-          />
-          <Input
-            register={register}
-            name="deliveryDate"
-            error={errors.deliveryDate?.message}
-            placeholder="Data de Entrega"
-            isPassword={false}
-          />
-          <Input
-            register={register}
-            name="logisticMode"
-            error={errors.logisticMode?.message}
-            placeholder="Logistica"
-            isPassword={false}
-          />
-          <Input
-            register={register}
-            name="paymentForm"
-            error={errors.paymentForm?.message}
-            placeholder="Forma de Pagamento"
-            isPassword={false}
-          />
-        </div>
-        <div className="gaveta">
-          <Input
-            register={register}
-            name="paymentInstallments"
-            error={errors.paymentInstallments?.message}
-            placeholder="Parcelas"
-            isPassword={false}
-          />
-          <Input
-            register={register}
-            name="purchaseStatus"
-            error={errors.purchaseStatus?.message}
-            placeholder="Status"
-            isPassword={false}
-          />
-          <Select
-            register={register}
-            name="supplierId"
-            error={errors.supplierId?.message}
-            options={lista}
-          />
-          <div role="button" onClick={() => detalles()}>
-            Elementos
+    return (
+      <Formulario onSubmit={handleSubmit(sender)}>
+        <div className="gavetero">
+          <div className="gaveta">
+            <Input
+              register={register}
+              name="purchaseReference"
+              error={errors.purchaseReference?.message}
+              placeholder="Nota Fiscal"
+              isPassword={false}
+            />
+            <Input
+              register={register}
+              name="deliveryDate"
+              error={errors.deliveryDate?.message}
+              placeholder="Data de Entrega"
+              isPassword={false}
+            />
+            <Input
+              register={register}
+              name="logisticMode"
+              error={errors.logisticMode?.message}
+              placeholder="Logistica"
+              isPassword={false}
+            />
+            <Input
+              register={register}
+              name="paymentForm"
+              error={errors.paymentForm?.message}
+              placeholder="Forma de Pagamento"
+              isPassword={false}
+            />
+          </div>
+          <div className="gaveta">
+            <Input
+              register={register}
+              name="paymentInstallments"
+              error={errors.paymentInstallments?.message}
+              placeholder="Parcelas"
+              isPassword={false}
+            />
+            <Input
+              register={register}
+              name="purchaseStatus"
+              error={errors.purchaseStatus?.message}
+              placeholder="Status"
+              isPassword={false}
+            />
+            <Select
+              register={register}
+              name="supplierId"
+              error={errors.supplierId?.message}
+              options={lista}
+            />
+            <div role="button">Elementos</div>
           </div>
         </div>
-      </div>
 
-      <Button type="submit">Enviar</Button>
-    </Formulario>
-  );
-};
+        <Button type="submit">Enviar</Button>
+      </Formulario>
+    );
+  };
