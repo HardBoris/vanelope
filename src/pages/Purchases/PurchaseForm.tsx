@@ -1,4 +1,4 @@
-import { useForm } from "react-hook-form";
+/* import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { Formulario } from "../../components/Form";
@@ -33,7 +33,7 @@ interface purchaseFormProps {
 }
 
 export const PurchaseForm =
-  (/* { commutador, detalles }: purchaseFormProps */) => {
+  ( { commutador, detalles }: purchaseFormProps ) => {
     const { Buy } = usePurchase();
 
     const lista = [
@@ -115,3 +115,6 @@ export const PurchaseForm =
       </Formulario>
     );
   };
+ */
+
+export {};

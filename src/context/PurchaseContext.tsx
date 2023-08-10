@@ -9,14 +9,15 @@ import { localApi as api } from "../services/api";
 import { useAuth } from "./UserContext";
 import { useNavigate } from "react-router-dom";
 import { useCompany } from "./CompanyContext";
+import { Supplier } from "./SupplierContext";
 
 interface PurchaseProviderProps {
   children: ReactNode;
 }
 
 export interface PurchaseDetail {
-  purchaseDetailId: string;
-  purchaseId: string;
+  purchaseDetailId?: string;
+  purchase: Purchase;
   ingredientName: string;
   ingredientQty: number;
   measurementUnit: string;
@@ -24,21 +25,26 @@ export interface PurchaseDetail {
 }
 
 export interface Purchase {
-  purchaseId: string;
-  purchaseDate: string;
-  userId: string;
-  purchaseDetails: PurchaseDetail[];
-  purchaseTotal: number;
-}
-
-interface purchaseInfo {
-  purchaseReference: string;
-  deliveryDate: string;
-  supplierId: string;
+  purchaseId?: string;
+  purchaseDate?: string;
+  invoice?: string;
+  deliveryDate?: string;
   logisticMode: string;
   paymentForm: string;
   paymentInstallments: string;
   purchaseStatus: string;
+  supplier: Supplier;
+  purchaseDetails: PurchaseDetail[];
+  purchaseTotal: number;
+}
+
+interface PurchaseInfo {
+  purchaseDate: string;
+  supplier: string;
+  logisticMode: string;
+  paymentForm: string;
+  paymentInstallments: string;
+  deliveryDate?: string;
 }
 
 interface elementData {
@@ -55,7 +61,7 @@ interface PurchaseContextData {
   thisPurchase: Purchase;
   Shopping: () => void;
   shoppingList: (purchaseId: string) => void;
-  Buy: (data: purchaseInfo) => void;
+  Buy: (data: PurchaseInfo) => void;
   itemBuy: (data: elementData, purchaseId: string) => Promise<void>;
   eliminaCompra: (id: string) => void;
 }
@@ -104,25 +110,23 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
   };
 
   const Buy = ({
-    purchaseReference,
-    deliveryDate,
-    supplierId,
+    purchaseDate,
+    supplier,
     logisticMode,
     paymentForm,
     paymentInstallments,
-    purchaseStatus,
-  }: purchaseInfo) => {
+    deliveryDate,
+  }: PurchaseInfo) => {
     api
       .post(
         `/${company}/purchases/register`,
         {
-          purchaseReference,
-          deliveryDate,
-          supplierId,
+          purchaseDate,
+          supplier,
           logisticMode,
           paymentForm,
           paymentInstallments,
-          purchaseStatus,
+          deliveryDate,
         },
         {
           headers: {

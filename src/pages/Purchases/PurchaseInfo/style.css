@@ -1,0 +1,28 @@
+.form-wrapper {
+  width: 600px;
+  height: 400px;
+}
+
+.input-horizontal-wrapper {
+  width: 96%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.input-individual {
+  width: 100%;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#requestId {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.invisible {
+  display: none;
+}
