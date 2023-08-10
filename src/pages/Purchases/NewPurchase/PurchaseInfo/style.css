@@ -1,6 +1,10 @@
 .form-wrapper {
   width: 600px;
-  height: 400px;
+  height: 600px;
+  border: 1px solid red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .input-horizontal-wrapper {
@@ -18,10 +22,10 @@
   align-items: center;
 }
 
-#requestId {
+/* #requestId {
   font-weight: bold;
   font-size: 1.5rem;
-}
+} */
 
 .invisible {
   display: none;

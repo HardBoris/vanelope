@@ -35,9 +35,9 @@ export const Purchases = () => {
             Informações do Fornecedor
           </Link>
           <Link
-            to={`/${company}/purchases/purchaseinfo`}
+            to={`/${company}/purchases/newpurchase`}
             className={
-              location.pathname === `/${company}/purchases/purchaseinfo`
+              location.pathname === `/${company}/purchases/newpurchase`
                 ? "tab activated"
                 : "tab"
             }

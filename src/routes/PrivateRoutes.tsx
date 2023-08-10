@@ -13,13 +13,17 @@ import { Entry } from "../pages/Entry";
 import { Entries } from "../pages/Entry/Entries/Entry";
 import { ToolEntry } from "../pages/Entry/ToolEntry";
 import { MaterialEntry } from "../pages/Entry/MatEntry";
+import { NewPurchase } from "../pages/Purchases/NewPurchase";
 
 export const PrivateRoutes = () => {
   return (
     <Routes>
       <Route path="/:companyId" element={<Dashboard />} />
-      <Route path="/:companyId/purchases" element={<Purchases />} />
       <Route path="/:companyId/movements" element={<Movements />} />
+      <Route path="/:companyId/purchases" element={<Purchases />}>
+        <Route path="" element={<Requisa />} />
+        <Route path="newpurchase" element={<NewPurchase />} />
+      </Route>
       <Route path="/:companyId/requisitions" element={<Requisition />}>
         <Route path="" element={<Requisa />} />
         <Route path="toolreq" element={<ToolReq />} />
