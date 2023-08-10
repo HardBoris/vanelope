@@ -23,7 +23,7 @@ export const BGInput = ({
         <input
           {...(register && { ...register(name) })}
           {...rest}
-          className={!!error ? "input-password error" : "input-password"}
+          className={!!error ? "error" : ""}
           placeholder={!!error ? `${error}` : `${placeholder}`}
         />
       </div>
