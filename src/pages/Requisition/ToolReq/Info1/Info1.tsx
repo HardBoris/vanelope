@@ -6,6 +6,7 @@ import { Modificado } from "../../../../components/Modificado";
 import { Button } from "../../../../components/Button";
 import { ToolRequest } from "..";
 import "./style.css";
+import { BGInput } from "../../../../components/BG Input";
 
 const toolRequestSchema = yup.object().shape({
   requestDate: yup.string().required(),
@@ -33,11 +34,11 @@ export const Info1 = ({ setToolRequest, setShow }: Info1Props) => {
   };
 
   return (
-    <div className="form-wrapper">
+    <div className="form-wrapper-tr1">
       <Formulario onSubmit={handleSubmit(sender)}>
-        <div className="input-horizontal-wrapper">
-          <div className="input-individual">
-            <Modificado
+        <div className="input-wrapper-tr1">
+          <div className="input-individual-tr1">
+            <BGInput
               register={register}
               name="requestDate"
               error={errors.requestDate?.message}
@@ -45,8 +46,8 @@ export const Info1 = ({ setToolRequest, setShow }: Info1Props) => {
               defaultValue={new Date(ahora).toLocaleDateString()}
             />
           </div>
-          <div className="input-individual">
-            <Modificado
+          <div className="input-individual-tr1">
+            <BGInput
               register={register}
               name="service"
               error={errors.service?.message}
@@ -55,8 +56,8 @@ export const Info1 = ({ setToolRequest, setShow }: Info1Props) => {
             />
           </div>
         </div>
-        <div className="input-individual">
-          <Modificado
+        <div className="input-tr1">
+          <BGInput
             register={register}
             name="requestor"
             error={errors.requestor?.message}
@@ -64,9 +65,11 @@ export const Info1 = ({ setToolRequest, setShow }: Info1Props) => {
             placeholder="Nome do solicitante"
           />
         </div>
-        <Button type="submit" variant="yes">
-          Avançar
-        </Button>
+        <div className="input-tr1">
+          <Button type="submit" variant="yes">
+            Avançar
+          </Button>
+        </div>
       </Formulario>
     </div>
   );
