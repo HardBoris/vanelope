@@ -2,7 +2,6 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { Formulario } from "../../../../components/Form";
-import { Modificado } from "../../../../components/Modificado";
 import { Button } from "../../../../components/Button";
 import { ToolRequest } from "..";
 import "./style.css";
@@ -10,7 +9,7 @@ import { BGInput } from "../../../../components/BG Input";
 
 const toolRequestSchema = yup.object().shape({
   requestDate: yup.string().required(),
-  requestTarget: yup.string().required(),
+  service: yup.string().required(),
   requestor: yup.string().required(),
 });
 

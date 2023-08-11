@@ -7,6 +7,7 @@ import { Button } from "../../../../components/Button";
 import { Movement } from "../../../../context/MoveContext";
 import { Requisicion } from "../../../../context/RequisitionContext";
 import "./style.css";
+import { BGInput } from "../../../../components/BG Input";
 
 const materialMovementSchema = yup.object().shape({
   moveElement: yup.string().required(),
@@ -91,11 +92,11 @@ export const Info2 = ({
 
   return (
     <>
-      <div className="wrapper">
+      <div className="wrapper-mr2">
         <Formulario onSubmit={handleSubmit(sender)}>
-          <div className="input-horizontal-wrapper">
-            <div className="input-individual">
-              <Modificado
+          <div className="input-wrapper-mr2">
+            <div className="input-individual-mr2">
+              <BGInput
                 register={register}
                 name="moveElement"
                 error={errors.moveElement?.message}
@@ -103,8 +104,8 @@ export const Info2 = ({
                 placeholder="Descrição do elemento"
               />
             </div>
-            <div className="input-individual">
-              <Modificado
+            <div className="input-individual-mr2">
+              <BGInput
                 register={register}
                 name="elementType"
                 error={errors.elementType?.message}
@@ -112,8 +113,8 @@ export const Info2 = ({
                 placeholder="Ferramenta, acessório"
               />
             </div>
-            <div className="input-individual">
-              <Modificado
+            <div className="input-individual-mr2">
+              <BGInput
                 register={register}
                 name="moveQuantity"
                 error={errors.moveQuantity?.message}
@@ -121,8 +122,8 @@ export const Info2 = ({
                 placeholder="moveQuantity"
               />
             </div>
-            <div className="input-individual">
-              <Modificado
+            <div className="input-individual-mr2">
+              <BGInput
                 register={register}
                 name="moveUnit"
                 error={errors.moveUnit?.message}
@@ -131,7 +132,7 @@ export const Info2 = ({
               />
             </div>
           </div>
-          <div className="botonera">
+          <div className="botonera-mr2">
             <Button type="button" onClick={() => volver()}>
               Voltar
             </Button>
