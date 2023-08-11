@@ -36,8 +36,7 @@
 }
 
 aside {
-  width: 30%;
-  height: 84vh;
+  display: none;
 }
 
 section {
@@ -70,4 +69,12 @@ section {
 
 .activated {
   border-bottom: 5px solid var(--primary-75);
+}
+
+@media (min-width: 769px) {
+  aside {
+    width: 30%;
+    height: 84vh;
+    display: block;
+  }
 }

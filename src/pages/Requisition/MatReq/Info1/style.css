@@ -1,18 +1,27 @@
-.form-wrapper {
-  width: 600px;
+.form-wrapper-mr1 {
+  width: 300px;
   height: 400px;
 }
 
-.input-horizontal-wrapper {
-  width: 96%;
+.input-wrapper-mr1 {
+  width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
 }
 
-.input-individual {
-  width: 100%;
-  height: 150px;
+.input-individual-mr1 {
+  width: 90%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-mr1 {
+  width: 90%;
+  height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -25,4 +34,32 @@
 
 .invisible {
   display: none;
+}
+
+@media (min-width: 769px) {
+  .form-wrapper-mr1 {
+    width: 600px;
+    height: 400px;
+  }
+
+  .input-wrapper-mr1 {
+    width: 100%;
+    flex-direction: row;
+  }
+
+  .input-individual-mr1 {
+    width: 90%;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .input-mr1 {
+    width: 90%;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
