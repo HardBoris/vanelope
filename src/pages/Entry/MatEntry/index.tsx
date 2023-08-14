@@ -6,12 +6,16 @@ import { Button } from "../../../components/Button";
 import { useNavigate } from "react-router-dom";
 import { Movement } from "../../../context/MoveContext";
 import "./style.css";
-import { Entry, useEntry } from "../../../context/EntryContext";
+import { Entry, EntryInfo, useEntry } from "../../../context/EntryContext";
+import { useAuth } from "../../../context/UserContext";
 
 export const MaterialEntry = () => {
   const navigate = useNavigate();
   const { Admision, entrada } = useEntry();
-  const [materialEntry, setMaterialEntry] = useState<Entry>({} as Entry);
+  const { company } = useAuth();
+  const [materialEntry, setMaterialEntry] = useState<EntryInfo>(
+    {} as EntryInfo
+  );
   const [show, setShow] = useState(0);
   const [movimientos, setMovimientos] = useState<Movement[]>([]);
   const [isPrint, setIsPrint] = useState(false);
@@ -97,7 +101,10 @@ export const MaterialEntry = () => {
               ))}
           </div>
           <div className={show !== 1 ? "invisible" : "list_action"}>
-            <Button type="button" onClick={() => navigate("/entries")}>
+            <Button
+              type="button"
+              onClick={() => navigate(`/${company}/entries`)}
+            >
               Cancelar
             </Button>
             <Button type="button" onClick={() => guardar()}>

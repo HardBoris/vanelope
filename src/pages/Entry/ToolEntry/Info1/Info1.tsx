@@ -4,7 +4,7 @@ import * as yup from "yup";
 import { Formulario } from "../../../../components/Form";
 import { Modificado } from "../../../../components/Modificado";
 import { Button } from "../../../../components/Button";
-import { ToolEntry } from "..";
+import { ToolEntry, ToolEntryInfo } from "..";
 import "./style.css";
 
 const toolEntrySchema = yup.object().shape({
@@ -14,7 +14,7 @@ const toolEntrySchema = yup.object().shape({
 });
 
 interface InfoToolEntry1Props {
-  setToolEntry: (data: ToolEntry) => void;
+  setToolEntry: (data: ToolEntryInfo) => void;
   setShow: (arg: number) => void;
 }
 
@@ -28,9 +28,9 @@ export const InfoToolEntry1 = ({
     formState: { errors },
     register,
     handleSubmit,
-  } = useForm<ToolEntry>({ resolver: yupResolver(toolEntrySchema) });
+  } = useForm<ToolEntryInfo>({ resolver: yupResolver(toolEntrySchema) });
 
-  const sender = (data: ToolEntry) => {
+  const sender = (data: ToolEntryInfo) => {
     setToolEntry(data);
     setShow(1);
   };

@@ -5,7 +5,8 @@ import { Formulario } from "../../../../components/Form";
 import { Modificado } from "../../../../components/Modificado";
 import { Button } from "../../../../components/Button";
 import "./style.css";
-import { Entry } from "../../../../context/EntryContext";
+import { Entry, EntryInfo } from "../../../../context/EntryContext";
+import { BGInput } from "../../../../components/BG Input";
 
 const materialEntrySchema = yup.object().shape({
   entryDate: yup.string().required(),
@@ -14,7 +15,7 @@ const materialEntrySchema = yup.object().shape({
 });
 
 interface InfoEntry1Props {
-  setMaterialEntry: (data: Entry) => void;
+  setMaterialEntry: (data: EntryInfo) => void;
   setShow: (arg: number) => void;
 }
 
@@ -25,30 +26,31 @@ export const InfoEntry1 = ({ setMaterialEntry, setShow }: InfoEntry1Props) => {
     formState: { errors },
     register,
     handleSubmit,
-  } = useForm<Entry>({
+  } = useForm<EntryInfo>({
     resolver: yupResolver(materialEntrySchema),
   });
 
-  const sender = (data: Entry) => {
+  const sender = (data: EntryInfo) => {
     setMaterialEntry(data);
     setShow(1);
   };
 
   return (
-    <div className="form-wrapper">
+    <div className="form-wrapper-mr1">
       <Formulario onSubmit={handleSubmit(sender)}>
-        <div className="input-horizontal-wrapper">
-          <div className="input-individual">
-            <Modificado
+        <div className="input-wrapper-mr1">
+          <div className="input-individual-mr1">
+            <BGInput
               register={register}
               name="entryDate"
               error={errors.entryDate?.message}
               label="Data"
+              // type="datetime-local"
               defaultValue={new Date(ahora).toLocaleDateString()}
             />
           </div>
-          <div className="input-individual">
-            <Modificado
+          <div className="input-individual-mr1">
+            <BGInput
               register={register}
               name="purchase"
               error={errors.purchase?.message}
@@ -57,8 +59,8 @@ export const InfoEntry1 = ({ setMaterialEntry, setShow }: InfoEntry1Props) => {
             />
           </div>
         </div>
-        <div className="input-individual">
-          <Modificado
+        <div className="input-mr1">
+          <BGInput
             register={register}
             name="responsivel"
             error={errors.responsivel?.message}
@@ -66,9 +68,11 @@ export const InfoEntry1 = ({ setMaterialEntry, setShow }: InfoEntry1Props) => {
             placeholder="Nome do responsável"
           />
         </div>
-        <Button type="submit" variant="yes">
-          Avançar
-        </Button>
+        <div className="input-mr1">
+          <Button type="submit" variant="yes">
+            Avançar
+          </Button>
+        </div>
       </Formulario>
     </div>
   );

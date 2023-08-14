@@ -6,7 +6,7 @@ import { Modificado } from "../../../../components/Modificado";
 import { Button } from "../../../../components/Button";
 import { Movement } from "../../../../context/MoveContext";
 // import { Requisicion } from "../../../../context/RequisitionContext";
-import { Entry } from "../../../../context/EntryContext";
+import { Entry, EntryInfo } from "../../../../context/EntryContext";
 import "./style.css";
 
 const materialMovementSchema = yup.object().shape({
@@ -18,10 +18,10 @@ const materialMovementSchema = yup.object().shape({
 
 interface InfoEntry2Props {
   movimientos: Movement[];
-  materialEntry: Entry;
+  materialEntry: EntryInfo;
   setMovimientos: (data: Movement[]) => void;
   setShow: (arg: number) => void;
-  setMaterialEntry: (data: Entry) => void;
+  setMaterialEntry: (data: EntryInfo) => void;
 }
 
 interface MaterialMovementInfo {

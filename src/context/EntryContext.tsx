@@ -7,12 +7,23 @@ import {
 } from "react";
 import { localApi as api } from "../services/api";
 import { Movement } from "./MoveContext";
+import { User, useAuth } from "./UserContext";
+import { Purchase } from "./PurchaseContext";
 
 interface EntryProviderProps {
   children: ReactNode;
 }
 
 export interface Entry {
+  entryId?: string;
+  entryDate: string;
+  responsivel: User;
+  purchase: Purchase;
+  isReceived?: boolean;
+  movements?: Movement[];
+}
+
+export interface EntryInfo {
   entryId?: string;
   entryDate: string;
   responsivel: string;
@@ -25,7 +36,7 @@ interface EntryContextData {
   entrada: Entry;
   entradas: Entry[];
   Admisiones: () => void;
-  Admision: (data: Entry) => void;
+  Admision: (data: EntryInfo) => void;
   setEntrada: (arg: any) => void;
   Ingreso: (id: string) => Promise<void>;
   entryEliminator: (id: string) => void;
@@ -40,12 +51,13 @@ export const EntryContext = createContext<EntryContextData>(
 const useEntry = () => useContext(EntryContext);
 
 const EntryProvider = ({ children }: EntryProviderProps) => {
+  const { company } = useAuth();
   const [entradas, setEntradas] = useState<Entry[]>([]);
   const [entrada, setEntrada] = useState<Entry>({} as Entry);
 
   const Admisiones = async () => {
     await api
-      .get("/entries")
+      .get(`/${company}/entries`)
       .then((response) => {
         setEntradas(response.data);
         // console.log(response.data);
@@ -57,30 +69,30 @@ const EntryProvider = ({ children }: EntryProviderProps) => {
     Admisiones();
   }, []);
 
-  const Admision = async (data: Entry) => {
+  const Admision = async (data: EntryInfo) => {
     await api
-      .post("/entries/register", data)
+      .post(`/${company}/entries/register`, data)
       .then((response) => setEntrada(response.data))
       .catch((error) => console.log(error));
   };
 
   const Ingreso = async (id: string) => {
     await api
-      .get(`/entries/${id}`)
+      .get(`/${company}/entries/${id}`)
       .then((response) => setEntrada(response.data))
       .catch((error) => console.log(error));
   };
 
   const entryEditor = async (data: Entry) => {
     await api
-      .patch(`/entries/${data.entryId}`, data)
+      .patch(`/${company}/entries/${data.entryId}`, data)
       .then((response) => setEntrada(response.data))
       .catch((error) => console.log(error));
   };
 
   const entryEliminator = async (id: string) => {
     await api
-      .delete(`/entries/${id}`)
+      .delete(`/${company}/entries/${id}`)
       .then((response) => console.log(response.data))
       .catch((error) => console.log(error));
   };

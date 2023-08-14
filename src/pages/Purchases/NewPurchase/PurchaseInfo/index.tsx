@@ -42,10 +42,10 @@ export const PurchaseInfo = ({
   };
 
   return (
-    <div className="form-wrapper">
+    <div className="form-wrapper-purchase">
       <Formulario onSubmit={handleSubmit(sender)}>
-        <div className="input-horizontal-wrapper">
-          <div className="input-supplier">
+        <div className="input-wrapper-purchase">
+          <div className="input-purchase supplier">
             <BGInput
               register={register}
               name="supplierName"
@@ -54,7 +54,7 @@ export const PurchaseInfo = ({
               placeholder="Nome Fantasia"
             />
           </div>
-          <div className="input-cnpj">
+          <div className="input-purchase cnpj">
             <BGInput
               register={register}
               name="supplierCNPJ"
@@ -63,7 +63,7 @@ export const PurchaseInfo = ({
               placeholder="CNPJ só números"
             />
           </div>
-          <div className="input-date">
+          <div className="input-purchase date">
             <BGInput
               register={register}
               name="purchaseDate"
@@ -73,8 +73,8 @@ export const PurchaseInfo = ({
             />
           </div>
         </div>
-        <div className="input-horizontal-wrapper">
-          <div className="input-paymentform">
+        <div className="input-wrapper-purchase">
+          <div className="input-purchase paymentform">
             <BGInput
               register={register}
               name="paymentForm"
@@ -83,7 +83,7 @@ export const PurchaseInfo = ({
               placeholder="Faturado, Cartão ou Dinheiro"
             />
           </div>
-          <div className="input-installment">
+          <div className="input-purchase installment">
             <BGInput
               register={register}
               name="paymentInstallments"
@@ -94,7 +94,7 @@ export const PurchaseInfo = ({
           </div>
           {/* </div>
         <div className="input-horizontal-wrapper"> */}
-          <div className="input-logistic">
+          <div className="input-purchase logistic">
             <BGInput
               register={register}
               name="logisticMode"
@@ -103,7 +103,7 @@ export const PurchaseInfo = ({
               placeholder="Entrega ou Retirada"
             />
           </div>
-          <div className="input-date">
+          <div className="input-purchase date">
             <BGInput
               register={register}
               name="deliveryDate"
@@ -114,9 +114,11 @@ export const PurchaseInfo = ({
           </div>
         </div>
 
-        <Button type="submit" variant="yes">
-          Avançar
-        </Button>
+        <div className="input-purchase">
+          <Button type="submit" variant="yes">
+            Avançar
+          </Button>
+        </div>
       </Formulario>
     </div>
   );

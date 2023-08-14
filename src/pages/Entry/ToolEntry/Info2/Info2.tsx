@@ -4,7 +4,7 @@ import * as yup from "yup";
 import { Formulario } from "../../../../components/Form";
 import { Modificado } from "../../../../components/Modificado";
 import { Button } from "../../../../components/Button";
-import { ToolEntry, ToolEntryMovement } from "..";
+import { ToolEntry, ToolEntryInfo, ToolEntryMovement } from "..";
 import "./style.css";
 
 const toolMovementSchema = yup.object().shape({
@@ -15,10 +15,10 @@ const toolMovementSchema = yup.object().shape({
 
 interface InfoToolEntry2Props {
   movimientos: ToolEntryMovement[];
-  toolEntry: ToolEntry;
+  toolEntry: ToolEntryInfo;
   setMovimientos: (data: ToolEntryMovement[]) => void;
   setShow: (arg: number) => void;
-  setToolEntry: (data: ToolEntry) => void;
+  setToolEntry: (data: ToolEntryInfo) => void;
 }
 
 interface ToolMovementInfo {

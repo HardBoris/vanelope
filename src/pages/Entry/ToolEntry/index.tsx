@@ -5,6 +5,8 @@ import { FaTrash } from "react-icons/fa";
 import { Button } from "../../../components/Button";
 import { useNavigate } from "react-router-dom";
 import { useEntry } from "../../../context/EntryContext";
+import { User } from "../../../context/UserContext";
+import { Purchase } from "../../../context/PurchaseContext";
 
 export interface ToolEntryMovement {
   moveId?: string;
@@ -20,6 +22,14 @@ export interface ToolEntryMovement {
 export interface ToolEntry {
   entryId?: string;
   entryDate: string;
+  responsivel: User;
+  purchase: Purchase;
+  movements?: ToolEntryMovement[];
+}
+
+export interface ToolEntryInfo {
+  entryId?: string;
+  entryDate: string;
   responsivel: string;
   purchase: string;
   movements?: ToolEntryMovement[];
@@ -28,7 +38,9 @@ export interface ToolEntry {
 export const ToolEntry = () => {
   const navigate = useNavigate();
   const { Admision, entrada } = useEntry();
-  const [toolEntry, setToolEntry] = useState<ToolEntry>({} as ToolEntry);
+  const [toolEntry, setToolEntry] = useState<ToolEntryInfo>(
+    {} as ToolEntryInfo
+  );
   const [show, setShow] = useState(0);
   const [movimientos, setMovimientos] = useState<ToolEntryMovement[]>([]);
   const [isPrint, setIsPrint] = useState(false);

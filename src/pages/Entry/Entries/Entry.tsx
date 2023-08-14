@@ -7,7 +7,7 @@ import {
   FaSquare,
   FaTrash,
 } from "react-icons/fa";
-import { Entry, useEntry } from "../../../context/EntryContext";
+import { Entry, EntryInfo, useEntry } from "../../../context/EntryContext";
 import { BGLogo } from "../../../components/Logo";
 
 interface Setter {
@@ -86,8 +86,8 @@ export const Entries = () => {
               >
                 <div className="entry-id">{item.entryId}</div>
                 <div className="entry-date">{item.entryDate}</div>
-                <div className="entry-source">{item.purchase}</div>
-                <div className="entry-shopper">{item.responsivel}</div>
+                <div className="entry-source">{item.purchase.purchaseId}</div>
+                <div className="entry-shopper">{item.responsivel.name}</div>
               </div>
               <div className="entry-action">
                 {item.isReceived ? (

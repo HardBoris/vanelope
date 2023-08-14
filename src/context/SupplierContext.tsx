@@ -53,9 +53,9 @@ const SupplierProvider = ({ children }: SupplierProviderProps) => {
       .catch((error) => console.log(error));
   };
 
-  useEffect(() => {
+  /* useEffect(() => {
     Suppliers();
-  }, []);
+  }, []); */
 
   const Supplier = async (data: Supplier) => {
     await api

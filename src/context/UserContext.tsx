@@ -1,4 +1,10 @@
-import { createContext, ReactNode, useContext, useState } from "react";
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { useNavigate } from "react-router-dom";
 // import { toast } from "react-toastify";
 
@@ -31,9 +37,11 @@ interface UserContextData {
   user: User;
   token: string;
   company: string;
+  usersArray: User[];
   signIn: (credentials: SignInCredentials) => Promise<void>;
   signOut: () => void;
   signUp: (info: SignInCredentials) => void;
+  usersList: () => void;
   // mensaje: string;
   // email: string;
   // status: number;
@@ -53,7 +61,7 @@ const useAuth = () => {
 
 const UserProvider = ({ children }: UserProviderProps) => {
   const history = useNavigate();
-  const [logedUser, setLogedUser] = useState("");
+  const [usersArray, setUsersArray] = useState<User[]>([]);
   // const [messageError, setMessageError] = useState("");
   // const [status, setStatus] = useState(0);
 
@@ -68,6 +76,19 @@ const UserProvider = ({ children }: UserProviderProps) => {
 
     return {} as AuthState;
   });
+
+  const usersList = async () => {
+    await api
+      .get(`/${data.company}/users`, {
+        headers: { authorization: `Bearer ${data.token}` },
+      })
+      .then((response) => setUsersArray(response.data))
+      .catch((error) => console.log(error));
+  };
+
+  useEffect(() => {
+    usersList();
+  }, []);
 
   const signIn = async ({ name, password, companyCode }: SignInCredentials) => {
     // const aviso = toast.loading("Por Favor espere...");
@@ -112,7 +133,6 @@ const UserProvider = ({ children }: UserProviderProps) => {
       .then((response) => {
         console.log(response.data);
         const { usuario } = response.data;
-        setLogedUser(usuario);
         /* toast.update(aviso, {
           render: "Novo usuário cadastrado!",
           type: "success",
@@ -146,9 +166,11 @@ const UserProvider = ({ children }: UserProviderProps) => {
         token: data.token,
         user: data.user,
         company: data.company,
+        usersArray,
         signIn,
         signOut,
         signUp,
+        usersList,
         // mensaje,
         // email,
         // status,
