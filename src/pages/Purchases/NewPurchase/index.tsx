@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { PurchaseInfo } from "./PurchaseInfo";
 import { Purchase } from "../../../context/PurchaseContext";
+import "./NewPurchase.style.css";
 
 export const NewPurchase = () => {
   const [thisPurchase, setThisPurchase] = useState<Purchase>({} as Purchase);
@@ -28,7 +29,7 @@ export const NewPurchase = () => {
         </div>
       </aside>
       <section>
-        <div className={show !== 0 ? "invisible" : ""}>
+        <div className={show !== 0 ? "invisible" : "purchase-info"}>
           <PurchaseInfo
             setThisPurchase={setThisPurchase}
             setShow={setShow}

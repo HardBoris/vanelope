@@ -1,7 +1,7 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
-import "./style.css";
+import "./PurchaseInfo.css";
 import { Formulario } from "../../../../components/Form";
 import { BGInput } from "../../../../components/BG Input";
 import { Button } from "../../../../components/Button";
@@ -92,8 +92,6 @@ export const PurchaseInfo = ({
               placeholder="Numero de parcelas e prazos"
             />
           </div>
-          {/* </div>
-        <div className="input-horizontal-wrapper"> */}
           <div className="input-purchase logistic">
             <BGInput
               register={register}

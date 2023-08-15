@@ -1,5 +1,6 @@
 import { Link, Outlet, useLocation } from "react-router-dom";
-import "./purchases.style.css";
+// import "./purchases.style.css";
+import "./purchases.alterno.css";
 import { Helmet } from "react-helmet";
 import { useAuth } from "../../context/UserContext";
 
@@ -24,7 +25,7 @@ export const Purchases = () => {
           >
             Compras
           </Link>
-          <Link
+          {/* <Link
             to={`/${company}/purchases/supplierinfo`}
             className={
               location.pathname === `/${company}/purchases/supplierinfo`
@@ -33,7 +34,7 @@ export const Purchases = () => {
             }
           >
             Informações do Fornecedor
-          </Link>
+          </Link> */}
           <Link
             to={`/${company}/purchases/newpurchase`}
             className={
@@ -42,9 +43,9 @@ export const Purchases = () => {
                 : "tab"
             }
           >
-            Informações da Compra
+            Nova Compra
           </Link>
-          <Link
+          {/* <Link
             to={`/${company}/purchases/purchasedetails`}
             className={
               location.pathname === `/${company}/purchases/purchasedetails`
@@ -53,7 +54,7 @@ export const Purchases = () => {
             }
           >
             Detalhes da Compra
-          </Link>
+          </Link> */}
         </div>
         <div className="purchase_body">
           <Outlet />
