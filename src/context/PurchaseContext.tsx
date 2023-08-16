@@ -18,10 +18,11 @@ interface PurchaseProviderProps {
 export interface PurchaseDetail {
   purchaseDetailId?: string;
   purchase: Purchase;
-  ingredientName: string;
-  ingredientQty: number;
-  measurementUnit: string;
-  ingredientPrice: number;
+  element: string;
+  elementType: string;
+  quantity: number;
+  unit: string;
+  price: number;
 }
 
 export interface Purchase {
