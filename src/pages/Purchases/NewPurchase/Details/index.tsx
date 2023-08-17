@@ -5,6 +5,7 @@ import { Formulario } from "../../../../components/Form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { PurchaseDetail } from "../../../../context/PurchaseContext";
+import "./Details.css";
 
 const DetailInfoSchema = yup.object().shape({
   element: yup.string().required(),
@@ -29,10 +30,10 @@ export const Details = () => {
 
   return (
     <>
-      <div className="wrapper-mr2">
+      <div className="wrapper-dt">
         <Formulario onSubmit={handleSubmit(sender)}>
-          <div className="input-wrapper-mr2">
-            <div className="input-individual-mr2">
+          <div className="input-wrapper-dt">
+            <div className="input-individual-dt element">
               <BGInput
                 register={register}
                 name="element"
@@ -41,7 +42,7 @@ export const Details = () => {
                 placeholder="Descrição do elemento"
               />
             </div>
-            <div className="input-individual-mr2">
+            <div className="input-individual-dt element-type">
               <BGInput
                 register={register}
                 name="elementType"
@@ -50,7 +51,7 @@ export const Details = () => {
                 placeholder="Ferramenta, acessório"
               />
             </div>
-            <div className="input-individual-mr2">
+            <div className="input-individual-dt quantity">
               <BGInput
                 register={register}
                 name="quantity"
@@ -59,26 +60,26 @@ export const Details = () => {
                 placeholder="moveQuantity"
               />
             </div>
-            <div className="input-individual-mr2">
+            <div className="input-individual-dt unit">
               <BGInput
                 register={register}
                 name="unit"
                 error={errors.unit?.message}
                 label="Unidade"
-                placeholder="moveUnit"
+                placeholder="m, k, l"
               />
             </div>
-            <div className="input-individual-mr2">
+            <div className="input-individual-dt price">
               <BGInput
                 register={register}
                 name="price"
                 error={errors.price?.message}
-                label="Unidade"
-                placeholder="moveUnit"
+                label="Custo"
+                placeholder="Custo Total"
               />
             </div>
           </div>
-          <div className="botonera-mr2">
+          <div className="botonera-dt">
             <Button type="button" /* onClick={() => volver()} */>Voltar</Button>
             <Button variant="yes" type="submit">
               Incluir

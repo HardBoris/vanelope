@@ -1,6 +1,6 @@
 import { Link, Outlet, useLocation } from "react-router-dom";
 // import "./purchases.style.css";
-import "./purchases.alterno.css";
+import "./Purchases.css";
 import { Helmet } from "react-helmet";
 import { useAuth } from "../../context/UserContext";
 

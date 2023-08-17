@@ -1,0 +1,69 @@
+.wrapper-dt {
+  width: 90%;
+}
+
+.input-wrapper-dt {
+  width: 90%;
+}
+
+.input-individual-dt {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.botonera-dt {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.botonera-dt button {
+  width: 90%;
+}
+
+@media (min-width: 426px) {
+  .wrapper-dt {
+    width: 90%;
+    height: 90%;
+  }
+
+  .input-wrapper-dt {
+    width: 100%;
+    height: 90%;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto auto;
+  }
+
+  .input-individual-dt {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .element {
+    grid-row: 1;
+    grid-column: 1 / span 2;
+    width: 90%;
+  }
+
+  .input-label {
+    font-size: 1rem;
+  }
+
+  input {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 769px) {
+  .wrapper-dt {
+    width: 70%;
+    height: 90%;
+  }
+}
