@@ -6,14 +6,14 @@ import { Navigator } from "./components/Navigator";
 
 function App() {
   return (
-    <div>
+    <>
       <header>
         <Navigator />
       </header>
       <main>
         <AppRouter />
       </main>
-    </div>
+    </>
   );
 }
 

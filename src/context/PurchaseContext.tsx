@@ -17,7 +17,7 @@ interface PurchaseProviderProps {
 
 export interface PurchaseDetail {
   purchaseDetailId?: string;
-  purchase: Purchase;
+  purchase?: Purchase;
   element: string;
   elementType: string;
   quantity: number;
@@ -39,7 +39,7 @@ export interface Purchase {
   purchaseTotal: number;
 }
 
-interface PurchaseInfo {
+export interface PurchaseData {
   purchaseDate: string;
   supplierCNPJ: string;
   logisticMode: string;
@@ -49,11 +49,12 @@ interface PurchaseInfo {
   purchaseDetails?: PurchaseDetail[];
 }
 
-interface elementData {
-  ingredientName: string;
-  ingredientQty: string;
-  measurementUnit: string;
-  ingredientPrice: string;
+export interface elementData {
+  element: string;
+  quantity: number;
+  unit: string;
+  price: number;
+  elementType: string;
 }
 
 interface PurchaseContextData {
@@ -63,7 +64,7 @@ interface PurchaseContextData {
   thisPurchase: Purchase;
   Shopping: () => void;
   shoppingList: (purchaseId: string) => void;
-  Buy: (data: PurchaseInfo) => void;
+  Buy: (data: PurchaseData) => void;
   itemBuy: (data: elementData, purchaseId: string) => Promise<void>;
   eliminaCompra: (id: string) => void;
 }
@@ -118,7 +119,7 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
     paymentForm,
     paymentInstallments,
     deliveryDate,
-  }: PurchaseInfo) => {
+  }: PurchaseData) => {
     api
       .post(
         `/${company}/purchases/register`,

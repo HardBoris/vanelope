@@ -4,18 +4,47 @@ import { Button } from "../../../../components/Button";
 import { Formulario } from "../../../../components/Form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { PurchaseDetail } from "../../../../context/PurchaseContext";
+import {
+  PurchaseData,
+  PurchaseDetail,
+  elementData,
+} from "../../../../context/PurchaseContext";
 import "./Details.css";
 
 const DetailInfoSchema = yup.object().shape({
   element: yup.string().required(),
   quantity: yup.string().required(),
   unit: yup.string().required(),
-  cost: yup.string().required(),
+  price: yup.string().required(),
   elementType: yup.string().required(),
 });
 
-export const Details = () => {
+interface DetailsProps {
+  elementos: elementData[];
+  purchase: PurchaseData;
+  setElementos: (data: elementData[]) => void;
+  setPurchase: (data: PurchaseData) => void;
+}
+
+export const Details = ({
+  elementos,
+  purchase,
+  setElementos,
+  setPurchase,
+}: DetailsProps) => {
+  const context = new AudioContext();
+
+  function jsNota(frecuencia: number) {
+    const o = context.createOscillator();
+    const g = context.createGain();
+    o.connect(g);
+    o.type = "sawtooth";
+    o.frequency.value = frecuencia;
+    g.connect(context.destination);
+    o.start(0);
+    g.gain.exponentialRampToValueAtTime(0.00001, context.currentTime + 1.5);
+  }
+
   const {
     formState: { errors },
     register,
@@ -24,8 +53,27 @@ export const Details = () => {
     resolver: yupResolver(DetailInfoSchema),
   });
 
-  const sender = () => {
-    console.log();
+  const sender = (info: elementData) => {
+    const element = elementos.filter((item) => item.element === info.element);
+    element.length
+      ? jsNota(207.652)
+      : setElementos([
+          ...elementos,
+          {
+            ...info,
+          },
+        ]);
+    element.length
+      ? jsNota(207.652)
+      : setPurchase({
+          ...purchase,
+          purchaseDetails: [
+            ...elementos,
+            {
+              ...info,
+            },
+          ],
+        });
   };
 
   return (

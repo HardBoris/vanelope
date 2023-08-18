@@ -5,7 +5,7 @@ import "./PurchaseInfo.css";
 import { Formulario } from "../../../../components/Form";
 import { BGInput } from "../../../../components/BG Input";
 import { Button } from "../../../../components/Button";
-import { Purchase } from "../../../../context/PurchaseContext";
+import { Purchase, PurchaseData } from "../../../../context/PurchaseContext";
 
 const PurchaseInfoSchema = yup.object().shape({
   purchaseDate: yup.string().required(),
@@ -18,7 +18,7 @@ const PurchaseInfoSchema = yup.object().shape({
 });
 
 interface PurchaseInfoProps {
-  setThisPurchase: (data: Purchase) => void;
+  setThisPurchase: (data: PurchaseData) => void;
   setShow: (arg: number) => void;
 }
 
@@ -32,11 +32,11 @@ export const PurchaseInfo = ({
     formState: { errors },
     register,
     handleSubmit,
-  } = useForm<Purchase>({
+  } = useForm<PurchaseData>({
     resolver: yupResolver(PurchaseInfoSchema),
   });
 
-  const sender = (data: Purchase) => {
+  const sender = (data: PurchaseData) => {
     setThisPurchase(data);
     setShow(1);
   };
@@ -49,7 +49,7 @@ export const PurchaseInfo = ({
             <BGInput
               register={register}
               name="supplierName"
-              error={errors.supplier?.message}
+              error={errors.supplierCNPJ?.message}
               label="Fornecedor"
               placeholder="Nome Fantasia"
             />
@@ -58,7 +58,7 @@ export const PurchaseInfo = ({
             <BGInput
               register={register}
               name="supplierCNPJ"
-              error={errors.supplier?.message}
+              error={errors.supplierCNPJ?.message}
               label="CNPJ"
               placeholder="CNPJ só números"
             />
