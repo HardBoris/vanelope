@@ -1,9 +1,15 @@
 .wrapper-dt {
   width: 90%;
+  height: 500px;
 }
 
 .input-wrapper-dt {
   width: 90%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .input-individual-dt {
@@ -39,7 +45,7 @@ input {
 @media (min-width: 426px) {
   .wrapper-dt {
     width: 90%;
-    height: 90%;
+    height: 350px;
   }
 
   .input-wrapper-dt {
@@ -70,6 +76,6 @@ input {
 @media (min-width: 769px) {
   .wrapper-dt {
     width: 70%;
-    height: 90%;
+    /* height: 90%; */
   }
 }

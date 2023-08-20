@@ -75,13 +75,13 @@
 }
 
 @media (min-width: 769px) {
-  aside {
+  .purchase_body aside {
     display: block;
     width: 30%;
     height: 84vh;
   }
 
-  section {
+  .purchase_body section {
     width: 70%;
     height: 100%;
     display: flex;

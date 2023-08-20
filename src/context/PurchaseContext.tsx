@@ -27,7 +27,7 @@ export interface PurchaseDetail {
 
 export interface Purchase {
   purchaseId?: string;
-  purchaseDate?: string;
+  purchaseDate: string;
   invoice?: string;
   deliveryDate?: string;
   logisticMode: string;
@@ -62,8 +62,8 @@ interface PurchaseContextData {
   ingredient: {};
   purchaseDetails: PurchaseDetail[];
   thisPurchase: Purchase;
-  Shopping: () => void;
-  shoppingList: (purchaseId: string) => void;
+  ShoppingList: () => void;
+  Shopping: (purchaseId: string) => void;
   Buy: (data: PurchaseData) => void;
   itemBuy: (data: elementData, purchaseId: string) => Promise<void>;
   eliminaCompra: (id: string) => void;
@@ -84,7 +84,7 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
   const [purchaseDetails, setPurchaseDetails] = useState<PurchaseDetail[]>([]);
   const [ingredient, setIngredient] = useState({});
 
-  const Shopping = async () => {
+  const ShoppingList = async () => {
     await api
       .get(`/${company}/purchases`, {
         headers: {
@@ -99,7 +99,7 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
       });
   };
 
-  const shoppingList = async (purchaseId: string) => {
+  const Shopping = async (purchaseId: string) => {
     await api
       .get(`/${company}/purchases/${purchaseId}`, {
         headers: {
@@ -155,7 +155,7 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
       })
       .then((response) => {
         setIngredient(response.data);
-        shoppingList(response.data.purchase);
+        Shopping(response.data.purchase);
         console.log(response.data);
       })
       .catch((error) => console.log(error));
@@ -179,7 +179,7 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
         ingredient,
         purchaseDetails,
         thisPurchase,
-        shoppingList,
+        ShoppingList,
         Shopping,
         Buy,
         itemBuy,
