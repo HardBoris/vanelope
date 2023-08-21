@@ -10,6 +10,7 @@ import {
 import "./NewPurchase.style.css";
 import { Details } from "./Details";
 import { DetailsList } from "./DetailsList";
+import Modal from "../../../components/Modal";
 
 export const NewPurchase = () => {
   const { Buy } = usePurchase();
@@ -18,8 +19,13 @@ export const NewPurchase = () => {
   );
   const [show, setShow] = useState(0);
   const [elementos, setElementos] = useState<elementData[]>([]);
+  const [isPrint, setIsPrint] = useState(false);
 
   console.log(thisPurchase, show, elementos);
+
+  const handlePrint = () => {
+    setIsPrint(!isPrint);
+  };
 
   const activate = (n: number) => {
     setShow(n);
@@ -32,6 +38,7 @@ export const NewPurchase = () => {
 
   const guardar = () => {
     Buy(thisPurchase);
+    handlePrint();
   };
 
   return (
@@ -74,6 +81,9 @@ export const NewPurchase = () => {
           />
         </div>
       </section>
+      <Modal isOpen={isPrint} setIsOpen={handlePrint}>
+        <div className="envoltura">Modal</div>
+      </Modal>
     </>
   );
 };

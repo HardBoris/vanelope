@@ -67,7 +67,7 @@ export const Details = ({
       ? jsNota(207.652)
       : setPurchase({
           ...purchase,
-          purchaseDetails: [
+          details: [
             ...elementos,
             {
               ...info,

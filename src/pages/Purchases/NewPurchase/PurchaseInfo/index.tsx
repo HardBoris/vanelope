@@ -5,12 +5,12 @@ import "./PurchaseInfo.css";
 import { Formulario } from "../../../../components/Form";
 import { BGInput } from "../../../../components/BG Input";
 import { Button } from "../../../../components/Button";
-import { Purchase, PurchaseData } from "../../../../context/PurchaseContext";
+import { PurchaseData } from "../../../../context/PurchaseContext";
 
 const PurchaseInfoSchema = yup.object().shape({
   purchaseDate: yup.string().required(),
-  supplierName: yup.string().required(),
-  supplierCNPJ: yup.string().required(),
+  fantasyName: yup.string().required(),
+  CNPJ: yup.string().required(),
   paymentForm: yup.string().required(),
   paymentInstallments: yup.string().required(),
   logisticMode: yup.string().required(),
@@ -48,8 +48,8 @@ export const PurchaseInfo = ({
           <div className="input-purchase supplier">
             <BGInput
               register={register}
-              name="supplierName"
-              error={errors.supplierCNPJ?.message}
+              name="fantasyName"
+              error={errors.fantasyName?.message}
               label="Fornecedor"
               placeholder="Nome Fantasia"
             />
@@ -57,8 +57,8 @@ export const PurchaseInfo = ({
           <div className="input-purchase cnpj">
             <BGInput
               register={register}
-              name="supplierCNPJ"
-              error={errors.supplierCNPJ?.message}
+              name="CNPJ"
+              error={errors.CNPJ?.message}
               label="CNPJ"
               placeholder="CNPJ só números"
             />

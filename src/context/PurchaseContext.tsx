@@ -9,7 +9,7 @@ import { localApi as api } from "../services/api";
 import { useAuth } from "./UserContext";
 import { useNavigate } from "react-router-dom";
 import { useCompany } from "./CompanyContext";
-import { Supplier } from "./SupplierContext";
+import { Partner } from "./PartnerContext";
 
 interface PurchaseProviderProps {
   children: ReactNode;
@@ -34,19 +34,20 @@ export interface Purchase {
   paymentForm: string;
   paymentInstallments: string;
   purchaseStatus: string;
-  supplier: Supplier;
-  purchaseDetails: PurchaseDetail[];
+  partner: Partner;
+  details: PurchaseDetail[];
   purchaseTotal: number;
 }
 
 export interface PurchaseData {
   purchaseDate: string;
-  supplierCNPJ: string;
+  fantasyName: string;
+  CNPJ: string;
   logisticMode: string;
   paymentForm: string;
   paymentInstallments: string;
   deliveryDate?: string;
-  purchaseDetails?: PurchaseDetail[];
+  details?: PurchaseDetail[];
 }
 
 export interface elementData {
@@ -114,7 +115,7 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
 
   const Buy = ({
     purchaseDate,
-    supplierCNPJ,
+    CNPJ,
     logisticMode,
     paymentForm,
     paymentInstallments,
@@ -125,7 +126,7 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
         `/${company}/purchases/register`,
         {
           purchaseDate,
-          supplierCNPJ,
+          CNPJ,
           logisticMode,
           paymentForm,
           paymentInstallments,
@@ -148,7 +149,7 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
 
   const itemBuy = async (data: elementData, purchaseId: string) => {
     await api
-      .post(`/${company}/purchases/${purchaseId}`, data, {
+      .post(`/${company}/details`, data, {
         headers: {
           authorization: `Bearer ${token}`,
         },

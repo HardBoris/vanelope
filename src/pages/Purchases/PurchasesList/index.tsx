@@ -27,6 +27,8 @@ export const PurchasesList = () => {
     ShoppingList();
   }, [isAdd, isDelete, isEdit, isPrint]);
 
+  console.log(purchases);
+
   /* const deliverer = (data: Requisicion) => {
     RequestEditor(data);
   }; */

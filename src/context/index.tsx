@@ -5,7 +5,7 @@ import { PurchaseProvider } from "./PurchaseContext";
 import { RequisitionProvider } from "./RequisitionContext";
 import { EntryProvider } from "./EntryContext";
 import { MoveProvider } from "./MoveContext";
-import { SupplierProvider } from "./SupplierContext";
+import { PartnerProvider } from "./PartnerContext";
 
 interface AppProviderProps {
   children: ReactNode;
@@ -14,7 +14,7 @@ interface AppProviderProps {
 export const AppProvider = ({ children }: AppProviderProps) => (
   <CompanyProvider>
     <UserProvider>
-      <SupplierProvider>
+      <PartnerProvider>
         <PurchaseProvider>
           <RequisitionProvider>
             <EntryProvider>
@@ -22,7 +22,7 @@ export const AppProvider = ({ children }: AppProviderProps) => (
             </EntryProvider>
           </RequisitionProvider>
         </PurchaseProvider>
-      </SupplierProvider>
+      </PartnerProvider>
     </UserProvider>
   </CompanyProvider>
 );
