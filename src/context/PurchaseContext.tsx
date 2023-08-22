@@ -22,7 +22,7 @@ export interface PurchaseDetail {
   elementType: string;
   quantity: number;
   unit: string;
-  price: number;
+  cost: number;
 }
 
 export interface Purchase {
@@ -54,7 +54,7 @@ export interface elementData {
   element: string;
   quantity: number;
   unit: string;
-  price: number;
+  cost: number;
   elementType: string;
 }
 
@@ -113,31 +113,13 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
       .catch((error) => console.log(error));
   };
 
-  const Buy = ({
-    purchaseDate,
-    CNPJ,
-    logisticMode,
-    paymentForm,
-    paymentInstallments,
-    deliveryDate,
-  }: PurchaseData) => {
+  const Buy = (data: PurchaseData) => {
     api
-      .post(
-        `/${company}/purchases/register`,
-        {
-          purchaseDate,
-          CNPJ,
-          logisticMode,
-          paymentForm,
-          paymentInstallments,
-          deliveryDate,
+      .post(`/${company}/purchases/register`, data, {
+        headers: {
+          authorization: `Bearer ${token}`,
         },
-        {
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
-        }
-      )
+      })
       .then((response) => {
         /* navigate(
           `/${miCompania.companyId}/purchases/${response.data.purchaseId}`

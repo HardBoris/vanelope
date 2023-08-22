@@ -10,12 +10,14 @@ import {
   elementData,
 } from "../../../../context/PurchaseContext";
 import "./Details.css";
+import { useDetail } from "../../../../context/DetailContext";
+import { useEffect } from "react";
 
 const DetailInfoSchema = yup.object().shape({
   element: yup.string().required(),
   quantity: yup.string().required(),
   unit: yup.string().required(),
-  price: yup.string().required(),
+  cost: yup.string().required(),
   elementType: yup.string().required(),
 });
 
@@ -32,7 +34,14 @@ export const Details = ({
   setElementos,
   setPurchase,
 }: DetailsProps) => {
+  const { details, DetailsList } = useDetail();
   const context = new AudioContext();
+
+  useEffect(() => {
+    DetailsList();
+  }, []);
+
+  console.log(details);
 
   function jsNota(frecuencia: number) {
     const o = context.createOscillator();
@@ -54,8 +63,9 @@ export const Details = ({
   });
 
   const sender = (info: elementData) => {
-    const element = elementos.filter((item) => item.element === info.element);
-    element.length
+    const { element, elementType } = info;
+    const material = elementos.filter((item) => item.element === info.element);
+    material.length
       ? jsNota(207.652)
       : setElementos([
           ...elementos,
@@ -63,7 +73,7 @@ export const Details = ({
             ...info,
           },
         ]);
-    element.length
+    material.length
       ? jsNota(207.652)
       : setPurchase({
           ...purchase,
@@ -120,8 +130,8 @@ export const Details = ({
             <div className="input-individual-dt price">
               <BGInput
                 register={register}
-                name="price"
-                error={errors.price?.message}
+                name="cost"
+                error={errors.cost?.message}
                 label="Custo"
                 placeholder="Custo Total"
               />
