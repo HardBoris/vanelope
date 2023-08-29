@@ -40,31 +40,31 @@ export const Navigator = () => {
       {company && (
         <>
           <div className="navigator">
-            <Link to={`/${company}`} onClick={() => {}}>
+            <Link to={`/${company.companyId}`} onClick={() => {}}>
               {/* <span>Dashboard</span> */}
               <AiFillDashboard />
             </Link>
           </div>
           <div className="navigator">
-            <Link to={`/${company}/purchases`} onClick={() => {}}>
+            <Link to={`/${company.companyId}/purchases`} onClick={() => {}}>
               {/* <span>Compras</span> */}
               <FaShoppingCart />
             </Link>
           </div>
           <div className="navigator">
-            <Link to={`/${company}/entries`} onClick={() => {}}>
+            <Link to={`/${company.companyId}/entries`} onClick={() => {}}>
               {/* <span>Compras</span> */}
               <GiOpenTreasureChest />
             </Link>
           </div>
           <div className="navigator">
-            <Link to={`/${company}/movements`} onClick={() => {}}>
+            <Link to={`/${company.companyId}/movements`} onClick={() => {}}>
               {/* <span>Movimientos</span> */}
               <MdViewList />
             </Link>
           </div>
           <div className="navigator">
-            <Link to={`/${company}/requisitions`} onClick={() => {}}>
+            <Link to={`/${company.companyId}/requisitions`} onClick={() => {}}>
               {/* <span>Compras</span> */}
               <MdRequestPage />
             </Link>

@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 // import { toast } from "react-toastify";
 
 import { localApi as api } from "../services/api";
+import { Company } from "./CompanyContext";
 // import { api } from "../services/api";
 
 interface UserProviderProps {
@@ -24,7 +25,7 @@ export interface User {
 interface AuthState {
   token: string;
   user: User;
-  company: string;
+  company: Company;
 }
 
 interface SignInCredentials {
@@ -36,7 +37,7 @@ interface SignInCredentials {
 interface UserContextData {
   user: User;
   token: string;
-  company: string;
+  company: Company;
   usersArray: User[];
   signIn: (credentials: SignInCredentials) => Promise<void>;
   signOut: () => void;
@@ -71,7 +72,7 @@ const UserProvider = ({ children }: UserProviderProps) => {
     const company = localStorage.getItem("@Aventura:company");
 
     if (token && user && company) {
-      return { token, user: JSON.parse(user), company };
+      return { token, user: JSON.parse(user), company: JSON.parse(company) };
     }
 
     return {} as AuthState;
@@ -98,9 +99,10 @@ const UserProvider = ({ children }: UserProviderProps) => {
         const { user, token, company } = response.data;
         localStorage.setItem("@Aventura:token", token);
         localStorage.setItem("@Aventura:user", JSON.stringify(user));
-        localStorage.setItem("@Aventura:company", company);
+        localStorage.setItem("@Aventura:company", JSON.stringify(company));
+        console.log(company);
         setData({ user, token, company });
-        history(`/${company}`);
+        history(`/${company.companyId}`);
         /* toast.update(aviso, {
           render: "Bem-Vindo a Oikos!",
           type: "success",

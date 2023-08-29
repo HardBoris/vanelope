@@ -93,7 +93,7 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
 
   const ShoppingList = async () => {
     await api
-      .get(`/${company}/purchases`, {
+      .get(`/${company.companyId}/purchases`, {
         headers: {
           authorization: `Bearer ${token}`,
         },
@@ -108,7 +108,7 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
 
   const Shopping = async (purchaseId: string) => {
     await api
-      .get(`/${company}/purchases/${purchaseId}`, {
+      .get(`/${company.companyId}/purchases/${purchaseId}`, {
         headers: {
           authorization: `Bearer ${token}`,
         },
@@ -121,7 +121,7 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
 
   const Buy = (data: PurchaseData) => {
     api
-      .post(`/${company}/purchases/register`, data, {
+      .post(`/${company.companyId}/purchases/register`, data, {
         headers: {
           authorization: `Bearer ${token}`,
         },
@@ -137,7 +137,7 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
 
   const itemBuy = async (data: elementData, purchaseId: string) => {
     await api
-      .post(`/${company}/details`, data, {
+      .post(`/${company.companyId}/details`, data, {
         headers: {
           authorization: `Bearer ${token}`,
         },
@@ -152,7 +152,7 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
 
   const eliminaCompra = async (id: string) => {
     await api
-      .delete(`/${company}/purchases/${id}`, {
+      .delete(`/${company.companyId}/purchases/${id}`, {
         headers: {
           authorization: `Bearer ${token}`,
         },

@@ -16,7 +16,7 @@ interface CompanyProviderProps {
   children: ReactNode;
 }
 
-interface Company {
+export interface Company {
   companyId: string;
   companyName: string;
   companyEmail: string;
