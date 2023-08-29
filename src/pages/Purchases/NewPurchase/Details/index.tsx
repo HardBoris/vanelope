@@ -12,6 +12,14 @@ import {
 import "./Details.css";
 import { useDetail } from "../../../../context/DetailContext";
 import { useEffect } from "react";
+import {
+  Midia,
+  Stuff,
+  Tool,
+  useElement,
+} from "../../../../context/ElementContext";
+import { useAuth } from "../../../../context/UserContext";
+import { useCompany } from "../../../../context/CompanyContext";
 
 const DetailInfoSchema = yup.object().shape({
   element: yup.string().required(),
@@ -34,14 +42,20 @@ export const Details = ({
   setElementos,
   setPurchase,
 }: DetailsProps) => {
-  const { details, DetailsList } = useDetail();
+  const { company } = useAuth();
+  const { miCompania, myCompany } = useCompany();
+  const { stuffs, midias, tools, StuffsList, MidiasList, ToolsList } =
+    useElement();
   const context = new AudioContext();
 
   useEffect(() => {
-    DetailsList();
+    MidiasList();
+    StuffsList();
+    ToolsList();
+    myCompany();
   }, []);
 
-  console.log(details);
+  // console.log(details);
 
   function jsNota(frecuencia: number) {
     const o = context.createOscillator();
@@ -64,7 +78,25 @@ export const Details = ({
 
   const sender = (info: elementData) => {
     const { element, elementType } = info;
-    const material = elementos.filter((item) => item.element === info.element);
+
+    let midia: Midia = {} as Midia;
+    let stuff: Stuff = {} as Stuff;
+    let tool: Tool = {} as Tool;
+
+    if (elementType === "midia") {
+      midia = midias.filter((item) => item.midiaName === element)[0];
+    } else if (elementType === "material") {
+      stuff = stuffs.filter((item) => item.stuff === element)[0];
+    } else if (elementType === "ferramenta") {
+      tool = tools.filter((item) => item.tool === element)[0];
+    }
+
+    console.log(midia);
+    console.log(stuffs, stuff.stuffId);
+    console.log(tool);
+
+    const material = elementos.filter((item) => item.element === element);
+
     material.length
       ? jsNota(207.652)
       : setElementos([
@@ -81,6 +113,10 @@ export const Details = ({
             ...elementos,
             {
               ...info,
+              midia: midia.midiaId,
+              stuff: stuff.stuffId,
+              tool: tool.toolId,
+              company: miCompania.code,
             },
           ],
         });

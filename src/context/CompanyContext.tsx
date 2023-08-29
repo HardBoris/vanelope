@@ -94,7 +94,7 @@ const CompanyProvider = ({ children }: CompanyProviderProps) => {
 
   const myCompany = async () => {
     await api
-      .get("/companies/:code", {
+      .get("/companies/:companyId", {
         headers: {
           authorization: `Bearer ${token}`,
         },

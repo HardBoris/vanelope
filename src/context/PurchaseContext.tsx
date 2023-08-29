@@ -10,6 +10,7 @@ import { useAuth } from "./UserContext";
 import { useNavigate } from "react-router-dom";
 import { useCompany } from "./CompanyContext";
 import { Partner } from "./PartnerContext";
+import { Midia, MyElement, Stuff, Tool } from "./ElementContext";
 
 interface PurchaseProviderProps {
   children: ReactNode;
@@ -23,6 +24,10 @@ export interface PurchaseDetail {
   quantity: number;
   unit: string;
   cost: number;
+  midia?: string;
+  stuff?: string;
+  tool?: string;
+  company: string;
 }
 
 export interface Purchase {
@@ -56,6 +61,7 @@ export interface elementData {
   unit: string;
   cost: number;
   elementType: string;
+  company: string;
 }
 
 interface PurchaseContextData {
