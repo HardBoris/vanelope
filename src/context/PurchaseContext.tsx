@@ -52,7 +52,7 @@ export interface PurchaseData {
   paymentForm: string;
   paymentInstallments: string;
   deliveryDate?: string;
-  details?: PurchaseDetail[];
+  details: PurchaseDetail[];
 }
 
 export interface elementData {
@@ -99,7 +99,7 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
         },
       })
       .then((response) => {
-        setPurchases(response.data.reverse());
+        setPurchases(response.data);
       })
       .catch((error) => {
         console.log(error);

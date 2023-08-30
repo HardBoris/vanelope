@@ -10,7 +10,6 @@ import {
   elementData,
 } from "../../../../context/PurchaseContext";
 import "./Details.css";
-import { useDetail } from "../../../../context/DetailContext";
 import { useEffect } from "react";
 import {
   Midia,
@@ -19,7 +18,6 @@ import {
   useElement,
 } from "../../../../context/ElementContext";
 import { useAuth } from "../../../../context/UserContext";
-import { useCompany } from "../../../../context/CompanyContext";
 
 const DetailInfoSchema = yup.object().shape({
   element: yup.string().required(),
@@ -30,7 +28,7 @@ const DetailInfoSchema = yup.object().shape({
 });
 
 interface DetailsProps {
-  elementos: elementData[];
+  elementos: PurchaseDetail[];
   purchase: PurchaseData;
   setElementos: (data: elementData[]) => void;
   setPurchase: (data: PurchaseData) => void;
@@ -43,19 +41,27 @@ export const Details = ({
   setPurchase,
 }: DetailsProps) => {
   const { company } = useAuth();
-  const { miCompania, myCompany } = useCompany();
-  const { stuffs, midias, tools, StuffsList, MidiasList, ToolsList } =
-    useElement();
+  const {
+    midias,
+    midia,
+    stuffs,
+    stuff,
+    tools,
+    tool,
+    StuffsList,
+    MidiasList,
+    ToolsList,
+    MidiaCreator,
+    StuffCreator,
+    ToolCreator,
+  } = useElement();
   const context = new AudioContext();
 
   useEffect(() => {
     MidiasList();
     StuffsList();
     ToolsList();
-    myCompany();
-  }, []);
-
-  // console.log(details);
+  }, [midia, stuff, tool]);
 
   function jsNota(frecuencia: number) {
     const o = context.createOscillator();
@@ -79,21 +85,29 @@ export const Details = ({
   const sender = (info: elementData) => {
     const { element, elementType } = info;
 
-    let midia: Midia = {} as Midia;
-    let stuff: Stuff = {} as Stuff;
-    let tool: Tool = {} as Tool;
+    let thisMidia: Midia = {} as Midia;
+    let thisStuff: Stuff = {} as Stuff;
+    let thisTool: Tool = {} as Tool;
 
     if (elementType === "midia") {
-      midia = midias.filter((item) => item.midiaName === element)[0];
+      thisMidia = midias.filter((item) => item.midiaName === element)[0];
+      if (!thisMidia) {
+        MidiaCreator({ midiaName: element });
+        thisMidia = midia;
+      }
     } else if (elementType === "material") {
-      stuff = stuffs.filter((item) => item.stuff === element)[0];
+      thisStuff = stuffs.filter((item) => item.stuff === element)[0];
+      if (!thisStuff) {
+        StuffCreator({ stuff: element });
+        thisStuff = stuff;
+      }
     } else if (elementType === "ferramenta") {
-      tool = tools.filter((item) => item.tool === element)[0];
+      thisTool = tools.filter((item) => item.tool === element)[0];
+      if (!thisTool) {
+        ToolCreator({ tool: element });
+        thisTool = tool;
+      }
     }
-
-    console.log(midia);
-    console.log(stuffs, stuff.stuffId);
-    console.log(tool);
 
     const material = elementos.filter((item) => item.element === element);
 
@@ -103,6 +117,10 @@ export const Details = ({
           ...elementos,
           {
             ...info,
+            company: company.code,
+            midia: thisMidia.midiaId,
+            stuff: thisStuff.stuffId,
+            tool: thisTool.toolId,
           },
         ]);
     material.length
@@ -113,10 +131,10 @@ export const Details = ({
             ...elementos,
             {
               ...info,
-              midia: midia.midiaId,
-              stuff: stuff.stuffId,
-              tool: tool.toolId,
-              company: miCompania.code,
+              company: company.code,
+              midia: thisMidia.midiaId,
+              stuff: thisStuff.stuffId,
+              tool: thisTool.toolId,
             },
           ],
         });

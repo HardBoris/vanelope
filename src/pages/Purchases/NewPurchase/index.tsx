@@ -1,9 +1,7 @@
 import { useState } from "react";
 import { PurchaseInfo } from "./PurchaseInfo";
 import {
-  Purchase,
   PurchaseData,
-  PurchaseDetail,
   elementData,
   usePurchase,
 } from "../../../context/PurchaseContext";
@@ -20,8 +18,6 @@ export const NewPurchase = () => {
   const [show, setShow] = useState(0);
   const [elementos, setElementos] = useState<elementData[]>([]);
   const [isPrint, setIsPrint] = useState(false);
-
-  console.log(thisPurchase, show, elementos);
 
   const handlePrint = () => {
     setIsPrint(!isPrint);

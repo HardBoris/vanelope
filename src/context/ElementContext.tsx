@@ -42,11 +42,11 @@ export interface Tool {
 }
 
 interface ElementContextData {
-  midia: MyElement;
+  midia: Midia;
   midias: Midia[];
-  stuff: MyElement;
+  stuff: Stuff;
   stuffs: Stuff[];
-  tool: MyElement;
+  tool: Tool;
   tools: Tool[];
   MidiasList: () => void;
   StuffsList: () => void;
@@ -65,15 +65,15 @@ const useElement = () => useContext(ElementContext);
 const ElementProvider = ({ children }: ElementProviderProps) => {
   const { company, token } = useAuth();
   const [midias, setMidias] = useState<Midia[]>([]);
-  const [midia, setMidia] = useState<MyElement>({} as MyElement);
+  const [midia, setMidia] = useState<Midia>({} as Midia);
   const [stuffs, setStuffs] = useState<Stuff[]>([]);
-  const [stuff, setStuff] = useState<MyElement>({} as MyElement);
+  const [stuff, setStuff] = useState<Stuff>({} as Stuff);
   const [tools, setTools] = useState<Tool[]>([]);
-  const [tool, setTool] = useState<MyElement>({} as MyElement);
+  const [tool, setTool] = useState<Tool>({} as Tool);
 
   const StuffsList = async () => {
     await api
-      .get(`/${company}/stuffs`, {
+      .get(`/${company.companyId}/stuffs`, {
         headers: { authorization: `Bearer ${token}` },
       })
       .then((response) => setStuffs(response.data))
@@ -82,7 +82,7 @@ const ElementProvider = ({ children }: ElementProviderProps) => {
 
   const ToolsList = async () => {
     await api
-      .get(`/${company}/tools`, {
+      .get(`/${company.companyId}/tools`, {
         headers: { authorization: `Bearer ${token}` },
       })
       .then((response) => setTools(response.data))
@@ -91,7 +91,7 @@ const ElementProvider = ({ children }: ElementProviderProps) => {
 
   const MidiasList = async () => {
     await api
-      .get(`/${company}/midias`, {
+      .get(`/${company.companyId}/midias`, {
         headers: { authorization: `Bearer ${token}` },
       })
       .then((response) => setMidias(response.data))
@@ -100,21 +100,27 @@ const ElementProvider = ({ children }: ElementProviderProps) => {
 
   const MidiaCreator = async (data: Midia) => {
     await api
-      .post(`/${company}/midias`, data)
+      .post(`/${company.companyId}/midias/register`, data, {
+        headers: { authorization: `Bearer ${token}` },
+      })
       .then((response) => setMidia(response.data))
       .catch((error) => console.log(error));
   };
 
   const StuffCreator = async (data: Stuff) => {
     await api
-      .post(`/${company}/stuffs`, data)
+      .post(`/${company.companyId}/stuffs/register`, data, {
+        headers: { authorization: `Bearer ${token}` },
+      })
       .then((response) => setStuff(response.data))
       .catch((error) => console.log(error));
   };
 
   const ToolCreator = async (data: Tool) => {
     await api
-      .post(`/${company}/tools`, data)
+      .post(`/${company.companyId}/tools/register`, data, {
+        headers: { authorization: `Bearer ${token}` },
+      })
       .then((response) => setTool(response.data))
       .catch((error) => console.log(error));
   };
