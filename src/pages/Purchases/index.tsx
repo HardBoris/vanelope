@@ -16,29 +16,31 @@ export const Purchases = () => {
       <div className="purchase">
         <div className="purchase_header">
           <Link
-            to={`/${company}/purchases`}
+            to={`/${company.companyId}/purchases`}
             className={
-              location.pathname === `/${company}/purchases`
+              location.pathname === `/${company.companyId}/purchases`
                 ? "tab activated"
                 : "tab"
             }
           >
             Compras
           </Link>
-          {/* <Link
-            to={`/${company}/purchases/supplierinfo`}
+          <Link
+            to={`/${company.companyId}/purchases/purchaserequisition`}
             className={
-              location.pathname === `/${company}/purchases/supplierinfo`
+              location.pathname ===
+              `/${company.companyId}/purchases/purchaserequisition`
                 ? "tab activated"
                 : "tab"
             }
           >
-            Informações do Fornecedor
-          </Link> */}
+            Solicitação de Compra
+          </Link>
           <Link
-            to={`/${company}/purchases/newpurchase`}
+            to={`/${company.companyId}/purchases/newpurchase`}
             className={
-              location.pathname === `/${company}/purchases/newpurchase`
+              location.pathname ===
+              `/${company.companyId}/purchases/newpurchase`
                 ? "tab activated"
                 : "tab"
             }

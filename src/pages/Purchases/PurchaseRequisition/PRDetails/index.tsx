@@ -9,8 +9,8 @@ import {
   PurchaseDetail,
   elementData,
 } from "../../../../context/PurchaseContext";
-import "./Details.css";
-import { useEffect, useMemo } from "react";
+import "./PRDetails.css";
+// import { useEffect } from "react";
 import {
   Midia,
   Stuff,
@@ -34,7 +34,7 @@ interface DetailsProps {
   setPurchase: (data: PurchaseData) => void;
 }
 
-export const Details = ({
+export const PRDetails = ({
   elementos,
   purchase,
   setElementos,
@@ -43,25 +43,22 @@ export const Details = ({
   const { company } = useAuth();
   const {
     midias,
-    midia,
+    // midia,
     stuffs,
-    stuff,
+    // stuff,
     tools,
-    tool,
-    StuffsList,
-    MidiasList,
-    ToolsList,
-    MidiaCreator,
-    StuffCreator,
-    ToolCreator,
+    // tool,
+    // StuffsList,
+    // MidiasList,
+    // ToolsList,
   } = useElement();
   const context = new AudioContext();
 
-  useEffect(() => {
+  /* useEffect(() => {
     MidiasList();
     StuffsList();
     ToolsList();
-  }, [midia, stuff, tool]);
+  }, [midia, stuff, tool]); */
 
   function jsNota(frecuencia: number) {
     const o = context.createOscillator();
