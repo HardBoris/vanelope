@@ -39,7 +39,7 @@ export const PurchaseRequisition = () => {
 
   return (
     <>
-      <aside>
+      {/* <aside>
         <h3>Solicitação de Compra</h3>
         <div className={show === 0 ? "lateral-tab active" : "lateral-tab"}>
           <div className="sider" role="button" onClick={() => activate(0)}>
@@ -51,18 +51,18 @@ export const PurchaseRequisition = () => {
             Lista de Materiais
           </div>
         </div>
-      </aside>
+      </aside> */}
       <section>
-        <div className={show !== 0 ? "invisible" : "purchase-info"}>
+        <div className="purchase-info">
           <PRInfo setThisPurchase={setThisPurchase} setShow={setShow} />
-        </div>
-        <div className={show !== 1 ? "invisible" : "purchase-detail"}>
-          <PRDetails
-            elementos={elementos}
-            setElementos={setElementos}
-            purchase={thisPurchase}
-            setPurchase={setThisPurchase}
-          />
+          {/* <div className="purchase-detail">
+            <PRDetails
+              elementos={elementos}
+              setElementos={setElementos}
+              purchase={thisPurchase}
+              setPurchase={setThisPurchase}
+            />
+          </div> */}
         </div>
         <div
           className={
