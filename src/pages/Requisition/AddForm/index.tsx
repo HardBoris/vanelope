@@ -38,7 +38,7 @@ export const AddForm = ({ handleAdd, requested }: MoveAddFormProps) => {
   //   const fecha = Fechador(requisicion.requestDate);
 
   return (
-    <Formulario onSubmit={handleSubmit(editado)}>
+    <Formulario clase="" onSubmit={handleSubmit(editado)}>
       <div className="modal-add-horizontal">
         <div className="modal-add-fields">
           <div className="add-element">

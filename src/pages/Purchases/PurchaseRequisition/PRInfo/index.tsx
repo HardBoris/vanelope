@@ -46,7 +46,7 @@ export const PRInfo = ({ setShow }: PurchaseInfoProps) => {
 
   return (
     <div className="form-wrapper-purchase">
-      <Formulario onSubmit={handleSubmit(sender)}>
+      <Formulario clase="prueba2" onSubmit={handleSubmit(sender)}>
         <div className="shoppinglist-wrapper">
           <div className="input-purchase date">
             <BGInput

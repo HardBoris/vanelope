@@ -35,7 +35,7 @@ export const EditForm = ({
   const fecha = Fechador(requisicion.requestDate);
 
   return (
-    <Formulario onSubmit={handleSubmit(editado)}>
+    <Formulario clase="" onSubmit={handleSubmit(editado)}>
       <div className="horizontal-fields">
         <div className="individual-field">
           <Modificado

@@ -140,7 +140,7 @@ export const PRDetails = ({
   return (
     <>
       <div className="wrapper-dt">
-        <Formulario onSubmit={handleSubmit(sender)}>
+        <Formulario clase="prueba1" onSubmit={handleSubmit(sender)}>
           <div className="input-wrapper-dt">
             <div className="input-individual-dt element">
               <BGInput

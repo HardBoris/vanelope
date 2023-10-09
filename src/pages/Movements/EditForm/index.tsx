@@ -29,7 +29,7 @@ export const MoveEditForm = ({ handleEditor, move }: MoveEditFormProps) => {
   // const fecha = Fechador(requisicion.requestDate);
 
   return (
-    <Formulario onSubmit={handleSubmit(editado)}>
+    <Formulario clase="" onSubmit={handleSubmit(editado)}>
       <div className="horizontal-fields">
         <div className="individual-field">
           <Modificado name="moveId" value={move.moveId} register={register} />

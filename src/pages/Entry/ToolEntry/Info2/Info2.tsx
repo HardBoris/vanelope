@@ -91,7 +91,7 @@ export const InfoToolEntry2 = ({
   return (
     <>
       <div className="wrapper">
-        <Formulario onSubmit={handleSubmit(sender)}>
+        <Formulario clase="" onSubmit={handleSubmit(sender)}>
           <div className="input-horizontal-wrapper">
             <div className="input-individual">
               <Modificado

@@ -52,7 +52,7 @@ export const PurchaseRequisition = () => {
           </div>
         </div>
       </aside> */}
-      <section>
+      <section className="spider">
         <div className="purchase-info">
           <PRInfo setThisPurchase={setThisPurchase} setShow={setShow} />
           {/* <div className="purchase-detail">

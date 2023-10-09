@@ -34,7 +34,7 @@ export const Info1 = ({ setToolRequest, setShow }: Info1Props) => {
 
   return (
     <div className="form-wrapper-tr1">
-      <Formulario onSubmit={handleSubmit(sender)}>
+      <Formulario clase="" onSubmit={handleSubmit(sender)}>
         <div className="input-wrapper-tr1">
           <div className="input-individual-tr1">
             <BGInput

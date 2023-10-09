@@ -37,7 +37,7 @@ export const Info1 = ({ setMaterialRequest, setShow }: Info1Props) => {
 
   return (
     <div className="form-wrapper-mr1">
-      <Formulario onSubmit={handleSubmit(sender)}>
+      <Formulario clase="" onSubmit={handleSubmit(sender)}>
         <div className="input-wrapper-mr1">
           <div className="input-individual-mr1">
             <BGInput

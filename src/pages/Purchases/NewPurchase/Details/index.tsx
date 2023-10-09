@@ -143,7 +143,7 @@ export const Details = ({
   return (
     <>
       <div className="wrapper-dt">
-        <Formulario onSubmit={handleSubmit(sender)}>
+        <Formulario clase="" onSubmit={handleSubmit(sender)}>
           <div className="input-wrapper-dt">
             <div className="input-individual-dt element">
               <BGInput

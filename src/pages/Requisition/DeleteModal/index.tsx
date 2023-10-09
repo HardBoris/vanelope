@@ -18,7 +18,7 @@ export const ReqDelModal = ({
     handleDeletor();
   };
   return (
-    <Formulario>
+    <Formulario clase="">
       <div className="modal-txt">
         <h4 className="cuidado">Cuidado!</h4>
         <p>Esta ação não pode ser desfeita!</p>

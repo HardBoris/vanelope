@@ -43,7 +43,7 @@ export const PurchaseInfo = ({
 
   return (
     <div className="form-wrapper-purchase">
-      <Formulario onSubmit={handleSubmit(sender)}>
+      <Formulario clase="" onSubmit={handleSubmit(sender)}>
         <div className="input-wrapper-purchase">
           <div className="input-purchase supplier">
             <BGInput

@@ -92,7 +92,7 @@ export const Info2 = ({
   return (
     <>
       <div className="wrapper-mr2">
-        <Formulario onSubmit={handleSubmit(sender)}>
+        <Formulario clase="" onSubmit={handleSubmit(sender)}>
           <div className="input-wrapper-mr2">
             <div className="input-individual-mr2">
               <BGInput

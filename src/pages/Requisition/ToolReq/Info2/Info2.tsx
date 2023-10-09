@@ -91,7 +91,7 @@ export const Info2 = ({
   return (
     <>
       <div className="wrapper-tr2">
-        <Formulario onSubmit={handleSubmit(sender)}>
+        <Formulario clase="" onSubmit={handleSubmit(sender)}>
           <div className="input-wrapper-tr2">
             <div className="input-individual-tr2">
               <Modificado
