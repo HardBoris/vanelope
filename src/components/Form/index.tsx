@@ -4,7 +4,7 @@ import "./form.style.css";
 interface FormularioProps {
   children: ReactNode;
   onSubmit?: () => void;
-  clase: string;
+  clase?: string;
 }
 
 export const Formulario = ({ children, clase, ...rest }: FormularioProps) => (

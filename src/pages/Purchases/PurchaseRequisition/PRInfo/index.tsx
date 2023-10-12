@@ -57,8 +57,8 @@ export const PRInfo = ({ setShow }: PurchaseInfoProps) => {
               defaultValue={new Date(ahora).toLocaleDateString()}
             />
           </div>
-        </div>
-        <div className="shoppinglist-wrapper">
+          {/*  </div>
+        <div className="shoppinglist-wrapper"> */}
           <PRDetails
             elementos={elementos}
             setElementos={setElementos}
