@@ -8,6 +8,7 @@ import { Button } from "../../../../components/Button";
 import { PurchaseData, elementData } from "../../../../context/PurchaseContext";
 import { PRDetails } from "../PRDetails";
 import { useState } from "react";
+import { ElementToBuy } from "../../../../context/ElementContext";
 
 const PurchaseInfoSchema = yup.object().shape({
   purchaseDate: yup.string().required(),
@@ -26,7 +27,7 @@ interface PurchaseInfoProps {
 
 export const PRInfo = ({ setShow }: PurchaseInfoProps) => {
   const ahora = Date.now();
-  const [elementos, setElementos] = useState<elementData[]>([]);
+  const [elementos, setElementos] = useState<ElementToBuy[]>([]);
   const [thisPurchase, setThisPurchase] = useState<PurchaseData>(
     {} as PurchaseData
   );
@@ -46,7 +47,7 @@ export const PRInfo = ({ setShow }: PurchaseInfoProps) => {
 
   return (
     <div className="form-wrapper-purchase">
-      <Formulario clase="prueba2" onSubmit={handleSubmit(sender)}>
+      <Formulario onSubmit={handleSubmit(sender)}>
         <div className="shoppinglist-wrapper">
           <div className="input-purchase date">
             <BGInput
@@ -62,8 +63,8 @@ export const PRInfo = ({ setShow }: PurchaseInfoProps) => {
           <PRDetails
             elementos={elementos}
             setElementos={setElementos}
-            purchase={thisPurchase}
-            setPurchase={setThisPurchase}
+            // purchase={thisPurchase}
+            // setPurchase={setThisPurchase}
           />
           {/* <div className="input-purchase paymentform">
             <BGInput

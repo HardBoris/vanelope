@@ -1,5 +1,4 @@
 import { ReactNode, createContext, useContext, useState } from "react";
-import { Purchase } from "./PurchaseContext";
 import { localApi as api } from "../services/api";
 import { useAuth } from "./UserContext";
 
@@ -9,7 +8,15 @@ interface ElementProviderProps {
 
 export interface MyElement {
   elementId?: string;
-  elementName?: string;
+  element?: string;
+}
+
+export interface ElementToBuy {
+  element: string;
+  elementType: string;
+  quantity: number;
+  defaultUnit: string;
+  company: string;
 }
 
 export interface Midia {
@@ -42,18 +49,10 @@ export interface Tool {
 }
 
 interface ElementContextData {
-  midia: Midia;
-  midias: Midia[];
-  stuff: Stuff;
-  stuffs: Stuff[];
-  tool: Tool;
-  tools: Tool[];
-  MidiasList: () => void;
-  StuffsList: () => void;
-  ToolsList: () => void;
-  MidiaCreator: (data: Midia) => void;
-  StuffCreator: (data: Stuff) => void;
-  ToolCreator: (data: Tool) => void;
+  element: MyElement;
+  stock: MyElement[];
+  ElementsList: () => void;
+  ElementCreator: (data: ElementToBuy) => void;
 }
 
 export const ElementContext = createContext<ElementContextData>(
@@ -64,82 +63,34 @@ const useElement = () => useContext(ElementContext);
 
 const ElementProvider = ({ children }: ElementProviderProps) => {
   const { company, token } = useAuth();
-  const [midias, setMidias] = useState<Midia[]>([]);
-  const [midia, setMidia] = useState<Midia>({} as Midia);
-  const [stuffs, setStuffs] = useState<Stuff[]>([]);
-  const [stuff, setStuff] = useState<Stuff>({} as Stuff);
-  const [tools, setTools] = useState<Tool[]>([]);
-  const [tool, setTool] = useState<Tool>({} as Tool);
+  const [stock, setStock] = useState<MyElement[]>([]);
+  const [element, setElement] = useState<MyElement>({});
 
-  const StuffsList = async () => {
+  const ElementsList = async () => {
     await api
-      .get(`/${company.companyId}/stuffs`, {
+      .get(`/${company.companyId}/elements`, {
         headers: { authorization: `Bearer ${token}` },
       })
-      .then((response) => setStuffs(response.data))
+      .then((response) => setStock(response.data))
       .catch((error) => console.log(error));
   };
 
-  const ToolsList = async () => {
+  const ElementCreator = async (data: ElementToBuy) => {
     await api
-      .get(`/${company.companyId}/tools`, {
+      .post(`/${company.companyId}/elements/register`, data, {
         headers: { authorization: `Bearer ${token}` },
       })
-      .then((response) => setTools(response.data))
-      .catch((error) => console.log(error));
-  };
-
-  const MidiasList = async () => {
-    await api
-      .get(`/${company.companyId}/midias`, {
-        headers: { authorization: `Bearer ${token}` },
-      })
-      .then((response) => setMidias(response.data))
-      .catch((error) => console.log(error));
-  };
-
-  const MidiaCreator = async (data: Midia) => {
-    await api
-      .post(`/${company.companyId}/midias/register`, data, {
-        headers: { authorization: `Bearer ${token}` },
-      })
-      .then((response) => setMidia(response.data))
-      .catch((error) => console.log(error));
-  };
-
-  const StuffCreator = async (data: Stuff) => {
-    await api
-      .post(`/${company.companyId}/stuffs/register`, data, {
-        headers: { authorization: `Bearer ${token}` },
-      })
-      .then((response) => setStuff(response.data))
-      .catch((error) => console.log(error));
-  };
-
-  const ToolCreator = async (data: Tool) => {
-    await api
-      .post(`/${company.companyId}/tools/register`, data, {
-        headers: { authorization: `Bearer ${token}` },
-      })
-      .then((response) => setTool(response.data))
+      .then((response) => setElement(response.data))
       .catch((error) => console.log(error));
   };
 
   return (
     <ElementContext.Provider
       value={{
-        stuff,
-        stuffs,
-        tool,
-        tools,
-        midia,
-        midias,
-        StuffsList,
-        ToolsList,
-        MidiasList,
-        MidiaCreator,
-        StuffCreator,
-        ToolCreator,
+        element,
+        stock,
+        ElementsList,
+        ElementCreator,
       }}
     >
       {children}

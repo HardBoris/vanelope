@@ -39,30 +39,9 @@ export const PurchaseRequisition = () => {
 
   return (
     <>
-      {/* <aside>
-        <h3>Solicitação de Compra</h3>
-        <div className={show === 0 ? "lateral-tab active" : "lateral-tab"}>
-          <div className="sider" role="button" onClick={() => activate(0)}>
-            Informações Gerais
-          </div>
-        </div>
-        <div className={show === 1 ? "lateral-tab active" : "lateral-tab"}>
-          <div className={"sider"} role="button">
-            Lista de Materiais
-          </div>
-        </div>
-      </aside> */}
-      <section className="spider">
+      <section>
         <div className="purchase-info">
           <PRInfo setThisPurchase={setThisPurchase} setShow={setShow} />
-          {/* <div className="purchase-detail">
-            <PRDetails
-              elementos={elementos}
-              setElementos={setElementos}
-              purchase={thisPurchase}
-              setPurchase={setThisPurchase}
-            />
-          </div> */}
         </div>
         <div
           className={

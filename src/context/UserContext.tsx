@@ -6,11 +6,9 @@ import {
   useState,
 } from "react";
 import { useNavigate } from "react-router-dom";
-// import { toast } from "react-toastify";
 
 import { localApi as api } from "../services/api";
 import { Company } from "./CompanyContext";
-// import { api } from "../services/api";
 
 interface UserProviderProps {
   children: ReactNode;
@@ -43,9 +41,6 @@ interface UserContextData {
   signOut: () => void;
   signUp: (info: SignInCredentials) => void;
   usersList: () => void;
-  // mensaje: string;
-  // email: string;
-  // status: number;
 }
 
 const UserContext = createContext<UserContextData>({} as UserContextData);
@@ -63,8 +58,6 @@ const useAuth = () => {
 const UserProvider = ({ children }: UserProviderProps) => {
   const history = useNavigate();
   const [usersArray, setUsersArray] = useState<User[]>([]);
-  // const [messageError, setMessageError] = useState("");
-  // const [status, setStatus] = useState(0);
 
   const [data, setData] = useState<AuthState>(() => {
     const token = localStorage.getItem("@Aventura:token");
@@ -80,7 +73,7 @@ const UserProvider = ({ children }: UserProviderProps) => {
 
   const usersList = async () => {
     await api
-      .get(`/${data.company}/users`, {
+      .get(`/${data.company.companyId}/users`, {
         headers: { authorization: `Bearer ${data.token}` },
       })
       .then((response) => setUsersArray(response.data))
@@ -125,7 +118,7 @@ const UserProvider = ({ children }: UserProviderProps) => {
     // const aviso = toast.loading("Por Favor espere...");
     await api
       .post(
-        `/${data.company}/users/register`,
+        `/${data.company.companyId}/users/register`,
         {
           name,
           password,
@@ -145,12 +138,6 @@ const UserProvider = ({ children }: UserProviderProps) => {
       .then(() => history("/login"))
       .catch((error) => {
         console.log(error);
-        /* toast.update(aviso, {
-          render: error.response.data.message,
-          type: "error",
-          isLoading: false,
-          autoClose: 3000,
-        }); */
       });
   };
 
@@ -173,9 +160,6 @@ const UserProvider = ({ children }: UserProviderProps) => {
         signOut,
         signUp,
         usersList,
-        // mensaje,
-        // email,
-        // status,
       }}
     >
       {children}

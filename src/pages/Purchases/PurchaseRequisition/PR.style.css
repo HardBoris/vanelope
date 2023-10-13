@@ -2,10 +2,6 @@
 .purchase-detail {
   width: 100%;
   height: 100%;
-  border: 2px solid blue;
-  /* display: flex;
-  justify-content: center;
-  align-items: flex-start; */
 }
 
 .purchase-elements-list {
@@ -17,6 +13,8 @@
   align-items: center;
 }
 
-.spider {
-  border: 1px solid tomato;
+@media (min-width: 426px) {
+  .purchase_body section {
+    width: 100%;
+  }
 }

@@ -10,13 +10,7 @@ import {
   elementData,
 } from "../../../../context/PurchaseContext";
 import "./Details.css";
-import { useEffect, useMemo } from "react";
-import {
-  Midia,
-  Stuff,
-  Tool,
-  useElement,
-} from "../../../../context/ElementContext";
+import { Midia, Stuff, Tool } from "../../../../context/ElementContext";
 import { useAuth } from "../../../../context/UserContext";
 
 const DetailInfoSchema = yup.object().shape({
@@ -41,27 +35,8 @@ export const Details = ({
   setPurchase,
 }: DetailsProps) => {
   const { company } = useAuth();
-  const {
-    midias,
-    midia,
-    stuffs,
-    stuff,
-    tools,
-    tool,
-    StuffsList,
-    MidiasList,
-    ToolsList,
-    MidiaCreator,
-    StuffCreator,
-    ToolCreator,
-  } = useElement();
-  const context = new AudioContext();
 
-  useEffect(() => {
-    MidiasList();
-    StuffsList();
-    ToolsList();
-  }, [midia, stuff, tool]);
+  const context = new AudioContext();
 
   function jsNota(frecuencia: number) {
     const o = context.createOscillator();
@@ -88,26 +63,6 @@ export const Details = ({
     let thisMidia: Midia = {} as Midia;
     let thisStuff: Stuff = {} as Stuff;
     let thisTool: Tool = {} as Tool;
-
-    if (elementType === "midia") {
-      thisMidia = midias.filter((item) => item.midiaName === element)[0];
-      /* if (!thisMidia) {
-        MidiaCreator({ midiaName: element });
-        thisMidia = midia;
-      } */
-    } else if (elementType === "material") {
-      thisStuff = stuffs.filter((item) => item.stuff === element)[0];
-      /* if (!thisStuff) {
-        console.log(StuffCreator({ stuff: element }));
-        thisStuff = stuff;
-      } */
-    } else if (elementType === "ferramenta") {
-      thisTool = tools.filter((item) => item.tool === element)[0];
-      /* if (!thisTool) {
-        ToolCreator({ tool: element });
-        thisTool = tool;
-      } */
-    }
 
     const material = elementos.filter((item) => item.element === element);
 
