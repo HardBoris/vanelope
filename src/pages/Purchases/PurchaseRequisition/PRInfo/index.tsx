@@ -9,6 +9,7 @@ import { PurchaseData, elementData } from "../../../../context/PurchaseContext";
 import { PRDetails } from "../PRDetails";
 import { useState } from "react";
 import { ElementToBuy } from "../../../../context/ElementContext";
+import { useFormContext, FormProvider } from "react-hook-form";
 
 const PurchaseInfoSchema = yup.object().shape({
   purchaseDate: yup.string().required(),
@@ -58,15 +59,16 @@ export const PRInfo = ({ setShow }: PurchaseInfoProps) => {
               defaultValue={new Date(ahora).toLocaleDateString()}
             />
           </div>
-          {/*  </div>
-        <div className="shoppinglist-wrapper"> */}
-          <PRDetails
-            elementos={elementos}
-            setElementos={setElementos}
-            // purchase={thisPurchase}
-            // setPurchase={setThisPurchase}
-          />
-          {/* <div className="input-purchase paymentform">
+        </div>
+      </Formulario>
+      <div className="shoppinglist-wrapper">
+        <PRDetails
+          elementos={elementos}
+          setElementos={setElementos}
+          // purchase={thisPurchase}
+          // setPurchase={setThisPurchase}
+        />
+        {/* <div className="input-purchase paymentform">
             <BGInput
               register={register}
               name="paymentForm"
@@ -75,7 +77,7 @@ export const PRInfo = ({ setShow }: PurchaseInfoProps) => {
               placeholder="Faturado, Cartão ou Dinheiro"
             />
           </div> */}
-          {/* <div className="input-purchase installment">
+        {/* <div className="input-purchase installment">
             <BGInput
               register={register}
               name="paymentInstallments"
@@ -84,7 +86,7 @@ export const PRInfo = ({ setShow }: PurchaseInfoProps) => {
               placeholder="Numero de parcelas e prazos"
             />
           </div> */}
-          {/* <div className="input-purchase logistic">
+        {/* <div className="input-purchase logistic">
             <BGInput
               register={register}
               name="logisticMode"
@@ -93,7 +95,7 @@ export const PRInfo = ({ setShow }: PurchaseInfoProps) => {
               placeholder="Entrega ou Retirada"
             />
           </div> */}
-          {/* <div className="input-purchase date">
+        {/* <div className="input-purchase date">
             <BGInput
               register={register}
               name="deliveryDate"
@@ -102,14 +104,14 @@ export const PRInfo = ({ setShow }: PurchaseInfoProps) => {
               defaultValue={new Date(ahora).toLocaleDateString()}
             />
           </div> */}
-        </div>
+      </div>
 
-        <div className="input-purchase">
-          <Button type="submit" variant="yes">
-            Avançar
-          </Button>
-        </div>
-      </Formulario>
+      <div className="input-purchase">
+        <Button type="submit" variant="yes">
+          Avançar
+        </Button>
+      </div>
+      {/* </Formulario> */}
     </div>
   );
 };

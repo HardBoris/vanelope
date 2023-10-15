@@ -16,6 +16,7 @@ import { MaterialEntry } from "../pages/Entry/MatEntry";
 import { NewPurchase } from "../pages/Purchases/NewPurchase";
 import { PurchasesList } from "../pages/Purchases/PurchasesList";
 import { PurchaseRequisition } from "../pages/Purchases/PurchaseRequisition";
+import ElementsForm from "../pages/Purchases/NestedPurchases/ElementsForm";
 
 export const PrivateRoutes = () => {
   return (
@@ -24,7 +25,7 @@ export const PrivateRoutes = () => {
       <Route path="/:companyId/movements" element={<Movements />} />
       <Route path="/:companyId/purchases" element={<Purchases />}>
         <Route path="" element={<PurchasesList />} />
-        <Route path="purchaserequisition" element={<PurchaseRequisition />} />
+        <Route path="purchaserequisition" element={<ElementsForm />} />
         <Route path="newpurchase" element={<NewPurchase />} />
       </Route>
       <Route path="/:companyId/requisitions" element={<Requisition />}>

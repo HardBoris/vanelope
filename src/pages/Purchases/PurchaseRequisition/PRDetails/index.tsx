@@ -8,12 +8,14 @@ import { ElementToBuy, useElement } from "../../../../context/ElementContext";
 import { useAuth } from "../../../../context/UserContext";
 import { FaPlus, FaTrash } from "react-icons/fa";
 import { useState } from "react";
+import { Formulario } from "../../../../components/Form";
 
 const DetailInfoSchema = yup.object().shape({
   element: yup.string().required(),
   quantity: yup.string().required(),
   defaultUnit: yup.string().required(),
   elementType: yup.string().required(),
+  listDate: yup.string().required(),
 });
 
 interface DetailsProps {
@@ -24,6 +26,8 @@ interface DetailsProps {
 export const PRDetails = ({ elementos, setElementos }: DetailsProps) => {
   const { element, ElementCreator } = useElement();
   const context = new AudioContext();
+
+  const ahora = Date.now();
 
   function jsNota(frecuencia: number) {
     const o = context.createOscillator();
@@ -73,88 +77,99 @@ export const PRDetails = ({ elementos, setElementos }: DetailsProps) => {
 
   return (
     <div className="wrapper-dt">
-      <div className="data-row">
-        <div className="detail-wrapper-dt">
-          <div className="individual-detail element-dt">
-            {/* <BGInput
+      {/* <div className="input-purchase date">
+            <BGInput
+              register={register}
+              name="listDate"
+              error={errors.listDate?.message}
+              label="Data"
+              defaultValue={new Date(ahora).toLocaleDateString()}
+            />
+          </div> */}
+      <Formulario>
+        <div className="data-row">
+          <div className="detail-wrapper-dt">
+            <div className="individual-detail element-dt">
+              {/* <BGInput
               register={register}
               name="element"
               error={errors.element?.message}
               label="Elemento"
               placeholder="Descrição do elemento"
             /> */}
-            <input
-              type="text"
-              name="element"
-              onChange={(e) =>
-                setDetalle({ ...detalle, element: e.target.value })
-              }
-            />
-          </div>
-          <div className="individual-detail type-dt">
-            {/* <BGInput
+              <input
+                type="text"
+                name="element"
+                onChange={(e) =>
+                  setDetalle({ ...detalle, element: e.target.value })
+                }
+              />
+            </div>
+            <div className="individual-detail type-dt">
+              {/* <BGInput
               register={register}
               name="elementType"
               error={errors.elementType?.message}
               label="Tipo de elemento"
               placeholder="Ferramenta, acessório"
             /> */}
-            <input
-              type="text"
-              name="elementType"
-              onChange={(e) =>
-                setDetalle({ ...detalle, elementType: e.target.value })
-              }
-            />
-          </div>
-          <div className="individual-detail qty-dt">
-            {/* <BGInput
+              <input
+                type="text"
+                name="elementType"
+                onChange={(e) =>
+                  setDetalle({ ...detalle, elementType: e.target.value })
+                }
+              />
+            </div>
+            <div className="individual-detail qty-dt">
+              {/* <BGInput
               register={register}
               name="quantity"
               error={errors.quantity?.message}
               label="Quantidade"
               placeholder="moveQuantity"
             /> */}
-            <input
-              type="number"
-              name="quantity"
-              onChange={(e) =>
-                setDetalle({ ...detalle, quantity: e.target.valueAsNumber })
-              }
-            />
-          </div>
-          <div className="individual-detail unit-dt">
-            {/* <BGInput
+              <input
+                type="number"
+                name="quantity"
+                onChange={(e) =>
+                  setDetalle({ ...detalle, quantity: e.target.valueAsNumber })
+                }
+              />
+            </div>
+            <div className="individual-detail unit-dt">
+              {/* <BGInput
               register={register}
               name="defaultUnit"
               error={errors.defaultUnit?.message}
               label="Unidade"
               placeholder="m, k, l"
             /> */}
-            <input
-              type="text"
-              name="defaultUnit"
-              onChange={(e) =>
-                setDetalle({ ...detalle, defaultUnit: e.target.value })
-              }
-            />
+              <input
+                type="text"
+                name="defaultUnit"
+                onChange={(e) =>
+                  setDetalle({ ...detalle, defaultUnit: e.target.value })
+                }
+              />
+            </div>
+          </div>
+          <div className="botonera-dt">
+            <Button variant="yes" type="submit" onSubmit={handleSubmit(sender)}>
+              Incluir
+            </Button>
+          </div>
+          <div className="detail-action">
+            <div
+              className="detail-btn"
+              role="button"
+              onClick={() => sender(detalle)}
+            >
+              <FaPlus />
+            </div>
           </div>
         </div>
-        <div className="botonera-dt">
-          <Button variant="yes" type="submit" onSubmit={handleSubmit(sender)}>
-            Incluir
-          </Button>
-        </div>
-        <div className="detail-action">
-          <div
-            className="detail-btn"
-            role="button"
-            onClick={() => sender(detalle)}
-          >
-            <FaPlus />
-          </div>
-        </div>
-      </div>
+      </Formulario>
       <div className="data-show">
         {elementos &&
           elementos.map((item, index) => (

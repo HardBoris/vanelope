@@ -16,7 +16,7 @@ export interface ElementToBuy {
   elementType: string;
   quantity: number;
   defaultUnit: string;
-  company: string;
+  company?: string;
 }
 
 export interface Midia {
