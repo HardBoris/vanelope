@@ -7,6 +7,7 @@ import "./PRDetails.css";
 import { ElementToBuy, useElement } from "../../../../context/ElementContext";
 import { useAuth } from "../../../../context/UserContext";
 import { FaPlus, FaTrash } from "react-icons/fa";
+import { useState } from "react";
 
 const DetailInfoSchema = yup.object().shape({
   element: yup.string().required(),
@@ -43,6 +44,8 @@ export const PRDetails = ({ elementos, setElementos }: DetailsProps) => {
     resolver: yupResolver(DetailInfoSchema),
   });
 
+  const [detalle, setDetalle] = useState<ElementToBuy>({} as ElementToBuy);
+
   const sender = (info: ElementToBuy) => {
     const { element } = info;
 
@@ -73,86 +76,122 @@ export const PRDetails = ({ elementos, setElementos }: DetailsProps) => {
       <div className="data-row">
         <div className="detail-wrapper-dt">
           <div className="individual-detail element-dt">
-            <BGInput
+            {/* <BGInput
               register={register}
               name="element"
               error={errors.element?.message}
               label="Elemento"
               placeholder="Descrição do elemento"
+            /> */}
+            <input
+              type="text"
+              name="element"
+              onChange={(e) =>
+                setDetalle({ ...detalle, element: e.target.value })
+              }
             />
           </div>
           <div className="individual-detail type-dt">
-            <BGInput
+            {/* <BGInput
               register={register}
               name="elementType"
               error={errors.elementType?.message}
               label="Tipo de elemento"
               placeholder="Ferramenta, acessório"
+            /> */}
+            <input
+              type="text"
+              name="elementType"
+              onChange={(e) =>
+                setDetalle({ ...detalle, elementType: e.target.value })
+              }
             />
           </div>
           <div className="individual-detail qty-dt">
-            <BGInput
+            {/* <BGInput
               register={register}
               name="quantity"
               error={errors.quantity?.message}
               label="Quantidade"
               placeholder="moveQuantity"
+            /> */}
+            <input
+              type="number"
+              name="quantity"
+              onChange={(e) =>
+                setDetalle({ ...detalle, quantity: e.target.valueAsNumber })
+              }
             />
           </div>
           <div className="individual-detail unit-dt">
-            <BGInput
+            {/* <BGInput
               register={register}
               name="defaultUnit"
               error={errors.defaultUnit?.message}
               label="Unidade"
               placeholder="m, k, l"
+            /> */}
+            <input
+              type="text"
+              name="defaultUnit"
+              onChange={(e) =>
+                setDetalle({ ...detalle, defaultUnit: e.target.value })
+              }
             />
           </div>
         </div>
         <div className="botonera-dt">
-          <Button variant="yes" type="button" onClick={handleSubmit(sender)}>
+          <Button variant="yes" type="submit" onSubmit={handleSubmit(sender)}>
             Incluir
           </Button>
         </div>
         <div className="detail-action">
           <div
             className="detail-btn"
-            // onClick={() => Trigger(item.requestId, setIsAdd)}
+            role="button"
+            onClick={() => sender(detalle)}
           >
             <FaPlus />
           </div>
         </div>
       </div>
       <div className="data-show">
-        <div className="data-row">
-          <div className="detail-wrapper-dt">
-            <div className="individual-detail element-dt">
-              <div className="show"></div>
+        {elementos &&
+          elementos.map((item, index) => (
+            <div key={index} className="data-row">
+              <div className="detail-wrapper-dt">
+                <div className="individual-detail element-dt">
+                  <div className="show">{item.element}</div>
+                </div>
+                <div className="individual-detail type-dt">
+                  <div className="show">{item.elementType}</div>
+                </div>
+                <div className="individual-detail qty-dt">
+                  <div className="show">{item.quantity}</div>
+                </div>
+                <div className="individual-detail unit-dt">
+                  <div className="show">{item.defaultUnit}</div>
+                </div>
+              </div>
+              <div className="botonera-dt">
+                <Button
+                  variant="yes"
+                  type="button"
+                  onClick={handleSubmit(sender)}
+                >
+                  Eliminar
+                </Button>
+              </div>
+              <div className="detail-action">
+                <div
+                  className="detail-btn"
+                  // onClick={() => Trigger(item.requestId, setIsDelete)}
+                >
+                  <FaTrash />
+                </div>
+              </div>
             </div>
-            <div className="individual-detail type-dt">
-              <div className="show"></div>
-            </div>
-            <div className="individual-detail qty-dt">
-              <div className="show"></div>
-            </div>
-            <div className="individual-detail unit-dt">
-              <div className="show"></div>
-            </div>
-          </div>
-          <div className="botonera-dt">
-            <Button variant="yes" type="button" onClick={handleSubmit(sender)}>
-              Eliminar
-            </Button>
-          </div>
-          <div className="detail-action">
-            <div
-              className="detail-btn"
-              // onClick={() => Trigger(item.requestId, setIsDelete)}
-            >
-              <FaTrash />
-            </div>
-          </div>
-        </div>
+          ))}
       </div>
     </div>
   );
