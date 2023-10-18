@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { FormProvider } from "react-hook-form";
 import useElementsForm from "./useElementsForm";
 import ElementsFormField from "./ElementsFormField/ElementsFormField";
-// import styles from "./FriendsForm.module.scss";
+import "./style.css";
 
 const ElementForm = () => {
   const { handleSubmit, methods } = useElementsForm();
@@ -11,7 +11,9 @@ const ElementForm = () => {
     <FormProvider {...methods}>
       <form onSubmit={handleSubmit} /* className={styles.form} */>
         <ElementsFormField />
-        <button type="submit">Submit</button>
+        <button type="submit" className="improviso">
+          Submit
+        </button>
       </form>
     </FormProvider>
   );
