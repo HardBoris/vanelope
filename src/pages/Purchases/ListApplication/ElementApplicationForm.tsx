@@ -8,7 +8,7 @@ export interface ElementApplicationFormShape {
   elementsList: ElementToBuy[];
 }
 
-const schema: yup.SchemaOf<ElementApplicationFormShape> = yup.object({
+const schema = yup.object().shape({
   listDate: yup.string().required(),
   elementsList: yup
     .array()
@@ -16,7 +16,7 @@ const schema: yup.SchemaOf<ElementApplicationFormShape> = yup.object({
       yup.object({
         element: yup.string().required(),
         elementType: yup.string().required(),
-        quantity: yup.string().required(),
+        quantity: yup.number().required(),
         defaultUnit: yup.string().required(),
       })
     )
