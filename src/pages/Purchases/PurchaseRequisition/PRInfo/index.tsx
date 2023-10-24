@@ -10,6 +10,7 @@ import { PRDetails } from "../PRDetails";
 import { useState } from "react";
 import { ElementToBuy } from "../../../../context/ElementContext";
 import { useFormContext, FormProvider } from "react-hook-form";
+import { Container } from "../../../../components/Container";
 
 const PurchaseInfoSchema = yup.object().shape({
   purchaseDate: yup.string().required(),
@@ -48,8 +49,10 @@ export const PRInfo = ({ setShow }: PurchaseInfoProps) => {
 
   return (
     <div className="form-wrapper-purchase">
-      <Formulario onSubmit={handleSubmit(sender)}>
+      <Container>
+        {/* red */}
         <div className="shoppinglist-wrapper">
+          {/* blue */}
           <div className="input-purchase date">
             <BGInput
               register={register}
@@ -59,59 +62,21 @@ export const PRInfo = ({ setShow }: PurchaseInfoProps) => {
               defaultValue={new Date(ahora).toLocaleDateString()}
             />
           </div>
+          {/* </div>
+        <div className="shoppinglist-wrapper"> */}
+          <PRDetails
+            elementos={elementos}
+            setElementos={setElementos}
+            // purchase={thisPurchase}
+            // setPurchase={setThisPurchase}
+          />
         </div>
-      </Formulario>
-      <div className="shoppinglist-wrapper">
-        <PRDetails
-          elementos={elementos}
-          setElementos={setElementos}
-          // purchase={thisPurchase}
-          // setPurchase={setThisPurchase}
-        />
-        {/* <div className="input-purchase paymentform">
-            <BGInput
-              register={register}
-              name="paymentForm"
-              error={errors.paymentForm?.message}
-              label="Forma de Pagamento"
-              placeholder="Faturado, Cartão ou Dinheiro"
-            />
-          </div> */}
-        {/* <div className="input-purchase installment">
-            <BGInput
-              register={register}
-              name="paymentInstallments"
-              error={errors.paymentInstallments?.message}
-              label="Parcelas"
-              placeholder="Numero de parcelas e prazos"
-            />
-          </div> */}
-        {/* <div className="input-purchase logistic">
-            <BGInput
-              register={register}
-              name="logisticMode"
-              error={errors.logisticMode?.message}
-              label="Logistica"
-              placeholder="Entrega ou Retirada"
-            />
-          </div> */}
-        {/* <div className="input-purchase date">
-            <BGInput
-              register={register}
-              name="deliveryDate"
-              error={errors.deliveryDate?.message}
-              label="Previsão de Entrega"
-              defaultValue={new Date(ahora).toLocaleDateString()}
-            />
-          </div> */}
-      </div>
-
-      <div className="input-purchase">
-        <Button type="submit" variant="yes">
-          Avançar
-        </Button>
-      </div>
-      {/* </Formulario> */}
+        <div className="input-purchase">
+          <Button type="submit" variant="yes">
+            Avançar
+          </Button>
+        </div>
+      </Container>
     </div>
   );
 };

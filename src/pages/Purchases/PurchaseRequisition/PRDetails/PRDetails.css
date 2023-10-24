@@ -1,5 +1,6 @@
 .wrapper-dt {
   width: 100%;
+  /* border: 1px solid green; */
   /* height: 500px;
   overflow-y: auto; */
 }
@@ -11,7 +12,10 @@
 
 .data-show {
   width: 100%;
-  height: auto;
+  max-height: 400px;
+  margin-top: 30px;
+  /* border: 1px solid brown; */
+  overflow-y: auto;
 }
 
 .detail-wrapper-dt {
@@ -68,7 +72,7 @@ input {
 @media (min-width: 426px) {
   .wrapper-dt {
     width: 90%;
-    height: 200px;
+    height: auto;
   }
 
   .data-row {
@@ -90,6 +94,9 @@ input {
 
   .element-dt {
     width: 35%;
+    /* display: flex;
+    justify-content: flex-start;
+    align-items: center; */
   }
 
   .type-dt {
@@ -106,6 +113,11 @@ input {
 
   .show {
     margin-top: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 15px;
+    font-size: 1.2rem;
   }
 
   input,
@@ -120,6 +132,7 @@ input {
   .detail-action {
     width: 10%;
     height: 80px;
+    /* border: 1px solid red; */
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
@@ -127,7 +140,8 @@ input {
 
   .detail-btn {
     width: 60%;
-    height: 50px;
+    height: 60%;
+    border: 1px solid var(--primary-dark);
     display: flex;
     justify-content: center;
     align-items: center;
