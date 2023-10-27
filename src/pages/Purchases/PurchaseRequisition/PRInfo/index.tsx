@@ -54,22 +54,23 @@ export const PRInfo = ({ setShow }: PurchaseInfoProps) => {
         <div className="shoppinglist-wrapper">
           {/* blue */}
           <div className="input-purchase date">
-            <BGInput
+            {/* <BGInput
               register={register}
               name="purchaseDate"
               error={errors.purchaseDate?.message}
               label="Data"
               defaultValue={new Date(ahora).toLocaleDateString()}
-            />
+            /> */}
+            {new Date(ahora).toLocaleDateString("pt")}
           </div>
           {/* </div>
         <div className="shoppinglist-wrapper"> */}
-          <PRDetails
+          {/* <PRDetails
             elementos={elementos}
             setElementos={setElementos}
             // purchase={thisPurchase}
             // setPurchase={setThisPurchase}
-          />
+          /> */}
         </div>
         <div className="input-purchase">
           <Button type="submit" variant="yes">

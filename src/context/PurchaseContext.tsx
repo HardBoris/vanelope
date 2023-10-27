@@ -135,7 +135,7 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
         /* navigate(
           `/${miCompania.companyId}/purchases/${response.data.purchaseId}`
         ); */
-        console.log(response.data);
+        // console.log(response.data);
       })
       .catch((error) => console.log(error));
   };

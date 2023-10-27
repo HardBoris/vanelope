@@ -77,13 +77,18 @@ export const PRDetails = ({ elementos, setElementos }: DetailsProps) => {
             ...info,
           },
         ]);
-    console.log(elementos);
+    // console.log(elementos);
   };
-  console.log(element);
+  // console.log(element);
 
   useEffect(() => {
     if (formState.isSubmitSuccessful) {
-      reset({ element: "", elementType: "", quantity: 0, defaultUnit: "" });
+      reset({
+        element: "",
+        elementType: "",
+        quantity: 0,
+        defaultUnit: "",
+      });
     }
   }, [formState, reset]);
 

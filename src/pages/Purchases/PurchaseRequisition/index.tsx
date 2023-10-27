@@ -9,6 +9,7 @@ import "./PR.style.css";
 import { PRDetails } from "./PRDetails";
 import { PRDetailsList } from "./PRDetailsList";
 import Modal from "../../../components/Modal";
+import { ElementToBuy } from "../../../context/ElementContext";
 
 export const PurchaseRequisition = () => {
   const { Buy } = usePurchase();
@@ -16,7 +17,7 @@ export const PurchaseRequisition = () => {
     {} as PurchaseData
   );
   const [show, setShow] = useState(0);
-  const [elementos, setElementos] = useState<elementData[]>([]);
+  const [elementos, setElementos] = useState<ElementToBuy[]>([]);
   const [isPrint, setIsPrint] = useState(false);
 
   const handlePrint = () => {
@@ -37,23 +38,28 @@ export const PurchaseRequisition = () => {
     handlePrint();
   };
 
+  console.log(elementos);
+
   return (
     <>
       <section>
         <div className="purchase-info">
           <PRInfo setThisPurchase={setThisPurchase} setShow={setShow} />
         </div>
+        <div className="purchase-detail">
+          <PRDetails elementos={elementos} setElementos={setElementos} />
+        </div>
         <div
           className={
             elementos.length === 0 ? "invisible" : "purchase-elements-list"
           }
         >
-          <PRDetailsList
+          {/* <PRDetailsList
             show={show}
             elementos={elementos}
             apagar={apagar}
             guardar={guardar}
-          />
+          /> */}
         </div>
       </section>
       <Modal isOpen={isPrint} setIsOpen={handlePrint}>
