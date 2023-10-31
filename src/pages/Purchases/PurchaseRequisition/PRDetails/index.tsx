@@ -9,6 +9,10 @@ import { useAuth } from "../../../../context/UserContext";
 import { FaPlus, FaTrash } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { Formulario } from "../../../../components/Form";
+import {
+  PRequest,
+  usePR,
+} from "../../../../context/PurchaseRequisitionContext";
 
 const DetailInfoSchema = yup.object().shape({
   element: yup.string().required(),
@@ -24,8 +28,12 @@ interface DetailsProps {
 }
 
 export const PRDetails = ({ elementos, setElementos }: DetailsProps) => {
-  const { element, ElementCreator } = useElement();
+  const { element, ElementCreator, stock, ElementsList } = useElement();
   const context = new AudioContext();
+
+  /* useEffect(() => {
+    ElementsList();
+  }); */
 
   const ahora = Date.now();
 
@@ -59,17 +67,21 @@ export const PRDetails = ({ elementos, setElementos }: DetailsProps) => {
   const sender = (info: ElementToBuy) => {
     const { element } = info;
 
-    const elemento: ElementToBuy = elementos.filter(
+    /* const elemento: ElementToBuy = elementos.filter(
       (item) => item?.element === element
-    )[0];
+    )[0]; */
 
-    if (!elemento) {
+    const existe = stock.filter((item) => item.element === element)[0];
+
+    if (!existe) {
       ElementCreator(info);
     }
 
-    const material = elementos.filter((item) => item.element === element);
+    const material: ElementToBuy = elementos.filter(
+      (item) => item.element === element
+    )[0];
 
-    material.length
+    material
       ? jsNota(207.652)
       : setElementos([
           ...elementos,
@@ -77,7 +89,17 @@ export const PRDetails = ({ elementos, setElementos }: DetailsProps) => {
             ...info,
           },
         ]);
-    // console.log(elementos);
+
+    /* !material &&
+      setElementos([
+        ...elementos,
+        {
+          ...info,
+          elementId: existe?.elementId,
+        },
+      ]); */
+    console.log(stock);
+    console.log(existe);
   };
   // console.log(element);
 

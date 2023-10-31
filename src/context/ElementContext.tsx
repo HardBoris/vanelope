@@ -1,4 +1,10 @@
-import { ReactNode, createContext, useContext, useState } from "react";
+import {
+  ReactNode,
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { localApi as api } from "../services/api";
 import { useAuth } from "./UserContext";
 
@@ -12,6 +18,7 @@ export interface MyElement {
 }
 
 export interface ElementToBuy {
+  elementId?: string;
   element: string;
   elementType: string;
   quantity: number;

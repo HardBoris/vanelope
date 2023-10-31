@@ -7,45 +7,54 @@ import { BGInput } from "../../../../components/BG Input";
 import { Button } from "../../../../components/Button";
 import { PurchaseData, elementData } from "../../../../context/PurchaseContext";
 import { PRDetails } from "../PRDetails";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ElementToBuy } from "../../../../context/ElementContext";
 import { useFormContext, FormProvider } from "react-hook-form";
 import { Container } from "../../../../components/Container";
+import {
+  PRequest,
+  usePR,
+} from "../../../../context/PurchaseRequisitionContext";
 
-const PurchaseInfoSchema = yup.object().shape({
-  purchaseDate: yup.string().required(),
-  // fantasyName: yup.string().required(),
-  // CNPJ: yup.string().required(),
-  // paymentForm: yup.string().required(),
-  // paymentInstallments: yup.string().required(),
-  // logisticMode: yup.string().required(),
-  // deliveryDate: yup.string().required(),
-});
+/* const PrequestInfoSchema = yup.object().shape({
+  listDate: yup.string().required(),
+}); */
 
-interface PurchaseInfoProps {
-  setThisPurchase: (data: PurchaseData) => void;
+/* interface PurchaseInfoProps {
+  setThisPrequest: (data: PRequest) => void;
   setShow: (arg: number) => void;
-}
+} */
 
-export const PRInfo = ({ setShow }: PurchaseInfoProps) => {
+export const PRInfo = () => {
+  const { prequestCreator } = usePR();
+
   const ahora = Date.now();
   const [elementos, setElementos] = useState<ElementToBuy[]>([]);
-  const [thisPurchase, setThisPurchase] = useState<PurchaseData>(
-    {} as PurchaseData
-  );
+  const [thisPrequest, setThisPrequest] = useState<PRequest>({} as PRequest);
 
-  const {
+  /* const {
     formState: { errors },
     register,
     handleSubmit,
   } = useForm<PurchaseData>({
     resolver: yupResolver(PurchaseInfoSchema),
-  });
+  }); */
 
-  const sender = (data: PurchaseData) => {
-    setThisPurchase(data);
-    setShow(1);
+  // let data: PRequest = {} as PRequest;
+
+  const sender = () => {
+    const data = {
+      listDate: new Date(ahora).toLocaleDateString("pt"),
+      details: elementos,
+    };
+    prequestCreator(data);
+    // setShow(1);
+    // console.log(thisPrequest);
   };
+
+  /* useEffect(() => {
+    setThisPrequest(data);
+  }, []); */
 
   return (
     <div className="form-wrapper-purchase">
@@ -65,15 +74,15 @@ export const PRInfo = ({ setShow }: PurchaseInfoProps) => {
           </div>
           {/* </div>
         <div className="shoppinglist-wrapper"> */}
-          {/* <PRDetails
+          <PRDetails
             elementos={elementos}
             setElementos={setElementos}
             // purchase={thisPurchase}
             // setPurchase={setThisPurchase}
-          /> */}
+          />
         </div>
         <div className="input-purchase">
-          <Button type="submit" variant="yes">
+          <Button type="button" variant="yes" onClick={() => sender()}>
             Avançar
           </Button>
         </div>

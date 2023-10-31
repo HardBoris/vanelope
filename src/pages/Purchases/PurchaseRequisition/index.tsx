@@ -10,8 +10,10 @@ import { PRDetails } from "./PRDetails";
 import { PRDetailsList } from "./PRDetailsList";
 import Modal from "../../../components/Modal";
 import { ElementToBuy } from "../../../context/ElementContext";
+import { usePR } from "../../../context/PurchaseRequisitionContext";
 
 export const PurchaseRequisition = () => {
+  const { prequestCreator } = usePR();
   const { Buy } = usePurchase();
   const [thisPurchase, setThisPurchase] = useState<PurchaseData>(
     {} as PurchaseData
@@ -38,29 +40,29 @@ export const PurchaseRequisition = () => {
     handlePrint();
   };
 
-  console.log(elementos);
+  // console.log(elementos);
 
   return (
     <>
       <section>
         <div className="purchase-info">
-          <PRInfo setThisPurchase={setThisPurchase} setShow={setShow} />
+          <PRInfo /* setThisPurchase={setThisPurchase} setShow={setShow} */ />
         </div>
-        <div className="purchase-detail">
+        {/* <div className="purchase-detail">
           <PRDetails elementos={elementos} setElementos={setElementos} />
         </div>
         <div
           className={
             elementos.length === 0 ? "invisible" : "purchase-elements-list"
           }
-        >
-          {/* <PRDetailsList
+        > */}
+        {/* <PRDetailsList
             show={show}
             elementos={elementos}
             apagar={apagar}
             guardar={guardar}
           /> */}
-        </div>
+        {/* </div> */}
       </section>
       <Modal isOpen={isPrint} setIsOpen={handlePrint}>
         <div className="envoltura">Modal</div>
