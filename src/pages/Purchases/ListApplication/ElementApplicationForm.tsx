@@ -26,7 +26,7 @@ const schema = yup.object().shape({
 export const emptyElement: ElementToBuy = {
   element: "",
   elementType: "",
-  quantity: 0,
+  quantity: "",
   defaultUnit: "",
 };
 

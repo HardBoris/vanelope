@@ -1,59 +1,62 @@
 import { FaTrash } from "react-icons/fa";
 import { Button } from "../../../../components/Button";
-import { elementData } from "../../../../context/PurchaseContext";
-import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../../../context/UserContext";
+import { ElementToBuy } from "../../../../context/ElementContext";
 import "./PRDetailsList.css";
 
 interface DetailsListProps {
-  show: number;
-  elementos: elementData[];
-  apagar: (id: number) => void;
-  guardar: () => void;
+  elementos: ElementToBuy[];
+  setElementos: (item: ElementToBuy[]) => void;
 }
 
 export const PRDetailsList = ({
-  show,
   elementos,
-  apagar,
-  guardar,
+  setElementos,
 }: DetailsListProps) => {
-  const navigate = useNavigate();
-  const { company } = useAuth();
+  const eliminator = (id: string, i: number) => {
+    setElementos(elementos.filter((item) => item.element !== id));
+    elementos.splice(i, 1);
+  };
 
   return (
-    <>
-      <div className={show !== 1 ? "invisible" : "elements_head"}>
-        <div className="elemento">Elemento</div>
-        <div className="cantidad">Quantidade</div>
-        <div className="unidad">Unidade</div>
-        <div className="delete-item"></div>
-      </div>
-      <div className={show !== 1 ? "invisible" : "elements_body"}>
+    <div className="wrapper-dt">
+      <div className="data-show">
         {elementos &&
           elementos.map((item, index) => (
-            <div key={index} className="element_row">
-              <div className="elemento">{item.element}</div>
-              <div className="cantidad">{item.quantity}</div>
-              <div className="unidad">{item.unit}</div>
-              <div
-                role="button"
-                className="delete-item"
-                onClick={() => apagar(index)}
-              >
-                <FaTrash />
+            <div key={index} className="data-row">
+              <div className="detail-wrapper-dt">
+                <div className="individual-detail element-dt">
+                  <div className="show">{item.element}</div>
+                </div>
+                <div className="individual-detail type-dt">
+                  <div className="show">{item.elementType}</div>
+                </div>
+                <div className="individual-detail qty-dt">
+                  <div className="show">{item.quantity}</div>
+                </div>
+                <div className="individual-detail unit-dt">
+                  <div className="show">{item.defaultUnit}</div>
+                </div>
+              </div>
+              <div className="botonera-dt">
+                <Button
+                  variant="yes"
+                  type="button"
+                  onClick={() => eliminator(item.element, index)}
+                >
+                  Eliminar
+                </Button>
+              </div>
+              <div className="detail-action">
+                <div
+                  className="detail-btn"
+                  onClick={() => eliminator(item.element, index)}
+                >
+                  <FaTrash />
+                </div>
               </div>
             </div>
           ))}
       </div>
-      <div className={show !== 1 ? "invisible" : "element_action"}>
-        <Button type="button" onClick={() => navigate(`/${company}/purchases`)}>
-          Cancelar
-        </Button>
-        <Button type="button" onClick={() => guardar()}>
-          Guardar
-        </Button>
-      </div>
-    </>
+    </div>
   );
 };

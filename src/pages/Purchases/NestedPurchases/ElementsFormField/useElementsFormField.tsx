@@ -13,7 +13,7 @@ function useElementsFormField() {
     append({
       element: "",
       elementType: "",
-      quantity: 0,
+      quantity: "",
       defaultUnit: "",
     });
   };

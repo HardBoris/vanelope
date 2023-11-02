@@ -21,7 +21,7 @@ export interface ElementToBuy {
   elementId?: string;
   element: string;
   elementType: string;
-  quantity: number;
+  quantity: string;
   defaultUnit: string;
   company?: string;
 }
@@ -81,6 +81,10 @@ const ElementProvider = ({ children }: ElementProviderProps) => {
       .then((response) => setStock(response.data))
       .catch((error) => console.log(error));
   };
+
+  useEffect(() => {
+    ElementsList();
+  }, []);
 
   const ElementCreator = async (data: ElementToBuy) => {
     await api
