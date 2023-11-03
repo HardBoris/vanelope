@@ -10,17 +10,16 @@ interface DetailProviderProps {
 export interface Detail {
   itemId?: string;
   purchase?: Purchase;
-  midiaId?: string;
-  stuffId?: string;
-  toolId?: string;
+  elementId: string;
   quantity: number;
   unit: string;
-  cost: number;
+  cost?: number;
 }
 
 interface DetailContextData {
   details: Detail[];
   DetailsList: () => void;
+  DetailCreator: (data: Detail) => void;
 }
 
 export const DetailContext = createContext<DetailContextData>(
@@ -33,6 +32,15 @@ const DetailProvider = ({ children }: DetailProviderProps) => {
   const { company, token } = useAuth();
   const [details, setDetails] = useState<Detail[]>([]);
 
+  const DetailCreator = async (data: Detail) => {
+    await api
+      .post(`/${company.companyId}/details/register`, data, {
+        headers: { authorization: `Bearer ${token}` },
+      })
+      .then((response) => console.log(response.data))
+      .catch((err) => console.log(err));
+  };
+
   const DetailsList = async () => {
     await api
       .get(`/${company}/details`, {
@@ -43,7 +51,7 @@ const DetailProvider = ({ children }: DetailProviderProps) => {
   };
 
   return (
-    <DetailContext.Provider value={{ details, DetailsList }}>
+    <DetailContext.Provider value={{ details, DetailsList, DetailCreator }}>
       {children}
     </DetailContext.Provider>
   );

@@ -17,10 +17,11 @@ export const PRInfo = () => {
   const sender = () => {
     const data = {
       requestor: user.userId,
-      company: company.companyId,
+      company: company.code,
       listDate: new Date(ahora).toLocaleDateString("pt"),
       details: elementos,
     };
+    console.log(data);
     prequestCreator(data);
   };
 

@@ -11,9 +11,9 @@ import { jsNota } from "../../../../utils";
 import "./PRDetails.css";
 
 const DetailInfoSchema = yup.object().shape({
-  element: yup.string().required(),
+  elementName: yup.string().required(),
   quantity: yup.string().required(),
-  defaultUnit: yup.string().required(),
+  unit: yup.string().required(),
   elementType: yup.string().required(),
 });
 
@@ -36,10 +36,10 @@ export const PRDetails = ({ elementos, setElementos }: DetailsProps) => {
   });
 
   const sender = (info: ElementToBuy) => {
-    const { element } = info;
+    const { elementName } = info;
 
     const existe = stock.filter(
-      (item) => item.element?.toLowerCase() === element.toLowerCase()
+      (item) => item.element?.toLowerCase() === elementName.toLowerCase()
     )[0];
 
     if (!existe) {
@@ -47,7 +47,7 @@ export const PRDetails = ({ elementos, setElementos }: DetailsProps) => {
     }
 
     const material: ElementToBuy = elementos.filter(
-      (item) => item.element.toLowerCase() === element.toLowerCase()
+      (item) => item.elementName.toLowerCase() === elementName.toLowerCase()
     )[0];
 
     material
@@ -56,7 +56,7 @@ export const PRDetails = ({ elementos, setElementos }: DetailsProps) => {
           ...elementos,
           {
             ...info,
-            elementId: existe?.elementId,
+            element: existe?.elementId,
           },
         ]);
   };
@@ -64,10 +64,10 @@ export const PRDetails = ({ elementos, setElementos }: DetailsProps) => {
   useEffect(() => {
     if (formState.isSubmitSuccessful) {
       reset({
-        element: "",
+        elementName: "",
         elementType: "",
         quantity: "",
-        defaultUnit: "",
+        unit: "",
       });
     }
   }, [formState, reset]);
@@ -80,8 +80,8 @@ export const PRDetails = ({ elementos, setElementos }: DetailsProps) => {
             <div className="individual-detail element-dt">
               <BGInput
                 register={register}
-                name="element"
-                error={errors.element?.message}
+                name="elementName"
+                error={errors.elementName?.message}
                 label="Elemento"
                 placeholder="Descrição do elemento"
               />
@@ -107,8 +107,8 @@ export const PRDetails = ({ elementos, setElementos }: DetailsProps) => {
             <div className="individual-detail unit-dt">
               <BGInput
                 register={register}
-                name="defaultUnit"
-                error={errors.defaultUnit?.message}
+                name="unit"
+                error={errors.unit?.message}
                 label="Unidade"
                 placeholder="m, k, l"
               />

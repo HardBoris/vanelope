@@ -16,8 +16,8 @@ import { MaterialEntry } from "../pages/Entry/MatEntry";
 import { NewPurchase } from "../pages/Purchases/NewPurchase";
 import { PurchasesList } from "../pages/Purchases/PurchasesList";
 import { PurchaseRequisition } from "../pages/Purchases/PurchaseRequisition";
-import ElementsForm from "../pages/Purchases/NestedPurchases/ElementsForm";
-import { ElementApplication } from "../pages/Purchases/ListApplication";
+// import ElementsForm from "../pages/Purchases/NestedPurchases/ElementsForm";
+// import { ElementApplication } from "../pages/Purchases/ListApplication";
 
 export const PrivateRoutes = () => {
   return (

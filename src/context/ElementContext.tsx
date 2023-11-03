@@ -18,11 +18,11 @@ export interface MyElement {
 }
 
 export interface ElementToBuy {
-  elementId?: string;
-  element: string;
+  element?: string;
+  elementName: string;
   elementType: string;
   quantity: string;
-  defaultUnit: string;
+  unit: string;
   company?: string;
 }
 
